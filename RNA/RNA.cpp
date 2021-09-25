@@ -1,45 +1,49 @@
 #include "RNA.hpp"
 
-// CONSTRUCTORS
+//CONSTRUCTORS
 RNA::RNA(Nucl N, size_t capacity)
 {
-  this->uint_len = (capacity / nucles_per_elem) + (capacity % nucles_per_elem != 0);
+  this->uint_len = capacity * 2 / sizeof(uint32_t) / 8 + 1;
+  //this->uint_len = (capacity / nucles_per_elem) + (capacity % nucles_per_elem != 0);
+  this->n_number = capacity;
   this->nucleref = new uint32_t[uint_len];
   memset(nucleref, 0, uint_len);
-  this->n_number = capacity;
   for (size_t i = 0; i < n_number; i++)
   {
-    nucleref[i / nucles_per_elem] |= (uint32_t)(N << (sizeof(uint32_t) * 8 - 2 - (i % uint_nucles) * 2));
+    (*this)[i] = N;
+    //nucleref[i / nucles_per_elem] |= (uint32_t)(N << (sizeof(uint32_t) * 8 - 2 - (i % nucles_per_elem) * 2));
   }
 }
 
 RNA::RNA(size_t capacity)
 {
+  //this->uint_len = capacity * 2 / sizeof(uint32_t) / 8 + 1;
   this->uint_len = (capacity / nucles_per_elem) + (capacity % nucles_per_elem != 0);
+  this->n_number = capacity;
   this->nucleref = new uint32_t[uint_len];
   memset(nucleref, 0, uint_len);
-  this->n_number = capacity;
 }
 
 RNA::RNA()
 {
   this->uint_len = 0;
   this->n_number = 0;
-  this->nucleref = nullptr
+  this->nucleref = nullptr;
 }
 
 //COPY CONSTRUCTOR
 RNA::RNA(const RNA &other)
 {
-  for (size_t i = 0; i < other.len; i++)
-  {
-    nucleref.push_back(other.nucleref.get(i));
+  this->n_number = other.n_number;
+  this->uint_len = other.uint_len;
+  this->nucleref = new uint32_t[uint_len];
+  for(size_t i = 0; i < uint_len; i++){
+    this->nucleref[i] = other.nucleref[i];
   }
-  this->len = other.len;
 }
 
 // DESTRUCTOR
-~RNA()
+RNA::~RNA()
 {
   if (nucleref)
   {
@@ -47,6 +51,34 @@ RNA::RNA(const RNA &other)
     nucleref = nullptr;
   }
 }
+
+//Reference--------------------
+RNA::reference::reference(RNA *rna, size_t position)
+{
+  position = position;
+  rna = rna;
+}
+
+RNA::reference::operator Nucl()
+{
+  size_t idx = position * 2 / sizeof(uint32_t) / 8;
+  size_t shift = ((sizeof(uint32_t) * 8) - 2 - (position % nucles_per_elem) * 2);
+  return (Nucl)((rna->nucleref[idx] & (BIT_MASK << shift)) >> shift);
+}
+
+RNA::reference &RNA::reference::operator=(Nucl N)
+{
+  size_t idx = position * 2 / sizeof(uint32_t) / 8;
+  size_t shift = ((sizeof(uint32_t) * 8) - 2 - (position % nucles_per_elem) * 2);
+  rna->nucleref[idx] = ((rna->nucleref[idx] & (~(BIT_MASK << shift)))) | (N << shift);
+}
+
+RNA::reference::~reference()
+{
+  this->rna = nullptr;
+  this->position = 0;
+}
+//-----------------------------
 
 size_t RNA::get_uints()
 {
@@ -63,7 +95,7 @@ void RNA::resize()
   uint32_t *array = new uint32_t[uint_len * 2];
   memset(array, 0, uint_len * 2);
   uint_len = uint_len * 2;
-  for (int i = 0; i < uints; i++)
+  for (int i = 0; i < uint_len; i++)
   {
     array[i] = nucleref[i];
   }
@@ -73,21 +105,112 @@ void RNA::resize()
 
 void RNA::push_back(Nucl N)
 {
-  new_n_num = n_number + 1;
-  if (new_n_num / nucs_per_elem + (new_n_num % nucs_per_elem >= 1) > uint_len)
+  size_t new_n_num = n_number + 1;
+  if (new_n_num / nucles_per_elem + (new_n_num % nucles_per_elem >= 1) > uint_len)
   {
     resize();
   }
   n_number = new_n_num;
-  nucleref[n_number / nucles_per_elem] |=
-      (N << (2 * (nucles_per_elem - (n_number % nucles_per_elem)));
+  (*this)[n_number] = N;
+  /* nucleref[n_number / nucles_per_elem] |=
+      (N << (2 * (nucles_per_elem - (n_number % nucles_per_elem)))); */
 }
 
 Nucl RNA::pop_back()
 {
+  Nucl N = (*this)[n_number];
   n_number--;
-  return (Nucl)((data[len / nucles_per_elem] >> (nucles_per_elem - 1 - len % nucles_per_elem) * 2) &
-                BIT_MASK);
+  uint_len = n_number * 2 / sizeof(uint32_t) / 8 + 1;
+  uint32_t *temporary = nucleref;
+  nucleref = new uint32_t[uint_len];
+  for (int i = 0; i < uint_len; i++)
+  {
+    nucleref[i] = temporary[i];
+  }
+  delete[] temporary;
+  return N;
+  /* return (Nucl)((nucleref[uint_len / nucles_per_elem] >> (nucles_per_elem - 1 - uint_len % nucles_per_elem) * 2) &
+                BIT_MASK); */
+}
+
+Nucl get_complementary(Nucl N)
+{
+  switch (N)
+  {
+  case A:
+    return T;
+  case G:
+    return C;
+  case C:
+    return G;
+  case T:
+    return A;
+  default:
+    return A;
+  }
+}
+
+bool RNA::is_complementary(RNA &r1)
+{
+  if (r1.n_number != n_number)
+    return false;
+  for (size_t i = 0; i < r1.uint_len; i++)
+  {
+    if (r1.nucleref[i] != ~nucleref[i])
+      return false;
+  }
+  return true;
+}
+
+RNA::reference RNA::operator[](size_t position)
+{
+  return reference(this, position);
+}
+
+Nucl RNA::operator[] (size_t position) const{
+  size_t idx = position * 2 / sizeof(uint32_t) / 8;
+  size_t shift = ((sizeof(uint32_t) * 8) - 2 - (position % nucles_per_elem) * 2);
+  return (Nucl)((this->nucleref[idx] & (BIT_MASK << shift)) >> shift);
+}
+
+RNA &RNA::operator= (const RNA& other){
+  delete[] this->nucleref;
+  this->uint_len = other.uint_len;
+  this->n_number = other.n_number;
+  for(size_t i = 0; i < uint_len; i++){
+    this->nucleref[i] = other.nucleref[i];
+  }
+  return *this;
+}
+
+bool operator==(const RNA &r1, const RNA &r2)
+{
+  if (r1.n_number != r2.n_number)
+    return false;
+  for (size_t i = 0; i < r1.uint_len; i++)
+  {
+    if (r1.nucleref[i] != r2.nucleref[i])
+      return false;
+  }
+  return true;
+}
+
+bool operator!=(const RNA &r1, const RNA &r2)
+{
+  return !(r1 == r2);
+}
+
+RNA RNA::operator!()
+{
+  RNA new_rna;
+  new_rna.n_number = this->n_number;
+  new_rna.uint_len = this->uint_len;
+  new_rna.nucleref = new uint32_t[new_rna.uint_len];
+  for (size_t i = 0; i < n_number; i++)
+  {
+    new_rna[i] = (get_complementary((*this)[i]));
+  }
+  return new_rna;
 }
 
 void add();
@@ -97,13 +220,10 @@ void add();
   operator! ();
   operator[] ();
 
+  operator+ !!!!!!!!!!!!!!
+
+
   isComplementary(RNK &);
   split(size_t index);
 
   DNK(RNK&, RNK&); */
-
-int main()
-{
-  RNA a;
-  return 0;
-}
