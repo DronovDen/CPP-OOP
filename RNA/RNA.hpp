@@ -3,9 +3,18 @@
 #include <cassert>
 #include <cstring>
 #include <iostream>
+#include <unordered_map>
+
+//using namespace std;
 
 #define BIT_MASK 0x3
 const size_t nucles_per_elem = (sizeof(uint32_t) * 8 / 2);
+
+struct RNA_set
+{
+  RNA *first = nullptr;
+  RNA *second = nullptr;
+};
 
 enum Nucl
 {
@@ -22,18 +31,16 @@ private:
   size_t uint_len;    //number of uints
   size_t n_number;    //number of nucles in RNA reference
 
-
-  //used for acces to nucleotids by their indexes in RNA chain
-  class reference
+  class reference //used for acces to nucleotids by their indexes in RNA chain
   {
   private:
-    size_t position; //index of nucl in RNA
+    size_t position; //index of nucl in RNA chain
     RNA *rna;
 
   public:
     reference(RNA *rna, size_t position);
     ~reference();
-    reference &operator=(Nucl N); //needed for writing nucl by its index to an RNA chain 
+    reference &operator=(Nucl N); //needed for writing nucl by its index to an RNA chain
     operator Nucl();
   };
 
@@ -46,9 +53,9 @@ public:
 
   ~RNA();
 
-  size_t RNA::get_uints();
+  size_t RNA::get_uints_number(RNA &rna);
 
-  size_t RNA::get_number_of_nucles();
+  size_t RNA::get_nucles_number(RNA &rna);
 
   void resize();
 
@@ -56,9 +63,19 @@ public:
 
   Nucl RNA::pop_back();
 
+  void trim(size_t last_index);
+
+  RNA_set split(size_t index);
+
   void add();
 
   Nucl get_complementary(Nucl N);
+
+  bool is_complementary(RNA &r1);
+
+  size_t cardinality(Nucl N);
+
+  std::unordered_map<Nucl, int, std::hash<int>> cardinality();
 
   reference operator[](size_t pos);
 
@@ -70,11 +87,12 @@ public:
 
   friend bool operator!=(const RNA &r1, const RNA &r2);
 
-  bool is_complementary(RNA &r1);
-
   RNA operator!();
 
-  /* operator== ();--
+  friend RNA operator+(RNA &rna1, RNA &rna2);
+
+  /* 
+  operator== ();--
   operator!= ();--
   operator ! ();--
   operator[] ();--
@@ -82,5 +100,8 @@ public:
   isComplementary(RNK &);--
   split(size_t index);
 
-  DNK(RNK&, RNK&); */
+  DNK(RNK&, RNK&); 
+  */
 };
+
+//RNA operator+(RNA &rna1, RNA &rna2);
