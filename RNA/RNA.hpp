@@ -53,9 +53,9 @@ public:
 
   ~RNA();
 
-  size_t RNA::get_uints_number(RNA &rna);
+  size_t RNA::get_uints_number();
 
-  size_t RNA::get_nucles_number(RNA &rna);
+  size_t RNA::get_nucles_number();
 
   void resize();
 
@@ -66,8 +66,6 @@ public:
   void trim(size_t last_index);
 
   RNA_set split(size_t index);
-
-  void add();
 
   Nucl get_complementary(Nucl N);
 
@@ -90,18 +88,4 @@ public:
   RNA operator!();
 
   friend RNA operator+(RNA &rna1, RNA &rna2);
-
-  /* 
-  operator== ();--
-  operator!= ();--
-  operator ! ();--
-  operator[] ();--
-
-  isComplementary(RNK &);--
-  split(size_t index);
-
-  DNK(RNK&, RNK&); 
-  */
 };
-
-//RNA operator+(RNA &rna1, RNA &rna2);

@@ -2,7 +2,6 @@
 
 //using namespace std;
 
-//CONSTRUCTORS
 RNA::RNA(Nucl N, size_t capacity)
 {
   this->uint_len = capacity * 2 / sizeof(uint32_t) / 8 + 1;
@@ -16,7 +15,6 @@ RNA::RNA(Nucl N, size_t capacity)
     //nucleref[i / nucles_per_elem] |= (uint32_t)(N << (sizeof(uint32_t) * 8 - 2 - (i % nucles_per_elem) * 2));
   }
 }
-
 RNA::RNA(size_t capacity)
 {
   //this->uint_len = capacity * 2 / sizeof(uint32_t) / 8 + 1;
@@ -25,7 +23,6 @@ RNA::RNA(size_t capacity)
   this->nucleref = new uint32_t[uint_len];
   memset(nucleref, 0, uint_len);
 }
-
 RNA::RNA()
 {
   this->uint_len = 0;
@@ -33,7 +30,6 @@ RNA::RNA()
   this->nucleref = nullptr;
 }
 
-//COPY CONSTRUCTOR
 RNA::RNA(const RNA &other)
 {
   this->n_number = other.n_number;
@@ -45,7 +41,6 @@ RNA::RNA(const RNA &other)
   }
 }
 
-//DESTRUCTOR
 RNA::~RNA()
 {
   if (nucleref)
@@ -84,14 +79,14 @@ RNA::reference::~reference()
 }
 //-----------------------------
 
-size_t RNA::get_uints_number(RNA &rna)
+size_t RNA::get_uints_number()
 {
-  return rna.uint_len;
+  return this->uint_len;
 }
 
-size_t RNA::get_nucles_number(RNA &rna)
+size_t RNA::get_nucles_number()
 {
-  return rna.n_number;
+  return this->n_number;
 }
 
 void RNA::resize()
@@ -109,16 +104,13 @@ void RNA::resize()
 
 void RNA::push_back(Nucl N)
 {
-  size_t new_n_num = n_number + 1;
-  if (new_n_num / nucles_per_elem + (new_n_num % nucles_per_elem >= 1) > uint_len)
+  n_number += 1;
+  if (n_number / nucles_per_elem + (n_number % nucles_per_elem >= 1) > uint_len)
   {
     resize();
   }
-  n_number = new_n_num;
   (*this)[n_number] = N;
-  /* nucleref[n_number / nucles_per_elem] |=
-      (N << (2 * (nucles_per_elem - (n_number % nucles_per_elem)))); */
-}
+  }
 
 Nucl RNA::pop_back()
 {
@@ -133,8 +125,6 @@ Nucl RNA::pop_back()
   }
   delete[] temporary;
   return N;
-  /* return (Nucl)((nucleref[uint_len / nucles_per_elem] >> (nucles_per_elem - 1 - uint_len % nucles_per_elem) * 2) &
-                BIT_MASK); */
 }
 
 void RNA::trim(size_t last_index)
@@ -277,19 +267,3 @@ RNA operator+(RNA &rna1, RNA &rna2)
   }
   return new_rna;
 }
-
-void add();
-
-/* operator== ();
-  operator!= ();
-  operator! ();
-  operator[] ();
-
-  operator+ !!!!!!!!!!!!!!
-
-
-  isComplementary(RNK &);
-  split(size_t index);
-  trim
-
-  DNK(RNK&, RNK&); */
