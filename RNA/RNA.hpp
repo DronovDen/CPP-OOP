@@ -1,20 +1,10 @@
 #pragma once
-#include <stdint.h>
-#include <cassert>
 #include <cstring>
 #include <iostream>
 #include <unordered_map>
 
-//using namespace std;
-
 #define BIT_MASK 0x3
-const size_t nucles_per_elem = (sizeof(uint32_t) * 8 / 2);
-
-struct RNA_set
-{
-  RNA *first = nullptr;
-  RNA *second = nullptr;
-};
+const size_t nucles_per_elem = (sizeof(size_t) * 8 / 2);
 
 enum Nucl
 {
@@ -24,24 +14,28 @@ enum Nucl
   T = 0x3
 };
 
+struct RNA_set;
+
 class RNA
 {
 private:
-  uint32_t *nucleref; //reference of nucleotids
-  size_t uint_len;    //number of uints
-  size_t n_number;    //number of nucles in RNA reference
+  size_t *nucleref; //reference of nucleotids
+  size_t uint_len;  //number of uints
+  size_t n_number;  //number of nucles in RNA reference
 
   class reference //used for acces to nucleotids by their indexes in RNA chain
   {
   private:
-    size_t position; //index of nucl in RNA chain
+    size_t position;
+    size_t idx; //index of nucl in RNA chain
+    size_t shift;
     RNA *rna;
 
   public:
-    reference(RNA *rna, size_t position);
+    reference(size_t index, RNA *rna);
     ~reference();
-    reference &operator=(Nucl N); //needed for writing nucl by its index to an RNA chain
-    operator Nucl();
+    Nucl operator=(Nucl N);
+    operator Nucl() const; //converting to type Nucl
   };
 
 public:
@@ -53,17 +47,17 @@ public:
 
   ~RNA();
 
-  size_t RNA::get_uints_number();
+  size_t get_uints_number();
 
-  size_t RNA::get_nucles_number();
+  size_t get_nucles_number();
 
   void resize();
 
   void push_back(Nucl N);
 
-  Nucl RNA::pop_back();
+  Nucl pop_back();
 
-  void trim(size_t last_index);
+  void trim(size_t last_index); //forgot everything is afer last_index
 
   RNA_set split(size_t index);
 
@@ -77,7 +71,7 @@ public:
 
   reference operator[](size_t pos);
 
-  Nucl RNA::operator[](size_t pos) const;
+  Nucl operator[](size_t pos) const;
 
   RNA &operator=(const RNA &other);
 
@@ -88,4 +82,10 @@ public:
   RNA operator!();
 
   friend RNA operator+(RNA &rna1, RNA &rna2);
+};
+
+struct RNA_set
+{
+  RNA *first = nullptr;
+  RNA *second = nullptr;
 };
