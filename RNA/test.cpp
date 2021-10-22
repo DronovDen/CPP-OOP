@@ -138,7 +138,7 @@ TEST(RNA_operators, Assignment)
     }
 }
 
-TEST(RNA_operators, IsEqual) //!!!!!!!!!!!!
+TEST(RNA_operators, IsEqual)
 {
     RNA rna1(A, 100);
     RNA rna2(T, 100);
@@ -149,7 +149,7 @@ TEST(RNA_operators, IsEqual) //!!!!!!!!!!!!
     EXPECT_EQ(false, rna1 == rna3);
 }
 
-TEST(RNA_operators, IsNotEqual) //!!!!!!!!!!!!!!!
+TEST(RNA_operators, IsNotEqual)
 {
     RNA rna1(A, 100);
     RNA rna2(T, 100);
