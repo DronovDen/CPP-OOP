@@ -1,0 +1,6 @@
+desc
+0 = readfile in.txt
+1 = replace work walk
+2 = writefile out.txt
+csed
+0 -> 1 -> 2

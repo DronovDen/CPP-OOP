@@ -1,0 +1,6 @@
+desc
+0 = readfile in.txt
+1 = sort
+2 = writefile out.txt
+csed
+0 -> 1 -> 2
