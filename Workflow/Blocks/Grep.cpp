@@ -4,26 +4,6 @@ static BlockMaker<Grep> GrepBlockMaker("grep");
 
 bool Grep::ContainsWord(std::string text, std::string word)
 {
-    /* bool contains = false;
-    for (size_t i = 0; i < text.size(); i++)
-    {
-        if ((i + word.size() - 1 > text.size()) && (contains == false))
-			break;
-
-		if (text[i] == word[0])
-		{
-			for (size_t j = 1; j < word.size(); j++)
-			{
-				if (text[i + j] == word[j])
-				{
-					if (j == word.size() - 1)
-						contains = true;
-				}
-			}
-		}
-    }
-    return contains; */
-
     bool contains = false;
     if (text.find(word) != std::string::npos)
     {
@@ -31,6 +11,7 @@ bool Grep::ContainsWord(std::string text, std::string word)
     }
     return contains;
 }
+
 void Grep::work(std::vector<std::string> params, std::string &text)
 {
     if (params.empty())

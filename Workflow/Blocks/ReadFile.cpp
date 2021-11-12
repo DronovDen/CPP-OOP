@@ -8,7 +8,7 @@ void ReadFile::work(std::vector<std::string> params, std::string &text)
     {
         throw std::runtime_error("Too few arguments for reading input file");
     }
-    //params[0] = file name
+    //params[0] = FileName
     std::ifstream input_file;
     input_file.open(params[0]);
 

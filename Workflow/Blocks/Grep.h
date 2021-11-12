@@ -1,7 +1,4 @@
 #pragma once
-/* #include "IWorker.h"
-#include "BlockMaker.h"
- */
 #include "WriteFile.h"
 
 class Grep : public IWorker

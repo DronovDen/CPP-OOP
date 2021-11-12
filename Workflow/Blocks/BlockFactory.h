@@ -4,9 +4,8 @@
 class BlockFactory
 {
 private:
-    //string <- BlockName
+    //string <-- BlockName
     std::map<std::string, IBlockMaker *> BlockMap;
-    //BlockFactory() = default;
 
 public:
     static BlockFactory &Instance();

@@ -1,9 +1,4 @@
 #pragma once
-/* #include "IWorker.h"
-#include "BlockMaker.h"
-#include <string>
-#include <vector>
-#include <algorithm> */
 #include "Sort.h"
 
 using namespace std;

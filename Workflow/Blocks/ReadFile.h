@@ -1,7 +1,5 @@
 #pragma once
-//#include "IWorker.h"
 #include "BlockMaker.h"
-
 
 class ReadFile : public IWorker
 {

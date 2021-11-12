@@ -1,6 +1,4 @@
 #pragma once
-/* #include "IWorker.h"
-#include "BlockMaker.h" */
 #include "Replace.h"
 
 class Dump : public IWorker

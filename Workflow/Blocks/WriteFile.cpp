@@ -2,14 +2,13 @@
 
 static BlockMaker<WriteFile> WriteFileMaker("writefile");
 
-//add link!
 void WriteFile::work(std::vector<std::string> params, std::string &text)
 {
     if (params.empty())
     {
         throw std::runtime_error("Too few arguments for writing into output file");
     }
-    //params[0] = file name
+    //params[0] = FileName
     std::ofstream output_file;
     output_file.open(params[0]);
 

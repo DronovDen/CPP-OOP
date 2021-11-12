@@ -1,4 +1,3 @@
-//#include "IBlockMaker.h"
 #include "BlockFactory.h"
 
 template <class T>

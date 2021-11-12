@@ -1,5 +1,4 @@
 #include "Parser.h"
-
 using namespace std;
 
 vector<size_t> Parser::GetSchemeDescription()
@@ -66,7 +65,7 @@ map<size_t, pair<string, vector<string>>> Parser::parse(BlockFactory *bf, string
     }
 
     //1 -> 3 -> 10 -> 3 -> 2
-    schemeDescription.clear(); //???
+    schemeDescription.clear();
     while (schemeFile >> current)
     {
         if (current != "->")
