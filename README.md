@@ -1,1 +1,1 @@
-# OOP_3sem
+# Object-oriented programming Labs
