@@ -3,96 +3,148 @@
 //#include "World/GameArea/GameArea.h"
 //#include "World/IWorld.h"
 
-Robot::Robot(RobotType type, World &world, GameArea &gameArea)
-    : type(type), world(world), exploredGameArea(gameArea)
-{
-}
+Robot::Robot() : world(new World()), server(nullptr), position({0, 0}), exploredGameArea(nullptr) {}
 
 Robot::~Robot()
 {
-    exploredGameArea.GetCell(coord_x, coord_y).SetRobot(nullptr);
+    delete exploredGameArea;
 }
 
-void Robot::SetPosition()
+bool Robot::IsAvailableToMove(const Coordinates &coordinates, Robot *robot) const
+{
+    CellType cellType = world->GetCellInRobotWorld(coordinates);
+
+    if ((cellType == CellType::EMPTY || cellType == CellType::DIAMOND || (dynamic_cast<Sapper *>(robot) && cellType == CellType::BOMB)) &&
+        !exploredGameArea->IsCellOnMap(coordinates.x, coordinates.y))
+    {
+        return true;
+    }
+
+    return false;
+}
+
+Coordinates Robot::GetSpawnCoordinates()
+{
+    Coordinates spawn = {0, 0};
+    spawn.x = rand() % world->GetGlobalMap()->GetWidth();
+    spawn.y = rand() % world->GetGlobalMap()->GetHeight();
+    while (!IsAvailableToMove(spawn, this))
+    {
+        spawn.x = rand() % world->GetGlobalMap()->GetWidth();
+        spawn.y = rand() % world->GetGlobalMap()->GetHeight();
+    }
+    return spawn;
+}
+
+Direction Robot::GetDirection(const Coordinates &difference)
+{
+    if (difference.x == 0)
+    {
+        if (difference.y == 1)
+            return Direction::DOWN;
+        if (difference.y == -1)
+            return Direction::UP;
+    }
+    if (difference.y == 0)
+    {
+        if (difference.x == 1)
+            return Direction::RIGHT;
+        if (difference.x == -1)
+            return Direction::LEFT;
+    }
+}
+
+Coordinates Robot::CalculateNewCoordinates(const Direction &direction)
+{
+    Coordinates coord = this->position;
+
+    if (direction == Direction::UP)
+    {
+        coord.y = (position.y - 1);
+    }
+    else if (direction == Direction::DOWN)
+    {
+        coord.y = (position.y + 1);
+    }
+    else if (direction == Direction::LEFT)
+    {
+        coord.y = (position.x - 1);
+    }
+    else if (direction == Direction::LEFT)
+    {
+        coord.y = (position.x + 1);
+    }
+    return coord;
+}
+
+/* void Robot::SetPosition()
 {
     while (true)
     {
-        size_t x = rand() % world.GetWidth();
-        size_t y = rand() % world.GetHeight();
-        Cell &cell = world.GetCell(x, y);
+        position.x = rand() % world->GetGlobalMap()->GetWidth();
+        position.y = rand() % world->GetGlobalMap()->GetHeight();
+        Cell &cell = world->GetCell(position);
         if (CanBeSetOnCell(cell))
         {
-            Move(x, y);
+            Move(position);
             //discovering the first position
             //(updating map(exploredGameArea))
-            exploredGameArea.GetCell(x, y).SetType(cell.GetType());
+            exploredGameArea->GetCell(position).SetType(cell.GetType());
             break;
         }
     }
-}
+} */
 
-std::pair<std::size_t, std::size_t> Robot::GetPosition() const
-{
-    return {coord_x, coord_y};
-}
-
-void Robot::Move(Direction direction)
+/* void Robot::Move(Direction direction)
 {
     const auto &[x, y] = CalculateTargetPos(direction);
     Move(x, y);
-}
+} */
 
-void Robot::Move(size_t x, size_t y)
+/* void Robot::Move(Coordinates position)
 {
-    if (AvailableToMove(x, y))
+    if (AvailableToMove(position))
     {
-        exploredGameArea.GetCell(x, y).SetRobot(nullptr);
-        exploredGameArea.GetCell(x, y).SetRobot(this);
+        exploredGameArea->GetCell(Coordinates(x, y)).SetRobot(nullptr);
+        exploredGameArea->GetCell(Coordinates(x, y)).SetRobot(this);
 
-        coord_x = x;
-        coord_y = y;
+        position = Coordinates(x, y);
     }
-}
+} */
 
 void Robot::ClearCell(CellType targetCell)
 {
-    Cell &cell = exploredGameArea.GetCell(coord_x, coord_y);
+    Cell cell = exploredGameArea->GetCell(position);
 
     if (cell.GetType() == targetCell)
     {
         cell.SetType(CellType::EMPTY);
-        ++score;
     }
 }
 
-size_t Robot::GetScore() const
+void Robot::updateMap()
 {
-    return score;
+    this->server->applyOthersRobotsChanges();
 }
 
-RobotType Robot::GetType() const
+/* bool Robot::AvailableToMove(Coordinates coordinates) const
 {
-    return type;
-}
-
-bool Robot::AvailableToMove(size_t x, size_t y) const
-{
-    if (!world.GetGameArea().IsCellOnMap(x, y))
+    if (!world.GetGlobalMap().IsCellOnMap(coordinates.x, coordinates.y))
         return false;
     const Cell &cell = world.GetCell(x, y);
     return (cell.GetType() != CellType::ROCK && cell.GetRobot() == nullptr && AvailableForConcrete(x, y));
-}
+} */
 
 //for basic robot and sapper it's normal to go on bomb
-bool Robot::AvailableForConcrete(size_t x, size_t y) const
+/* bool Robot::AvailableForConcrete(size_t x, size_t y) const
 {
     return true;
-}
+} */
 
-std::pair<size_t, size_t> Robot::CalculateTargetPos(Direction dir) const
+/* std::pair<size_t, size_t> Robot::CalculateTargetPos(Direction dir) const
 {
-    size_t size_x = coord_x;
-    size_t size_y = coord_y;
+    size_t size_x = position.x;
+    size_t size_y = position.y;
     if (dir == Direction::LEFT)
     {
         if (size_x > 0)
@@ -116,4 +168,4 @@ std::pair<size_t, size_t> Robot::CalculateTargetPos(Direction dir) const
     else if (dir == Direction::UP)
         ++size_y;
     return {size_x, size_y};
-}
+} */

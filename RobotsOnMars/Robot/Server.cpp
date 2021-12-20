@@ -1,5 +1,8 @@
 #include "Server.h"
 #include "Robot.h"
+#include "Robot/Sapper.h"
+#include "Robot/Collector.h"
+
 
 bool Server::isCellAvaliable(const Coordinates &coordinates) const
 {
@@ -30,7 +33,7 @@ void Server::notifyRobotDeleted(Robot *robot, const Coordinates &coordinates)
         }
     }
     robotsChanges.erase(robot);
-    actualGameArea->GetCell(coordinates.x, coordinates.y).SetType(CellType::EMPTY);
+    actualGameArea->GetCell(coordinates).SetType(CellType::EMPTY);
 }
 
 void Server::notifyCellScanned(Robot *robot, const pair<Coordinates, CellType> scannedCell)
@@ -82,24 +85,26 @@ void Server::applyOthersRobotsChanges()
 {
     for (auto i : robotsCoordinates)
     {
-        GameArea *internalMap = i.second->getMap();
+        GameArea *internalMap = i.second->GetExploredArea();
         for (auto j : robotsChanges)
         {
-            if (i.second != j.first)
-            { // Do nothing for one robot
-                for (auto k : j.second)
+            if (i.second != j.first) //i.second = Robot*
+            //j.first = Robot* in robotChanges map
+            //if there is only one robot - ignore
+            {
+                for (auto k : j.second) //j.second = vector<std::pair<Coordinates, CellType>>>
                 {
-                    if (k.second == CellType::EMPTY && internalMap->getCell(k.first) != CellType::DIAMOND)
+                    if (k.second == CellType::EMPTY && internalMap->GetCell(k.first).GetType() != CellType::DIAMOND)
                     {
-                        internalMap->setCell(k.first, CellType::EMPTY);
+                        internalMap->GetCell(k.first).SetType(CellType::EMPTY);
                     }
-                    if (k.second == CellType::EMPTY && internalMap->getCell(k.first) != CellType::BOMB)
+                    if (k.second == CellType::EMPTY && internalMap->GetCell(k.first).GetType() != CellType::BOMB)
                     {
-                        internalMap->setCell(k.first, CellType::EMPTY);
+                        internalMap->GetCell(k.first).SetType(CellType::EMPTY);
                     }
                     else
                     {
-                        internalMap->setCell(k.first, k.second);
+                        internalMap->GetCell(k.first).SetType(k.second);
                     }
                 }
             }
@@ -109,13 +114,13 @@ void Server::applyOthersRobotsChanges()
         {
             if (i.second != t.second)
             {
-                if (dynamic_cast<Explorer *>(t.second) && internalMap->getCell(t.first) != CellType::Cell_Explorer)
+                if (dynamic_cast<Collector*>(t.second) && internalMap->GetCell(t.first.x, t.first.y).GetType() != CellType::COLLECTOR)
                 {
-                    internalMap->setCell(t.first, CellType::Cell_Explorer);
+                    internalMap->GetCell(t.first).SetType(CellType::COLLECTOR);
                 }
-                if (dynamic_cast<Sapper *>(t.second) && internalMap->getCell(t.first) != CellType::Cell_Sapper)
+                if (dynamic_cast<Sapper*>(t.second) && internalMap->GetCell(t.first.x, t.first.y).GetType() != CellType::SAPPER)
                 {
-                    internalMap->setCell(t.first, CellType::Cell_Sapper);
+                    internalMap->GetCell(t.first).SetType(CellType::SAPPER);
                 }
             }
         }
@@ -126,5 +131,5 @@ void Server::applyOthersRobotsChanges()
         i->second.clear();
     }
 
-    setActualMap(robotsCoordinates.at(0).second->getInternalMap());
+    SetActualMap(robotsCoordinates.at(0).second->GetExploredArea());
 }

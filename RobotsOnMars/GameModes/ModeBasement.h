@@ -1,6 +1,9 @@
 #pragma once
+#include "Commands/ICommand.h"
+#include "Robot/Robot.h"
+#include "Application/Manager.h"
 
-enum class Mode : unsigned char
+enum class Mode
 {
     MANUAL,
     SCAN,
@@ -10,13 +13,21 @@ enum class Mode : unsigned char
 class ModeBasement
 {
 public:
-    ModeBasement(Simulation &simulation, Mode mode) : simulation(simulation), mode(mode){};
-    virtual ~ModeBasement() = default;
-    virtual Mode GetMode() const { return mode; };
-    virtual void RenderPath() = 0;
-    void Render() const;
+    ModeBasement(){};
+    ~ModeBasement() = default;
 
-    //or protected?
-    Simulation &simulation;
-    Mode mode;
+    //virtual Mode GetMode() const { return mode; };
+
+    virtual void SetCommand(ICommand *command);
+    virtual void SetManager(Manager *manager);
+    virtual bool Execute(Robot *robot);
+
+    Manager *manager;
+
+    //virtual void RenderPath() = 0;
+    //void Render() const;
+
+    //Simulation &simulation;
+
+    ICommand *command;
 };

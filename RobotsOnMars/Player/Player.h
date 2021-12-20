@@ -1,16 +1,21 @@
 #pragma once
 
 //#include "GameArea/GameArea.h"
-#include "Robot/Collector.h"
-#include "Robot/Sapper.h"
+#include "Application/Simulation.h"
+#include "World/World.h"
+#include "Robot/Server.h"
+//#include "Robot/Collector.h"
+//#include "Robot/Sapper.h"
 #include <memory>
 
-struct Simulation;
+class Sapper;
+class Collector;
+class Simulation;
 
 class Player
 {
 public:
-    Player(Simulation &simulation);
+    explicit Player(Simulation &simulation);
 
     Sapper *GetSapper() const;
     void AddSapper();
@@ -25,7 +30,7 @@ private:
     Collector collector;
     //std::unique_ptr<Collector> collector;
     std::unique_ptr<Sapper> sapper;
-
+    //Server &server;
     Simulation &simulation;
-    GameArea exploredGameArea;
+    GameArea *exploredGameArea;
 };

@@ -1,21 +1,29 @@
 #include "AutoScan.h"
 #include "Application/Simulation.h"
 #include "Robot/Robot.h"
+#include "Robot/Collector.h"
 #include "World/GameArea.h"
 #include "Player/Player.h"
 
-AutoScan::AutoScan(Simulation &simulation, std::size_t stepsNum)
-    : AutoMode{simulation, Mode::SCAN}, stepsNum{stepsNum}
+/* bool AutoScan::Execute(Robot *robot)
 {
-}
+    //dynamic_cast<Collector *>(robot)->Scan();
+    //robot->updateMap();
+    while (this->stepsNum != 0)
+    {
+        auto path = FindPath(robot, CellType::UNKNOWN, restrictedCells);
+        if (path.empty())
+            return false;
+    }
+} */
 
-void AutoScan::RenderPath()
+bool AutoScan::Execute(Robot* robot)
 {
     for (size_t i = 0; i < stepsNum; ++i)
     {
-        if (Step())
+        if (Step(robot))
         {
-            Render();
+            robot->updateMap();
         }
         else
         {
@@ -23,25 +31,23 @@ void AutoScan::RenderPath()
         }
     }
     stepsNum = 0;
+    return true;
 }
 
-bool AutoScan::Step() const
-{
-    auto &collector = simulation.Player->GetCollector();
-    
+bool AutoScan::Step(Robot* robot)
+{    
+    auto collector = dynamic_cast<Collector*>(robot);
     auto path = FindPath(collector, CellType::UNKNOWN, restrictedCells);
     if (path.empty())
         return false;
 
-    //path.pop_back(); //<--target cell (UNKNOWN)
+    path.pop_back(); //<--target cell (UNKNOWN)
 
     //foreach cycle
     for (auto &direction : path)
     {
-        collector.Move(direction);
-        Render();
+        collector->Move(direction);
     }
-
-    collector.Scan();
+    collector->Scan();
     return true;
 }

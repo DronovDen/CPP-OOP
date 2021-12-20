@@ -1,6 +1,6 @@
 #pragma once
 
-//#include "Robot/Robot.h"
+#include "Robot/Robot.h"
 //class Robot;
 
 enum class CellType : unsigned char
@@ -9,19 +9,22 @@ enum class CellType : unsigned char
     ROCK,
     DIAMOND,
     BOMB,
-    UNKNOWN,
+    SAPPER,
+    COLLECTOR,
+    UNKNOWN
 };
 
 class Cell
 {
 public:
     Cell() = default;
+    Cell(CellType type) : type{type} {}
 
-    CellType GetType() const;
-    void SetType(CellType type);
+    CellType GetType() const { return type; };
+    void SetType(CellType type) { type = type; };
 
-    Robot *GetRobot() const;
-    void SetRobot(Robot *entity);
+    Robot *GetRobot() const { return robotOnCell; };
+    void SetRobot(Robot *entity) { robotOnCell = entity; };
 
 private:
     Robot *robotOnCell{nullptr};

@@ -1,27 +1,25 @@
+#include "Application/Manager.h"
 #include "World.h"
-//#include "GameArea/GameAreaLoader.h"
 
-World::World(GameArea &gameArea)
-    : gameArea(std::move(gameArea))
-{
+World::World() {
+	diamondHolder = false;
+	bombHolder = false;
+	robotsMapCoord = {0, 0};
+	globalGameArea = nullptr;
 }
 
-const GameArea &World::GetGameArea() const
-{
-    return gameArea;
+Coordinates World::GetGlobalRobotCoodinates(const Coordinates& coordinates) const {
+	return { robotsMapCoord.x + coordinates.x, robotsMapCoord.y + coordinates.y };
 }
 
-Cell &World::GetCell(size_t x, size_t y)
-{
-    return gameArea.GetCell(x, y);
+Cell& World::GetCell(const Coordinates& coordinates) const {
+	return globalGameArea->GetCell(coordinates);
 }
 
-std::size_t World::GetWidth() const
-{
-    return gameArea.GetWidth();
-}
+CellType World::GetCellInRobotWorld(const Coordinates& coordinates) const {
+	return globalGameArea->GetCell(GetGlobalRobotCoodinates(coordinates)).GetType();
+} 
 
-std::size_t World::GetHeight() const
-{
-    return gameArea.GetHeight();
+bool World::CellIsEmpty(const Coordinates& coordinates) const{
+	return (GetCell(coordinates).GetType() == CellType::EMPTY);
 }

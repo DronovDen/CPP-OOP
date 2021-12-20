@@ -1,40 +1,30 @@
 //#include <vector>
 #include <map>
-#include "Coordinates.h"
 #include "World/World.h"
 //#include "Map.h"
 
 using namespace std;
 
 class Robot;
+class Collector;
+class Sapper;
 
 class Server
 {
-private:
-    GameArea *actualGameArea;
-    vector<pair<Coordinates, Robot *>> robotsCoordinates;
-
-    size_t collectedDiamondsAmount;
-
-    vector<Coordinates> diamondsAvaliable;
-    vector<Coordinates> bombsAvaliable;
-
-    map<Robot *, vector<pair<Coordinates, CellType>>> robotsChanges;
-
 public:
-    Server(GameArea *actualGameArea) : actualGameArea(actualGameArea), collectedApplesAmount(0){};
-    Server() : actualGameArea(nullptr), collectedDiamondsAmount(0) {}
+    Server(GameArea *actualGameArea) : actualGameArea(actualGameArea), collectedDiamondsAmount(0){};
+    //Server() : actualGameArea(nullptr), collectedDiamondsAmount(0) {}
     ~Server() = default;
 
     bool isCellAvaliable(const Coordinates &coordinates) const;
 
-    size_t getCollectedApplesAmount() { return collectedDiamondsAmount; };
+    size_t GetCollectedDiamondsAmount() { return collectedDiamondsAmount; };
 
-    auto getApplesAvaliable() { return &diamondsAvaliable; };
-    auto getBombsAvaliable() { return &bombsAvaliable; };
+    auto GetDiamondsAvaliable() { return &diamondsAvaliable; };
+    auto GetBombsAvaliable() { return &bombsAvaliable; };
 
-    void setActualMap(GameArea *actualMap) { this->actualGameArea = actualMap; }
-    GameArea *getActualMap() { return this->actualGameArea; }
+    void SetActualMap(GameArea *actualMap) { this->actualGameArea = actualMap; }
+    GameArea *GetActualMap() { return this->actualGameArea; }
 
     void notifyRobotCreated(Robot *robot, const Coordinates &coordinates);
     void notifyRobotDeleted(Robot *robot, const Coordinates &coordinates);
@@ -45,4 +35,15 @@ public:
     void notifyCellScanned(Robot *robot, const pair<Coordinates, CellType> scannedCell);
 
     void applyOthersRobotsChanges();
+
+private:
+    GameArea *actualGameArea;
+    vector<pair<Coordinates, Robot *>> robotsCoordinates;
+
+    size_t collectedDiamondsAmount;
+
+    vector<Coordinates> diamondsAvaliable;
+    vector<Coordinates> bombsAvaliable;
+
+    map<Robot *, vector<pair<Coordinates, CellType>>> robotsChanges;
 };

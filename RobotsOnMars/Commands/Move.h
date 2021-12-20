@@ -1,20 +1,15 @@
 #pragma once
 
-#include "Commands/ManualModeCommand.h"
-#include "Robot/Robot.h"
+#include "Commands/ManualCommands.h"
 
-class Move : public ManualModeCommand
+class Move : public ManualCommands
 {
 public:
     Move(Direction direction);
     virtual ~Move() = default;
+    virtual void Execute(Robot *robot) override;
+    virtual CommandType GetCommandType() { return CommandType::MOVE; };
 
 private:
-    virtual void ExecuteImpl(GameInterface &gameInterface) override;
-
-    virtual void UndoImpl(GameInterface &gameInterface) override;
-
-    virtual CommandType GetCommandType() const override;
-
-    Direction m_direction{Direction::Up};
+    Direction direction{Direction::UP};
 };

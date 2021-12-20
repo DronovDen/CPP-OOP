@@ -9,45 +9,32 @@
 #include <map>
 #include <algorithm>
 #include <vector>
+#include "Robot/Coordinates.h"
 //#include <unordered_map>
 
 class AutoMode : public ModeBasement
 {
 public:
-    //===============
-    class Point
-    {
-    public:
-        Point() = default;
-        Point(size_t X, size_t Y);
-
-        std::size_t X;
-        std::size_t Y;
-        const Point *previous{nullptr};
-
-        bool operator==(const Point &point) const
-        {
-            return (point.X == X && point.Y == Y);
-        }
-    };
-    //===============
-    
-    AutoMode(Simulation &simulation, Mode modeType);
+    AutoMode();
     virtual ~AutoMode() = default;
 
     //or protected?
-    std::deque<Direction> FindPath(const Robot &robot, CellType targetCell, const std::vector<CellType> &restrictedCells) const;
+    std::deque<Direction> FindPath(Robot *robot, CellType targetCell, std::vector<CellType> &restrictedCells);
+    bool ExploreArea(std::vector<Coordinates> &points, CellType targetCell, std::vector<CellType> &restrictedCells);
 
 private:
-    static Point Up(const Point &p);
-    static Point Down(const Point &p);
-    static Point Right(const Point &p);
-    static Point Left(const Point &p);
+    static Coordinates Up(const Coordinates &p);
+    static Coordinates Down(const Coordinates &p);
+    static Coordinates Right(const Coordinates &p);
+    static Coordinates Left(const Coordinates &p);
 
-    bool ExploreArea(std::vector<Point> &points, CellType desiredCell, const std::vector<CellType> &forbiddenCells) const;
+    using TDir = std::map<Direction, std::function<Coordinates(const Coordinates &p)>>;
 
-    std::deque<Direction> Convert(const std::vector<Point> &points) const;
-    Direction FindDirection(const Point &from, const Point &to) const;
+    bool ExploreArea(std::vector<Coordinates> &points, CellType desiredCell, std::vector<CellType> &forbiddenCells);
 
-    mutable std::map<Direction, std::function<Point(const Point &p)>> directions;
+    std::deque<Direction> Convert(const std::vector<Coordinates> &points);
+    Direction FindDirection(const Coordinates &from, const Coordinates &to);
+
+    //might be mutable
+    TDir directions;
 };

@@ -1,11 +1,10 @@
 #include "Player.h"
-#include "Application/Simulation.h"
-#include "GameArea/World.h"
 
 Player::Player(Simulation &simulation)
-    : collector(*simulation.World, exploredGameArea), simulation(simulation)
+    : collector(*simulation.World, exploredGameArea, server), simulation(simulation)
 {
-    exploredGameArea.Resize(simulation.World->GetSizeX(), simulation.World->GetSizeY());
+
+    exploredGameArea.Resize(simulation.World->GetWidth(), simulation.World->GetHeight());
     collector.SetPosition();
 }
 

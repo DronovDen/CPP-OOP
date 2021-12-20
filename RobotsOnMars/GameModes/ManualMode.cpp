@@ -1,14 +1,7 @@
 #include "ManualMode.h"
-#include "Application/Simulation.h"
 
-ManualMode::ManualMode(Simulation &simulation)
-    : ModeBasement(simulation, Mode::MANUAL)
+void ManualMode::ExecuteManual(Robot *robot)
 {
-}
-
-void ManualMode::OnFrame()
-{
-    // TODO:: simulate
-
-    Render();
+    bool result = true;
+    result &= dynamic_cast <ManualCommands *>(command)->Execute(robot);
 }

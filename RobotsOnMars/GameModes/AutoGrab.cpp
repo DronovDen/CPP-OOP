@@ -1,58 +1,60 @@
 #include "AutoGrab.h"
 
-AutoGrab::AutoGrab(Simulation &simulation)
-    : AutoMode(simulation, Mode::GRAB)
-{
-}
-
-void AutoGrab::RenderPath()
+bool AutoGrab::Execute(Robot *robot)
 {
     //as long as diamonds present on gameArea
     //continue collecting process
     //and it is possible that all the bombs have been defused
-    while (Step())
+    while (Step(robot))
     {
-        Render();
+        robot->updateMap();
     }
 }
 
-void AutoGrab::ImplementPath(Robot &robot, const std::deque<Direction> &path)
+bool AutoGrab::Step(Robot *robot)
 {
-    for (auto &direction : path)
+    if (dynamic_cast<Collector *>(robot))
     {
-        robot.Move(direction);
-        Render();
+        Collect(robot);
     }
-}
-
-bool AutoGrab::Step()
-{
-    Defuse();
-    return Collect();
-}
-
-bool AutoGrab::Collect()
-{
-    auto &collector = simulation.Player->GetCollector();
-    const std::vector<CellType> restrictedCollectorCells = {CellType::BOMB, CellType::ROCK, CellType::UNKNOWN};
-    auto path = FindPath(collector, CellType::DIAMOND, restrictedCollectorCells);
-    if (path.empty())
-        return false;
-
-    ImplementPath(collector, path);
-    collector.Collect();
+    else if (dynamic_cast<Sapper*>(robot))
+    {
+        Defuse(robot);
+    }
     return true;
 }
 
-void AutoGrab::Defuse()
+void AutoGrab::Collect(Robot *robot)
 {
-    const auto sapper = simulation.Player->GetSapper();
-    if (sapper == nullptr)
-        return;
-    const std::vector<CellType> restrictedSapperCells = {CellType::ROCK, CellType::UNKNOWN};
-    auto path = FindPath(*sapper, CellType::BOMB, restrictedSapperCells);
+    //auto &collector = simulation.Player->GetCollector();
+    std::vector<CellType> restrictedCollectorCells = {CellType::BOMB, CellType::ROCK, CellType::UNKNOWN};
+    auto path = FindPath(robot, CellType::DIAMOND, restrictedCollectorCells);
     if (path.empty())
         return;
-    ImplementPath(*sapper, path);
+    ImplementPath(robot, path);
+    auto collector = dynamic_cast<Collector*>(robot);
+    collector->Collect();
+}
+
+void AutoGrab::Defuse(Robot *robot)
+{
+    //const auto sapper = simulation.Player->GetSapper();
+    if (robot == nullptr)
+        return;
+    std::vector<CellType> restrictedSapperCells = {CellType::ROCK, CellType::UNKNOWN};
+    auto path = FindPath(robot, CellType::BOMB, restrictedSapperCells);
+    if (path.empty())
+        return;
+    ImplementPath(robot, path);
+    auto sapper = dynamic_cast<Sapper*>(robot);
     sapper->Defuse();
+}
+
+void AutoGrab::ImplementPath(Robot *robot, const std::deque<Direction> &path)
+{
+    for (auto &direction : path)
+    {
+        robot->Move(direction);
+        robot->updateMap();
+    }
 }

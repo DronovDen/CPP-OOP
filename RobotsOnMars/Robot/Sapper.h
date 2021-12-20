@@ -10,14 +10,12 @@ class GameArea;
 class Sapper : public Robot
 {
 public:
-    Sapper(World &world, GameArea &exploredGameArea);
-
-    ~Sapper() = default;
-
-    virtual void SetPosition() override;
-
+    Sapper(GameArea *globalMap, Server *server);
+    virtual ~Sapper() = default;
+    void Move(const Direction &direction) override;
     void Defuse();
 
 private:
-    bool CanBeSetOnCell(const Cell &cell) const override;
+    void OldPositionProcessing();
+    void NewPositionProcessing(CellType newPos);
 };

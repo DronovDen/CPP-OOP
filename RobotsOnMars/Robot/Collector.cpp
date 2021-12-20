@@ -3,8 +3,8 @@
 //#include "GameArea/Cell.h"
 //#include "GameArea/GameArea.h"
 
-Collector::Collector(World &world, GameArea &gameArea)
-    : Robot(RobotType::COLLECTOR, world, gameArea)
+Collector::Collector(GameArea gameArea, Server& server)
+    : Robot(RobotType::COLLECTOR, world, gameArea, server)
 {
 }
 
@@ -15,11 +15,11 @@ void Collector::Collect()
 
 void Collector::Scan() const
 {
-    ScanCell(coord_x - 1, coord_y);
-    ScanCell(coord_x + 1, coord_y);
+    ScanCell(position.x - 1, position.y);
+    ScanCell(position.x + 1, position.y);
 
-    ScanCell(coord_x, coord_y + 1);
-    ScanCell(coord_x, coord_y - 1);
+    ScanCell(position.x, position.y + 1);
+    ScanCell(position.x, position.y - 1);
 }
 
 bool Collector::CanBeSetOnCell(const Cell &cell) const
