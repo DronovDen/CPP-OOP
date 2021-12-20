@@ -20,21 +20,20 @@ enum class Direction : unsigned char
     DOWN,
 };
 
-
 class Robot
 {
 public:
     Robot();
     virtual ~Robot();
 
-    void SetServer(Server* server) {this->server = server;};
-    Server* GetServer(){return this->server;};
+    void SetServer(Server *server) { this->server = server; };
+    Server *GetServer() { return this->server; };
 
-    World* GetWorld() { return this->world; }
-    void* SetWorld(World* environment) { this->world = world; }
+    World *GetWorld() { return this->world; }
+    void *SetWorld(World *environment) { this->world = world; }
 
-    GameArea* GetExploredArea() { return this->exploredGameArea; };
-    void SetExploredArea(GameArea* map) { this->exploredGameArea = map; };
+    GameArea *GetExploredArea() { return this->exploredGameArea; };
+    void SetExploredArea(GameArea *map) { this->exploredGameArea = map; };
 
     Coordinates Robot::GetPosition() const { return position; };
     //std::pair<std::size_t, std::size_t> GetPosition() const;
@@ -42,19 +41,18 @@ public:
     virtual void Move(Direction direction) = 0;
     virtual void Move(size_t x, size_t y) = 0;
 
-
-    bool IsAvailableToMove(const Coordinates& coordinates, Robot * robot) const;
-    Coordinates CalculateTargetPos(const Direction& direction);
+    bool IsAvailableToMove(const Coordinates &coordinates, Robot *robot) const;
+    Coordinates CalculateTargetPos(const Direction &direction);
     Coordinates GetSpawnCoordinates();
 
-    void SetCoordinates(const Coordinates& coordinates) { this->position = coordinates;}
-    const Coordinates& GetCoordinates() { return this->position;}
+    void SetCoordinates(const Coordinates &coordinates) { this->position = coordinates; }
+    const Coordinates &GetCoordinates() { return this->position; }
 
-    virtual void Move(const Direction& direction) = 0;
+    virtual void Move(const Direction &direction) = 0;
     void updateMap();
-    
-    Direction GetDirection(const Coordinates& diff); 
-    Coordinates CalculateNewCoordinates(const Direction& direction);  
+
+    Direction GetDirection(const Coordinates &diff);
+    Coordinates CalculateNewCoordinates(const Direction &direction);
 
     void ClearCell(CellType targetCell);
 
@@ -65,7 +63,6 @@ public:
     //RobotType GetType() const;
 
 protected:
-
     //virtual bool CanBeSetOnCell(const Cell &cell) const = 0;
 
     //virtual bool AvailableForConcrete(size_t x, size_t y) const;
@@ -75,7 +72,7 @@ protected:
     Server *server;
     GameArea *exploredGameArea; //unique for each robot
     Coordinates position;
-    World* world;
+    World *world;
 
     //not really useful
     //State state{State::ACTIVE};

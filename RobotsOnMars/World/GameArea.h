@@ -8,7 +8,7 @@ class GameArea
 {
 public:
     GameArea(std::vector<std::vector<Cell>> &map);
-    GameArea(const size_t& x_size, const size_t& y_size);
+    GameArea(const size_t &x_size, const size_t &y_size);
     GameArea();
     ~GameArea();
 
@@ -21,7 +21,7 @@ public:
     void SetVisibleGlobalMapWidth(const size_t &visibleGlobalMapX) { this->visibleGlobalMapWidth = visibleGlobalMapWidth; };
     void SetVisibleGlobalMapHeight(const size_t &visibleGlobalMapHeight) { this->visibleGlobalMapHeight = visibleGlobalMapHeight; };
 
-    size_t GetAppleAmount() { return this->diamondsAmount; }
+    size_t GetDiamondsAmount() { return this->diamondsAmount; }
     size_t GetBombsAmount() { return this->bombsAmount; }
 
     size_t GetVisibleGlobalMapWidth() { return visibleGlobalMapWidth; };
@@ -32,7 +32,7 @@ public:
 
     void Resize(size_t x, size_t y);
 
-    bool IsCellOnMap(size_t x, size_t y) const;
+    bool IsCellOnMap(Coordinates point) const;
 
     size_t GetWidth() const;
     size_t GetHeight() const;
@@ -40,7 +40,7 @@ public:
     Cell GetCell(size_t x, size_t y);
     Cell GetCell(Coordinates point);
     const Cell &GetCell(size_t x, size_t y) const;
-    void SetCell(const Coordinates& coordinates, const CellType& cell);
+    void SetCell(const Coordinates &coordinates, const CellType &cell);
 
     const std::vector<std::vector<Cell>> &GetMap() const;
 
@@ -54,6 +54,6 @@ private:
     size_t diamondsAmount;
     size_t bombsAmount;
     size_t rockAmount;
-    
+
     std::vector<std::vector<Cell>> map;
 };

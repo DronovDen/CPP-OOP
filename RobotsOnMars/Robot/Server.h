@@ -32,7 +32,7 @@ public:
     void notifyDiamondCollected(Robot *robot, const Coordinates &coordinates);
     void notifyBombDefused(Robot *robot, const Coordinates &coordinates);
     void notifyRobotMoved(const Robot *robot, const Coordinates &prevCoordinates, const Coordinates &newCoordinates);
-    void notifyCellScanned(Robot *robot, const pair<Coordinates, CellType> scannedCell);
+    void notifyCellScanned(const Robot *robot, const pair<Coordinates, CellType> scannedCell);
 
     void applyOthersRobotsChanges();
 

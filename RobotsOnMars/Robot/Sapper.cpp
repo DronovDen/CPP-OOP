@@ -1,11 +1,11 @@
 #include "Sapper.h"
 //#include "GameArea/World.h"
 
-Sapper::Sapper(GameArea *globalMap, Server *server)
+Sapper::Sapper(GameArea *globalGameArea, Server *server)
 {
-    world->SetGlobalMap(globalMap);
+    world->SetGlobalMap(globalGameArea);
     SetServer(server);
-    exploredGameArea = new GameArea(globalMap->getMapSizeX(), globalMap->getMapSizeY());
+    exploredGameArea = new GameArea(globalGameArea->getMapSizeX(), globalGameArea->getMapSizeY());
     position = GetSpawnCoordinates();
     exploredGameArea->SetCell(this->position, CellType::SAPPER);
     //exploredGameArea.GetCell(this->position)->SetType(CellType::SAPPER);
@@ -13,7 +13,7 @@ Sapper::Sapper(GameArea *globalMap, Server *server)
     SetExploredArea(server->GetActualMap());
 
     updateMap();
-} //POWERSHELL TEST
+}
 
 Sapper::~Sapper()
 {

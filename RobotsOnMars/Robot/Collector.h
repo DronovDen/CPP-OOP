@@ -9,8 +9,7 @@ public:
     ~Collector();
 
     void Collect();
-
-    void Scan() const;
+    void Scan();
 
 private:
     void ScanCell(size_t x, size_t y) const;

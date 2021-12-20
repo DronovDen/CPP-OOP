@@ -3,7 +3,6 @@
 #include "Robot/Sapper.h"
 #include "Robot/Collector.h"
 
-
 bool Server::isCellAvaliable(const Coordinates &coordinates) const
 {
     for (auto i : robotsCoordinates)
@@ -36,7 +35,7 @@ void Server::notifyRobotDeleted(Robot *robot, const Coordinates &coordinates)
     actualGameArea->GetCell(coordinates).SetType(CellType::EMPTY);
 }
 
-void Server::notifyCellScanned(Robot *robot, const pair<Coordinates, CellType> scannedCell)
+void Server::notifyCellScanned(const Robot *robot, const pair<Coordinates, CellType> scannedCell)
 {
     robotsChanges.find(robot)->second.push_back(scannedCell);
     if (scannedCell.second == CellType::DIAMOND)
@@ -114,11 +113,11 @@ void Server::applyOthersRobotsChanges()
         {
             if (i.second != t.second)
             {
-                if (dynamic_cast<Collector*>(t.second) && internalMap->GetCell(t.first.x, t.first.y).GetType() != CellType::COLLECTOR)
+                if (dynamic_cast<Collector *>(t.second) && internalMap->GetCell(t.first.x, t.first.y).GetType() != CellType::COLLECTOR)
                 {
                     internalMap->GetCell(t.first).SetType(CellType::COLLECTOR);
                 }
-                if (dynamic_cast<Sapper*>(t.second) && internalMap->GetCell(t.first.x, t.first.y).GetType() != CellType::SAPPER)
+                if (dynamic_cast<Sapper *>(t.second) && internalMap->GetCell(t.first.x, t.first.y).GetType() != CellType::SAPPER)
                 {
                     internalMap->GetCell(t.first).SetType(CellType::SAPPER);
                 }

@@ -69,7 +69,6 @@ void GameArea::createRandomGlobalMap()
     size_t currentDiamondsAmount = 0;
     size_t currentBombAmount = 0;
     size_t currentRockAmount = 0;
-    
 
     for (int i = 0; i < 20; ++i)
     {
@@ -112,9 +111,9 @@ std::size_t GameArea::GetHeight() const
         return 0;
 }
 
-bool GameArea::IsCellOnMap(size_t x, size_t y) const
+bool GameArea::IsCellOnMap(Coordinates point) const
 {
-    return (x < map.size() && y < map[0].size());
+    return (point.x < map.size() && point.y < map[0].size());
 }
 
 Cell GameArea::GetCell(Coordinates point)
@@ -138,7 +137,8 @@ const Cell &GameArea::GetCell(size_t x, size_t y) const
     return map[y][x];
 }
 
-void GameArea::SetCell(const Coordinates& coordinates, const CellType& cell) {
+void GameArea::SetCell(const Coordinates &coordinates, const CellType &cell)
+{
     map[coordinates.y][coordinates.x] = cell;
 }
 
