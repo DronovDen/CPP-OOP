@@ -13,7 +13,7 @@ Sapper::Sapper(GameArea *globalMap, Server *server)
     SetExploredArea(server->GetActualMap());
 
     updateMap();
-} //TESTING COMMIT
+} //POWERSHELL TEST
 
 Sapper::~Sapper()
 {
