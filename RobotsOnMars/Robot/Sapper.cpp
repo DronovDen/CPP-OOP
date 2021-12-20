@@ -3,21 +3,21 @@
 
 Sapper::Sapper(GameArea *globalGameArea, Server *server)
 {
-    world->SetGlobalMap(globalGameArea);
+    world->SetGlobalGameArea(globalGameArea);
     SetServer(server);
     exploredGameArea = new GameArea(globalGameArea->getMapSizeX(), globalGameArea->getMapSizeY());
     position = GetSpawnCoordinates();
     exploredGameArea->SetCell(this->position, CellType::SAPPER);
     //exploredGameArea.GetCell(this->position)->SetType(CellType::SAPPER);
-    server->notifyRobotCreated(this, this->position);
-    SetExploredArea(server->GetActualMap());
+    server->NotifyRobotCreated(this, this->position);
+    SetExploredArea(server->GetActualGameArea());
 
     updateMap();
 }
 
 Sapper::~Sapper()
 {
-    server->notifyRobotDeleted(this, this->position);
+    server->NotifyRobotDeleted(this, this->position);
 }
 
 void Sapper::Move(const Direction &direction)
@@ -25,15 +25,14 @@ void Sapper::Move(const Direction &direction)
     Coordinates newCoord = CalculateNewCoordinates(direction);
     if (newCoord.x < 0 || newCoord.y < 0)
     {
-        throw invalid_argument("Invalid coordinates");
+        throw runtime_error("Invalid coordinates");
     }
     CellType newPos = exploredGameArea->GetCell(newCoord).GetType();
     if (IsAvailableToMove(newCoord, this) && exploredGameArea->GetCell(newCoord).GetType() != CellType::UNKNOWN)
     {
-        OldPositionProcessing();
-        NewPositionProcessing(newPos);
+        MoveImplementation(newPos);
         exploredGameArea->SetCell(newCoord, CellType::SAPPER);
-        server->notifyRobotMoved(this, position, newCoord);
+        server->NotifyRobotMoved(this, position, newCoord);
         position = newCoord;
     }
     else
@@ -42,8 +41,9 @@ void Sapper::Move(const Direction &direction)
     }
 }
 
-void Sapper::OldPositionProcessing()
+void Sapper::MoveImplementation(CellType newPos)
 {
+    //Old position processing
     if (world->GetDiamondHolder())
     {
         exploredGameArea->SetCell(position, CellType::DIAMOND);
@@ -58,10 +58,8 @@ void Sapper::OldPositionProcessing()
     {
         exploredGameArea->SetCell(position, CellType::EMPTY);
     }
-}
 
-void Sapper::NewPositionProcessing(CellType newPos)
-{
+    //New position processing
     if (newPos == CellType::DIAMOND)
     {
         world->SetDiamondHolder(true);
@@ -78,7 +76,7 @@ void Sapper::Defuse()
     {
         exploredGameArea->SetBombsAmount(exploredGameArea->GetBombsAmount() + 1);
         this->world->SetBombHolder(false);
-        this->server->notifyBombDefused(this, this->position);
+        this->server->NotifyBombDefused(this, this->position);
     }
 }
 

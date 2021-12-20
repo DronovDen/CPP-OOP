@@ -1,7 +1,10 @@
 #pragma once
-
-#include "Robot/Robot.h"
-//class Robot;
+#include <vector>
+#include <string>
+#include <fstream>
+#include <stdexcept>
+#include <memory>
+#include <ctime>
 
 enum class CellType : unsigned char
 {
@@ -23,10 +26,10 @@ public:
     CellType GetType() const { return type; };
     void SetType(CellType type) { type = type; };
 
-    Robot *GetRobot() const { return robotOnCell; };
-    void SetRobot(Robot *entity) { robotOnCell = entity; };
+    //Robot *GetRobot() const { return robotOnCell; };
+    //void SetRobot(Robot *entity) { robotOnCell = entity; };
 
 private:
-    Robot *robotOnCell{nullptr};
+    //Robot *robotOnCell{nullptr};
     CellType type{CellType::UNKNOWN};
 };

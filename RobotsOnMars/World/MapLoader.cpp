@@ -1,7 +1,7 @@
 #include "MapLoader.h"
 
 MapLoader::MapLoader(std::string fileName)
-    : mapFile(std::move(fileName))
+    : mapFile(fileName)
 {
 }
 

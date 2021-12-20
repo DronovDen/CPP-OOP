@@ -1,10 +1,4 @@
 #include "GameArea.h"
-#include <memory>
-#include <ctime>
-#include <cstdlib>
-#include <cstdio>
-#include <algorithm>
-#include <stdexcept>
 
 GameArea::GameArea(std::vector<std::vector<Cell>> &map)
     : map(std::move(map))
@@ -20,7 +14,7 @@ GameArea::GameArea(const size_t &x_size, const size_t &y_size)
     visibleGlobalMapWidth = (x_size >= 15) ? 15 : x_size % 15;
     visibleGlobalMapHeight = (y_size >= 15) ? 15 : y_size % 15;
 
-    createEmptyMap();
+    CreateEmptyMap ();
 }
 
 GameArea::GameArea()
@@ -33,7 +27,7 @@ GameArea::GameArea()
     visibleGlobalMapWidth = 10;
 }
 
-void GameArea::createEmptyMap()
+void GameArea::CreateEmptyMap()
 {
     std::vector<std::vector<Cell>> mapHolder;
     Resize(mapWidth, mapHeight);
@@ -48,11 +42,11 @@ void GameArea::createEmptyMap()
     map = mapHolder;
 }
 
-void GameArea::createRandomGlobalMap()
+void GameArea::CreateRandomGlobalMap()
 {
     srand(time(nullptr));
 
-    createEmptyMap();
+    CreateEmptyMap();
 
     for (size_t i = 0; i < this->mapHeight; ++i)
     {

@@ -5,14 +5,57 @@
 
 Collector::Collector(GameArea *globalGameArea, Server *server)
 {
-    world->SetGlobalMap(globalGameArea);
+    world->SetGlobalGameArea(globalGameArea);
     this->SetServer(server);
 
     exploredGameArea = new GameArea(globalGameArea->GetWidth(), globalGameArea->GetHeight());
 
     position = GetSpawnCoordinates();
     exploredGameArea->SetCell(position, CellType::COLLECTOR);
-    server->notifyRobotCreated(this, position);
+    server->NotifyRobotCreated(this, position);
+}
+
+Collector::~Collector()
+{
+    server->NotifyRobotDeleted(this, this->position);
+}
+
+void Collector::Move(const Direction &direction)
+{
+    Coordinates newCoord = CalculateNewCoordinates(direction);
+    if (newCoord.x < 0 || newCoord.y < 0)
+    {
+        throw runtime_error("Invalid coordinates ");
+    }
+    CellType newPos = exploredGameArea->GetCell(newCoord).GetType();
+    if (IsAvailableToMove(newCoord, this) && exploredGameArea->GetCell(newCoord).GetType() != CellType::UNKNOWN)
+    {
+        MoveImplementation(newPos);
+        exploredGameArea->SetCell(newCoord, CellType::COLLECTOR);
+        server->NotifyRobotMoved(this, position, newCoord);
+        position = newCoord;
+        updateMap(); //we are updating map because collector can be blown up by mine
+    }
+}
+
+void Collector::MoveImplementation(CellType newPos)
+{
+    //Old position processing
+    if (world->GetDiamondHolder())
+    {
+        exploredGameArea->SetCell(position, CellType::DIAMOND);
+        world->SetDiamondHolder(false);
+    }
+    else
+    {
+        exploredGameArea->SetCell(this->position, CellType::EMPTY);
+    }
+
+    //New position processing
+    if (newPos == CellType::DIAMOND)
+    {
+        world->SetDiamondHolder(true);
+    }
 }
 
 void Collector::Collect()
@@ -21,7 +64,7 @@ void Collector::Collect()
     {
         exploredGameArea->SetDiamondsAmount(exploredGameArea->GetDiamondsAmount() + 1);
         this->world->SetDiamondHolder(false);
-        this->server->notifyDiamondCollected(this, this->position);
+        this->server->NotifyDiamondCollected(this, this->position);
     }
 }
 
@@ -44,7 +87,7 @@ void Collector::ScanCell(size_t x, size_t y) const
     }
     CellType globalCell = this->world->GetCellInRobotWorld(point);
     exploredGameArea->SetCell(point, globalCell);
-    server->notifyCellScanned(this, std::make_pair(point, globalCell));
+    server->NotifyCellScanned(const_cast<Collector *>(this), std::make_pair(point, globalCell));
 }
 
 /* bool Collector::CanBeSetOnCell(const Cell &cell) const

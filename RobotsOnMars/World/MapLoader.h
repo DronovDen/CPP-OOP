@@ -1,9 +1,6 @@
 #pragma once
-
 #include "Cell.h"
-#include <vector>
-#include <string>
-#include <fstream>
+
 
 class MapLoader
 {

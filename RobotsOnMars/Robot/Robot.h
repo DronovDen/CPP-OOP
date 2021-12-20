@@ -56,6 +56,8 @@ public:
 
     void ClearCell(CellType targetCell);
 
+    virtual void MoveImplementation(CellType newPos) = 0;
+
     //size_t GetScore() const;
 
     //GameArea &getMap() { return exploredGameArea; };

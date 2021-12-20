@@ -1,5 +1,5 @@
 //#include <vector>
-#include <map>
+#include <unordered_map>
 #include "World/World.h"
 //#include "Map.h"
 
@@ -12,38 +12,35 @@ class Sapper;
 class Server
 {
 public:
-    Server(GameArea *actualGameArea) : actualGameArea(actualGameArea), collectedDiamondsAmount(0){};
-    //Server() : actualGameArea(nullptr), collectedDiamondsAmount(0) {}
+    Server(GameArea *actualGameArea) : actualGameArea(actualGameArea), collectedDiamonds(0){};
     ~Server() = default;
 
-    bool isCellAvaliable(const Coordinates &coordinates) const;
+    bool IsCellAvaliable(const Coordinates &coordinates) const;
 
-    size_t GetCollectedDiamondsAmount() { return collectedDiamondsAmount; };
+    size_t GetCollectedDiamondsNum() { return collectedDiamonds; };
 
     auto GetDiamondsAvaliable() { return &diamondsAvaliable; };
     auto GetBombsAvaliable() { return &bombsAvaliable; };
 
-    void SetActualMap(GameArea *actualMap) { this->actualGameArea = actualMap; }
-    GameArea *GetActualMap() { return this->actualGameArea; }
+    void SetActualGameArea(GameArea *actualMap) { this->actualGameArea = actualMap; }
+    GameArea *GetActualGameArea() { return this->actualGameArea; }
 
-    void notifyRobotCreated(Robot *robot, const Coordinates &coordinates);
-    void notifyRobotDeleted(Robot *robot, const Coordinates &coordinates);
+    void NotifyRobotCreated(Robot *robot, const Coordinates &coordinates);
+    void NotifyRobotDeleted(Robot *robot, const Coordinates &coordinates);
 
-    void notifyDiamondCollected(Robot *robot, const Coordinates &coordinates);
-    void notifyBombDefused(Robot *robot, const Coordinates &coordinates);
-    void notifyRobotMoved(const Robot *robot, const Coordinates &prevCoordinates, const Coordinates &newCoordinates);
-    void notifyCellScanned(const Robot *robot, const pair<Coordinates, CellType> scannedCell);
+    void NotifyDiamondCollected(Robot *robot, const Coordinates &coordinates);
+    void NotifyBombDefused(Robot *robot, const Coordinates &coordinates);
+    void NotifyRobotMoved(const Robot *robot, const Coordinates &prevCoordinates, const Coordinates &newCoordinates);
+    void NotifyCellScanned(Robot *robot, const pair<Coordinates, CellType> scannedCell);
 
     void applyOthersRobotsChanges();
 
 private:
     GameArea *actualGameArea;
     vector<pair<Coordinates, Robot *>> robotsCoordinates;
+    unordered_map<Robot *, vector<pair<Coordinates, CellType>>> robotsCache; //vector of robots changes
 
-    size_t collectedDiamondsAmount;
-
+    size_t collectedDiamonds;
     vector<Coordinates> diamondsAvaliable;
     vector<Coordinates> bombsAvaliable;
-
-    map<Robot *, vector<pair<Coordinates, CellType>>> robotsChanges;
 };

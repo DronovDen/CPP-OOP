@@ -3,7 +3,7 @@
 #include "Robot/Sapper.h"
 #include "Robot/Collector.h"
 
-bool Server::isCellAvaliable(const Coordinates &coordinates) const
+bool Server::IsCellAvaliable(const Coordinates &coordinates) const
 {
     for (auto i : robotsCoordinates)
     {
@@ -15,14 +15,14 @@ bool Server::isCellAvaliable(const Coordinates &coordinates) const
     return true;
 }
 
-void Server::notifyRobotCreated(Robot *robot, const Coordinates &coordinates)
+void Server::NotifyRobotCreated(Robot *robot, const Coordinates &coordinates)
 {
     robotsCoordinates.push_back(make_pair(coordinates, robot));
-    vector<pair<Coordinates, CellType>> box;
-    robotsChanges.emplace(robot, box);
+    vector<pair<Coordinates, CellType>> data;
+    robotsCache.emplace(robot, data);
 }
 
-void Server::notifyRobotDeleted(Robot *robot, const Coordinates &coordinates)
+void Server::NotifyRobotDeleted(Robot *robot, const Coordinates &coordinates)
 {
     for (size_t i = 0; i < robotsCoordinates.size(); ++i)
     {
@@ -31,35 +31,36 @@ void Server::notifyRobotDeleted(Robot *robot, const Coordinates &coordinates)
             robotsCoordinates.erase(robotsCoordinates.begin() + i);
         }
     }
-    robotsChanges.erase(robot);
+    robotsCache.erase(robot);
     actualGameArea->GetCell(coordinates).SetType(CellType::EMPTY);
 }
 
-void Server::notifyCellScanned(const Robot *robot, const pair<Coordinates, CellType> scannedCell)
+void Server::NotifyCellScanned(Robot *robot, const pair<Coordinates, CellType> scannedCell)
 {
-    robotsChanges.find(robot)->second.push_back(scannedCell);
+    //const_cast<Robot*>(robot);
+    robotsCache.find(robot)->second.push_back(scannedCell);
     if (scannedCell.second == CellType::DIAMOND)
         diamondsAvaliable.push_back(scannedCell.first);
     if (scannedCell.second == CellType::BOMB)
         bombsAvaliable.push_back(scannedCell.first);
 }
 
-void Server::notifyDiamondCollected(Robot *robot, const Coordinates &coordinates)
+void Server::NotifyDiamondCollected(Robot *robot, const Coordinates &coordinates)
 {
-    robotsChanges.find(robot)->second.push_back(make_pair(coordinates, CellType::EMPTY));
+    robotsCache.find(robot)->second.push_back(make_pair(coordinates, CellType::EMPTY));
     for (size_t i = 0; i < diamondsAvaliable.size(); ++i)
     {
         if (diamondsAvaliable.at(i) == coordinates)
         {
             diamondsAvaliable.erase(diamondsAvaliable.begin() + i);
-            this->collectedDiamondsAmount++;
+            this->collectedDiamonds++;
         }
     }
 }
 
-void Server::notifyBombDefused(Robot *robot, const Coordinates &coordinates)
+void Server::NotifyBombDefused(Robot *robot, const Coordinates &coordinates)
 {
-    robotsChanges.find(robot)->second.push_back(make_pair(coordinates, CellType::EMPTY));
+    robotsCache.find(robot)->second.push_back(make_pair(coordinates, CellType::EMPTY));
     for (size_t i = 0; i < bombsAvaliable.size(); ++i)
     {
         if (bombsAvaliable.at(i) == coordinates)
@@ -69,7 +70,7 @@ void Server::notifyBombDefused(Robot *robot, const Coordinates &coordinates)
     }
 }
 
-void Server::notifyRobotMoved(const Robot *robot, const Coordinates &prevCoordinates, const Coordinates &newCoordinates)
+void Server::NotifyRobotMoved(const Robot *robot, const Coordinates &prevCoordinates, const Coordinates &newCoordinates)
 {
     for (size_t i = 0; i < robotsCoordinates.size(); ++i)
     {
@@ -85,7 +86,7 @@ void Server::applyOthersRobotsChanges()
     for (auto i : robotsCoordinates)
     {
         GameArea *internalMap = i.second->GetExploredArea();
-        for (auto j : robotsChanges)
+        for (auto j : robotsCache)
         {
             if (i.second != j.first) //i.second = Robot*
             //j.first = Robot* in robotChanges map
@@ -125,10 +126,10 @@ void Server::applyOthersRobotsChanges()
         }
     }
 
-    for (auto i = robotsChanges.begin(); i != robotsChanges.end(); ++i)
+    for (auto i = robotsCache.begin(); i != robotsCache.end(); ++i)
     {
         i->second.clear();
     }
 
-    SetActualMap(robotsCoordinates.at(0).second->GetExploredArea());
+    SetActualGameArea(robotsCoordinates.at(0).second->GetExploredArea());
 }

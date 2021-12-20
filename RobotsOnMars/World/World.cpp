@@ -1,4 +1,3 @@
-#include "Application/Manager.h"
 #include "World.h"
 
 World::World()

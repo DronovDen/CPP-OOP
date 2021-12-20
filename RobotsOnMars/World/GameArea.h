@@ -1,7 +1,5 @@
 #pragma once
-
 #include "MapLoader.h"
-#include <vector>
 #include "Coordinates.h"
 
 class GameArea
@@ -12,8 +10,8 @@ public:
     GameArea();
     ~GameArea();
 
-    void createEmptyMap();
-    void createRandomGlobalMap();
+    void CreateEmptyMap();
+    void CreateRandomGlobalMap();
 
     void SetDiamondsAmount(const size_t &diamondsAmount) { this->diamondsAmount = diamondsAmount; };
     void SetBombsAmount(const size_t &bombAmount) { this->bombsAmount = bombAmount; };

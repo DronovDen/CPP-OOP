@@ -3,14 +3,16 @@
 #include "GameModes/ModeBasement.h"
 #include "Commands/ICommand.h"
 #include "Console/ConsoleArgs.h"
+#include "Console/CommandParser.h"
 #include <map>
 
 class World;
 class Player;
 class ModeBasement;
 class IView;
-class ICommandParser;
-class CommandServer;
+class CommandParser;
+class ICommand;
+class Server;
 class Server;
 class GameArea;
 class Robot;
@@ -27,22 +29,20 @@ public:
     bool DoStep();
 
     GameArea *GetGlobalMap() { return &globalMap; }
-    GameArea &GetCurrentMap() { return *currentMap; }
+    GameArea GetCurrentMap() { return *currentMap; }
     //GameArea* GetCurrentMap() {return currentMap;};
     auto GetPossibleModes() { return &possibleModes; }
-    ICommandParser *GetCommandParser() { return commandParser; }
+    CommandParser *GetCommandParser() { return commandParser; }
     auto GetServer() { return server; }
     auto GetActiveRobots() { return &activeRobots; };
 
 private:
     GameArea globalMap;
+    GameArea *currentMap;
     map<string, ModeBasement *> possibleModes;
-    ICommandParser *commandParser;
+    vector<pair<ModeBasement *, Robot *>> activeRobots;
+    CommandParser *commandParser;
+    ICommand *currCommand;
     Server *server;
     IView gameView;
-
-    GameArea *currentMap;
-    vector<pair<ModeBasement *, Robot *>> activeRobots;
-
-    //ICommand *command;
 };

@@ -15,7 +15,7 @@ bool Robot::IsAvailableToMove(const Coordinates &coordinates, Robot *robot) cons
     CellType cellType = world->GetCellInRobotWorld(coordinates);
 
     if ((cellType == CellType::EMPTY || cellType == CellType::DIAMOND || (dynamic_cast<Sapper *>(robot) && cellType == CellType::BOMB)) &&
-        !exploredGameArea->IsCellOnMap(coordinates.x, coordinates.y))
+        !exploredGameArea->IsCellOnMap(coordinates))
     {
         return true;
     }
@@ -26,12 +26,12 @@ bool Robot::IsAvailableToMove(const Coordinates &coordinates, Robot *robot) cons
 Coordinates Robot::GetSpawnCoordinates()
 {
     Coordinates spawn = {0, 0};
-    spawn.x = rand() % world->GetGlobalMap()->GetWidth();
-    spawn.y = rand() % world->GetGlobalMap()->GetHeight();
+    spawn.x = rand() % world->GetGlobalGameArea()->GetWidth();
+    spawn.y = rand() % world->GetGlobalGameArea()->GetHeight();
     while (!IsAvailableToMove(spawn, this))
     {
-        spawn.x = rand() % world->GetGlobalMap()->GetWidth();
-        spawn.y = rand() % world->GetGlobalMap()->GetHeight();
+        spawn.x = rand() % world->GetGlobalGameArea()->GetWidth();
+        spawn.y = rand() % world->GetGlobalGameArea()->GetHeight();
     }
     return spawn;
 }
