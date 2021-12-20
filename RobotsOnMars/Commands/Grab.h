@@ -1,11 +1,11 @@
 #pragma once
 #include "Commands/ManualCommands.h"
 
-class Grab : public ManualModeCommand
+class Grab : public ManualCommands
 {
 public:
-    Grab();
+    Grab() = default;
     virtual ~Grab() = default;
     virtual CommandType GetCommandType() { return CommandType::GRAB; };
-    virtual void Execute(Robot *robot) override;
+    virtual bool Execute(Robot *robot) override;
 };

@@ -5,7 +5,7 @@
 class InactiveMode : public ModeBasement
 {
 public:
-    InactiveMode(Simulation &simulation);
+    InactiveMode();
     virtual ~InactiveMode() = default;
     bool Execute(Robot* robot);
     //virtual void OnFrame() override;

@@ -6,7 +6,7 @@ SapperManagement::SapperManagement(std::string switcher, Manager *manager)
 {
 }
 
-void SapperManagement::Execute()
+bool SapperManagement::Execute()
 {
     auto assemblies = manager->GetActiveRobots();
     if (state == "ON")

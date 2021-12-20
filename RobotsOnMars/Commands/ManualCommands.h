@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ICommand.h"
-#include "Robot/Robot.h"
+//#include "ICommand.h"
+//#include "Robot/Robot.h"
 #include "GameModes/ModeBasement.h"
 
 class ManualCommands : public ICommand
@@ -10,7 +10,7 @@ public:
     ManualCommands() = default;
     virtual ~ManualCommands() = default;
 
-    virtual void Execute(Robot *robot) = 0;
+    virtual bool Execute(Robot *robot) = 0;
     virtual void CommandImplementation(Robot *robot) = 0;
 
 private:

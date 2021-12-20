@@ -1,7 +1,7 @@
 #include "ChangeMode.h"
 #include "Robot/Collector.h"
 #include "Robot/Sapper.h"
-#include "GameModes/AutoScan.h"
+//#include "GameModes/AutoScan.h"
 
 ChangeMode::ChangeMode(std::string modeName, Manager *manager, size_t stepsNum)
     : modeName{modeName}, manager{manager}, stepsNum{stepsNum}
@@ -13,7 +13,7 @@ ChangeMode::ChangeMode(std::string modeName, Manager *manager)
 {
 }
 
-void ChangeMode::Execute()
+bool ChangeMode::Execute()
 {
     auto modes = manager->GetPossibleModes();
     //Mode* currentMode = nullptr;

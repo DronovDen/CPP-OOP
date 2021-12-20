@@ -1,6 +1,6 @@
 #pragma once
-#include "Application/Simulation.h"
-
+//#include "Application/Simulation.h"
+//#include "Application/Manager.h"
 //struct GameInterface;
 
 enum class CommandType
@@ -17,7 +17,7 @@ class ICommand
 public:
     virtual ~ICommand() = default;
 
-    virtual void Execute() = 0;
+    virtual bool Execute() = 0;
 
     virtual CommandType GetCommandType() const = 0;
 };

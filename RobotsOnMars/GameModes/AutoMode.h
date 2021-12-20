@@ -1,15 +1,10 @@
 #pragma once
 #include "ModeBasement.h"
-#include "World/World.h"
-#include "Application/Simulation.h"
+//#include "World/World.h"
 #include "Robot/Robot.h"
-#include "Player/Player.h"
-#include <deque>
-#include <functional>
-#include <map>
-#include <algorithm>
-#include <vector>
-#include "Robot/Coordinates.h"
+//#include "Commands/ICommand.h"
+
+//#include "Robot/Coordinates.h"
 //#include <unordered_map>
 
 class AutoMode : public ModeBasement

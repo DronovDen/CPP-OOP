@@ -5,6 +5,11 @@
 #include <stdexcept>
 #include <memory>
 #include <ctime>
+#include <deque>
+#include <functional>
+#include <map>
+#include <algorithm>
+
 
 enum class CellType : unsigned char
 {

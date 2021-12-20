@@ -6,12 +6,10 @@
 #include "Commands/ChangeMode.h"
 #include "Commands/Grab.h"
 #include "Commands/Move.h"
-#include "Commands/SapperSwitch.h"
+//#include "Commands/SapperSwitch.h"
 #include <unordered_map>
 #include <map>
 #include <functional>
-
-enum class CommandType : unsigned char;
 
 class CommandParser
 {

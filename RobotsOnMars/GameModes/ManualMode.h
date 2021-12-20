@@ -1,13 +1,14 @@
 #pragma once
 #include "ModeBasement.h"
-#include "Commands/ICommand.h"
-#include "Application/Simulation.h"
+//#include "Commands/ICommand.h"
+//#include "Application/Simulation.h"
 #include "Commands/ManualCommands.h"
+//#include "Robot/Robot.h"
 
 class ManualMode : public ModeBasement
 {
 public:
-    ManualMode(Simulation &simulation);
+    ManualMode();
     virtual ~ManualMode() = default;
     void ExecuteManual(Robot *robot);
     void SetCommand(ICommand *command) override;

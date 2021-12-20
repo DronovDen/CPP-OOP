@@ -1,10 +1,10 @@
 #pragma once
-#include "World/GameArea.h"
-#include "GameModes/ModeBasement.h"
-#include "Commands/ICommand.h"
-#include "Console/ConsoleArgs.h"
-#include "Console/CommandParser.h"
-#include <map>
+//#include "World/GameArea.h"
+//#include "GameModes/ModeBasement.h"
+//#include "Commands/ICommand.h"
+//#include "Console/ConsoleArgs.h"
+//#include "Console/CommandParser.h"
+//#include <map>
 
 class World;
 class Player;

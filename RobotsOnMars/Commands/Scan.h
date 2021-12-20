@@ -7,6 +7,6 @@ class Scan : public ManualCommands
 public:
     Scan() = default;
     virtual ~Scan() = default;
-    virtual void Execute(Robot *robot) override;
+    virtual bool Execute(Robot *robot) override;
     virtual CommandType GetCommandType(){return CommandType::SCAN;};
 };

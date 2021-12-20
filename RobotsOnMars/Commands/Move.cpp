@@ -6,7 +6,7 @@ Move::Move(Direction direction)
 {
 }
 
-void Move::Execute(Robot *robot)
+bool Move::Execute(Robot *robot)
 {
     dynamic_cast<Collector *>(robot)->Move(direction);
     //simulation.Player->GetCollector().Move(direction);
