@@ -13,7 +13,7 @@ Sapper::Sapper(GameArea *globalMap, Server *server)
     SetExploredArea(server->GetActualMap());
 
     updateMap();
-}
+} //TESTING COMMIT
 
 Sapper::~Sapper()
 {
@@ -63,13 +63,13 @@ void Sapper::OldPositionProcessing()
 void Sapper::NewPositionProcessing(CellType newPos)
 {
     if (newPos == CellType::DIAMOND)
-        {
-            world->SetDiamondHolder(true);
-        }
-        else if (newPos == CellType::BOMB)
-        {
-            world->SetBombHolder(true);
-        }
+    {
+        world->SetDiamondHolder(true);
+    }
+    else if (newPos == CellType::BOMB)
+    {
+        world->SetBombHolder(true);
+    }
 }
 
 void Sapper::Defuse()
