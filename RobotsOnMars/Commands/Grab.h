@@ -6,6 +6,6 @@ class Grab : public ManualCommands
 public:
     Grab() = default;
     virtual ~Grab() = default;
-    virtual CommandType GetCommandType() { return CommandType::GRAB; };
+    //virtual CommandType GetCommandType() { return CommandType::GRAB; };
     virtual bool Execute(Robot *robot) override;
 };

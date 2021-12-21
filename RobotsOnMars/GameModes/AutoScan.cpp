@@ -3,7 +3,6 @@
 #include "Robot/Robot.h"
 #include "Robot/Collector.h"
 #include "World/GameArea.h"
-#include "Player/Player.h"
 
 /* bool AutoScan::Execute(Robot *robot)
 {

@@ -12,6 +12,7 @@ class Sapper;
 class Server
 {
 public:
+    Server() : actualGameArea(nullptr), collectedDiamonds(0) {}
     Server(GameArea *actualGameArea) : actualGameArea(actualGameArea), collectedDiamonds(0){};
     ~Server() = default;
 

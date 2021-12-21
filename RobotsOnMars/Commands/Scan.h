@@ -8,5 +8,5 @@ public:
     Scan() = default;
     virtual ~Scan() = default;
     virtual bool Execute(Robot *robot) override;
-    virtual CommandType GetCommandType(){return CommandType::SCAN;};
+    //virtual CommandType GetCommandType(){return CommandType::SCAN;};
 };

@@ -1,7 +1,7 @@
 #include "ManualMode.h"
 
-void ManualMode::ExecuteManual(Robot *robot)
+bool ManualMode::ExecuteManual(Robot *robot)
 {
     bool result = true;
-    result &= dynamic_cast <ManualCommands *>(command)->Execute(robot);
+    result = dynamic_cast<ManualCommands *>(command)->Execute(robot);
 }

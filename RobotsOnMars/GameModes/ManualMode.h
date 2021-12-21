@@ -10,7 +10,7 @@ class ManualMode : public ModeBasement
 public:
     ManualMode();
     virtual ~ManualMode() = default;
-    void ExecuteManual(Robot *robot);
+    bool ExecuteManual(Robot *robot);
     void SetCommand(ICommand *command) override;
     //virtual void OnFrame() override;
 };

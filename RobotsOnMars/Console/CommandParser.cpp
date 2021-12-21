@@ -17,7 +17,7 @@ ICommand *CommandParser::Parse(std::istream &stream)
     stream >> commandType;
 
     const auto creatorIt = commandCreators.find(commandType);
-    if (creatorIt != std::end(m_creators))
+    if (creatorIt != std::end(commandCreators))
         return creatorIt->second(stream);
     //throw std::runtime_error("Invalid command: " + commandType);
     std::cout << "Invalid command: " << commandType << std::endl;

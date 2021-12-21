@@ -9,7 +9,7 @@ public:
     SapperManagement(std::string switcher, Manager* Manager);
     virtual ~SapperManagement() = default;
     virtual bool Execute() override;
-    virtual CommandType GetCommandType() { return CommandType::SAPPER; };
+    //virtual CommandType GetCommandType() { return CommandType::SAPPER; };
 
 private:
     Manager *manager;

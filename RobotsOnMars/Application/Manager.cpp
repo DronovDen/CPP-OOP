@@ -2,95 +2,106 @@
 
 Manager::Manager(int argc, char *argv[])
 {
-    currentCommand = nullptr;
-    parser = new Parser();
-    globalMap.createRandomGlobalMap();
+    currCommand = nullptr;
+    commandParser = new Parser();
+
+    MapLoader loader("map.txt");
+    globalMap = loader.Load();
+    //globalMap.createRandomGlobalMap();
+
     //this->parser->setFileNameOfMap(argc, argv);
     //this->parser->getMapFromFile(this->globalMap);
-    server = new Receiver();
 
-    ManualMode *mm = new ManualMode();
-    ScanMode *sm = new ScanMode();
-    AutoMode *am = new AutoMode();
-    IdleMode *im = new IdleMode();
+    server = new Server();
 
-    possibleModes = {{"MANNUAL", mm}, {"SCAN", sm}, {"AUTO", am}, {"INACTIVE", im}};
+    ManualMode *manual = new ManualMode();
+    AutoScan *autoScan = new AutoScan();
+    AutoGrab *autoGran = new AutoGrab();
+    InactiveMode *inactive = new InactiveMode();
 
-    Collector *collector = new Collector(&(this->globalMap), this->receiver);
+    modesRange["MANUAL"] = manual;
+    modesRange["AUTOSCAN"] = autoScan;
+    modesRange["AUTOGRAB"] = autoScan;
+    modesRange["INACTIVE"] = inactive;
 
-    this->bundles.push_back(std::make_pair(mm, ex));
+    //modesRange = {{"MANUAL", mm}, {"SCAN", sm}, {"AUTO", am}, {"INACTIVE", im}};
+    Collector *collector = new Collector(&globalMap, server);
+    activeRobots.push_back(std::make_pair(manual, collector));
 }
 
 Manager::~Manager()
 {
-    delete parser;
-    delete receiver;
+    delete commandParser;
+    delete server;
 
-    for (size_t i = 0; i < modes.size(); ++i)
+    for (size_t i = 0; i < modesRange.size(); ++i)
     {
-        modes.erase(modes.begin());
+        modesRange.erase(modesRange.begin());
     }
 
-    for (size_t i = 0; i < bundles.size(); ++i)
+    for (auto i : activeRobots)
     {
-        bundles.erase(bundles.begin());
+        activeRobots.erase(activeRobots.begin());
     }
+
+    /* for (size_t i = 0; i < activeRobots.size(); ++i)
+    {
+        activeRobots.erase(activeRobots.begin());
+    }*/
 }
 
-void Manager::play()
+void Manager::ExecuteGame()
 {
-    receiver->applyOthersRobotsChanges();
-    gameView.drawMapForCertainRobot(bundles.at(0).second, *(this->receiver->getActualMap()));
+    server->applyOthersRobotsChanges();
+    gameView.drawMapForCertainRobot(activeRobots.at(0).second, *(server->GetActualGameArea()));
     cout << endl
-         << "Apples collected in total: " << receiver->getCollectedApplesAmount() << endl;
+         << "Diamonds collected: " << server->GetCollectedDiamondsNum() << endl;
     cout << "Enter command: ";
 
-    while (doGameStep())
+    while (DoStep())
     {
     }
 }
 
-bool Manager::doGameStep()
+bool Manager::DoStep()
 {
     bool stepResult = true;
 
     try
     {
-
-        this->currentCommand = this->parser->getCurrentCommand(this, stepResult);
-
-        if (dynamic_cast<ManualModeCommandManager *>(this->currentCommand))
+        this->currCommand = commandParser->GetCurrentCommand(this, stepResult);
+        if (dynamic_cast<ManualCommands *>(currCommand))
         {
-            dynamic_cast<ManualMode *>(bundles.at(0).first)->setCommand(currentCommand);
-            stepResult &= dynamic_cast<ManualMode *>(bundles.at(0).first)->executeMMCommand(bundles.at(0).second);
+            dynamic_cast<ManualMode *>(activeRobots.at(0).first)->SetCommand(currCommand);
+            stepResult = dynamic_cast<ManualMode *>(activeRobots.at(0).first)->ExecuteManual(activeRobots.at(0).second);
         }
-        else if (dynamic_cast<ChangeModeCommand *>(this->currentCommand) ||
-                 dynamic_cast<SapperManagerCommand *>(this->currentCommand) ||
-                 dynamic_cast<QuitCommand *>(this->currentCommand))
+        else if (dynamic_cast<ChangeMode *>(currCommand) ||
+                 dynamic_cast<SapperManagement *>(currCommand) ||
+                 dynamic_cast<Quit *>(currCommand))
         {
-            stepResult &= currentCommand->execute();
+            stepResult = currCommand->Execute();
         }
 
-        delete currentCommand;
+        delete currCommand;
 
-        for (auto i : bundles)
+        for (auto i : activeRobots)
         {
+            //if not manual - perform preloaded behaviour
             if (!dynamic_cast<ManualMode *>(i.first))
             {
-                stepResult &= i.first->execute(i.second);
+                stepResult = i.first->Execute(i.second);
             }
         }
-
-        //bundles.at(0).second->updateMap();
+        //activeRobots.at(0).second->updateMap();
     }
     catch (exception &ex)
     {
         cout << ex.what() << endl;
     }
 
-    gameView.drawMapForCertainRobot(bundles.at(0).second, *(this->receiver->getActualMap()));
+    gameView.drawMapForCertainRobot(activeRobots.at(0).second, *(server->GetActualGameArea()));
     cout << endl
-         << "Apples collected in total: " << receiver->getCollectedApplesAmount() << endl;
+         << "Diamonds collected: " << server->GetCollectedDiamondsNum() << endl;
     cout << "Enter command: ";
 
     return stepResult;

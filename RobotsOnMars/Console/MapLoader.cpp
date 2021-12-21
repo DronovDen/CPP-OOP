@@ -5,7 +5,7 @@ MapLoader::MapLoader(std::string fileName)
 {
 }
 
-std::vector<std::vector<Cell>> MapLoader::Load() const
+GameArea MapLoader::Load() const
 {
     std::ifstream input(mapFile);
     if (!input.is_open())
@@ -32,14 +32,17 @@ std::vector<std::vector<Cell>> MapLoader::Load() const
         }
     }
 
-    return map;
+    GameArea Map(map);
+    Map.SetMapWidth(width);
+    Map.setMapHeight(height);
+    return Map;
 }
 
 CellType MapLoader::ConvertCellTypes(char symb)
 {
     if (symb == ' ')
         return CellType::EMPTY;
-    if (symb == '#')
+    if (symb == '^')
         return CellType::ROCK;
     if (symb == '$')
         return CellType::DIAMOND;

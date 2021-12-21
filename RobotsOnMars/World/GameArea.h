@@ -27,6 +27,8 @@ public:
 
     size_t getMapSizeX() { return mapWidth; };
     size_t getMapSizeY() { return mapHeight; };
+    void SetMapWidth(const size_t &width) { this->mapWidth = mapHeight; };
+    void setMapHeight(const size_t &height) { this->mapHeight = height; };
 
     void Resize(size_t x, size_t y);
 

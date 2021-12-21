@@ -44,7 +44,7 @@ bool AutoMode::ExploreArea(std::vector<Coordinates> &points, CellType targetCell
         auto point = directions[Direction(i)](cur);
 
         //checking if point is on gameArea or is in path already
-        if (!gameArea.IsCellOnMap(point.x, point.y) || std::find(std::cbegin(points), std::cend(points), point) != std::cend(points))
+        if (!gameArea.IsCellOnMap(point) || std::find(std::cbegin(points), std::cend(points), point) != std::cend(points))
             continue;
         auto &cell = gameArea.GetCell(point.x, point.y);
         if (cell.GetRobot() != nullptr)
