@@ -1,4 +1,3 @@
-#include "Application/App.h"
 #include <exception>
 #include <iostream>
 

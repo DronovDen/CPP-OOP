@@ -53,4 +53,4 @@ private:
     ICommand *currCommand;
     Server *server;
     IView gameView;
-};
+}; //TEST

@@ -1,5 +1,4 @@
 #include "AutoScan.h"
-#include "Application/Simulation.h"
 #include "Robot/Robot.h"
 #include "Robot/Collector.h"
 #include "World/GameArea.h"
