@@ -1,11 +1,20 @@
 #pragma once
 #include "ModeBasement.h"
 //#include "World/World.h"
-#include "../Robot/Robot.h"
+//#include "../Robot/Robot.h"
+//#include "../Application/Manager.h"
+#include "../World/Cell.h"
+#include "../World/Coordinates.h"
+#include "../Robot/Direction.h"
+#include <deque>
+#include <functional>
+#include <vector>
 //#include "Commands/ICommand.h"
 
 //#include "Robot/Coordinates.h"
-//#include <unordered_map>
+#include <map>
+
+class Robot;
 
 class AutoMode : public ModeBasement
 {
@@ -25,7 +34,7 @@ private:
 
     using TDir = std::map<Direction, std::function<Coordinates(const Coordinates &p)>>;
 
-    bool ExploreArea(std::vector<Coordinates> &points, CellType desiredCell, std::vector<CellType> &forbiddenCells);
+    //bool ExploreArea(std::vector<Coordinates> &points, CellType desiredCell, std::vector<CellType> &forbiddenCells);
 
     std::deque<Direction> Convert(const std::vector<Coordinates> &points);
     Direction FindDirection(const Coordinates &from, const Coordinates &to);

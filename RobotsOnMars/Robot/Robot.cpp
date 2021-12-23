@@ -2,6 +2,8 @@
 //#include "World/GameArea/Cell.h"
 //#include "World/GameArea/GameArea.h"
 //#include "World/IWorld.h"
+#include "Server.h"
+#include "Sapper.h"
 
 Robot::Robot() : world(new World()), server(nullptr), position({0, 0}), exploredGameArea(nullptr) {}
 
@@ -136,15 +138,15 @@ void Robot::updateMap()
 } */
 
 //for basic robot and sapper it's normal to go on bomb
-/* bool Robot::AvailableForConcrete(size_t x, size_t y) const
+/* bool Robot::AvailableForConcrete(int x, int y) const
 {
     return true;
 } */
 
-/* std::pair<size_t, size_t> Robot::CalculateTargetPos(Direction dir) const
+/* std::pair<int, int> Robot::CalculateTargetPos(Direction dir) const
 {
-    size_t size_x = position.x;
-    size_t size_y = position.y;
+    int size_x = position.x;
+    int size_y = position.y;
     if (dir == Direction::LEFT)
     {
         if (size_x > 0)

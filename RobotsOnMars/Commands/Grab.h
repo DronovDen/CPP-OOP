@@ -1,6 +1,8 @@
 #pragma once
 #include "../Commands/ManualCommands.h"
 
+class Robot;
+
 class Grab : public ManualCommands
 {
 public:

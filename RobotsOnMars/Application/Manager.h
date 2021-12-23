@@ -4,18 +4,25 @@
 //#include "Commands/ICommand.h"
 //#include "Console/ConsoleArgs.h"
 //#include "Console/CommandParser.h"
-//#include <map>
+#include <map>
 //#include "World/World.h"
 
+#include "../World/GameArea.h"
+#include "../GameModes/ModeBasement.h"
+#include "../Robot/Robot.h"
+#include "../Robot/Server.h"
+#include "../Commands/ICommand.h"
 #include "../Console/Parser.h"
 #include "../Console/MapLoader.h"
-#include "../Robot/Server.h"
-#include "../Robot/Collector.h"
 #include "../GameModes/InactiveMode.h"
 #include "../GameModes/AutoGrab.h"
 #include "View.h"
 
-class World;
+class Parser;
+
+//#include "../Robot/Collector.h"
+
+/* class World;
 class Player;
 class ModeBasement;
 class View;
@@ -24,7 +31,7 @@ class ICommand;
 class Server;
 class Server;
 class GameArea;
-class Robot;
+class Robot; */
 
 using namespace std;
 

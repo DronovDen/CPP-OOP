@@ -1,4 +1,8 @@
 #include "Manager.h"
+#include "../GameModes/ManualMode.h"
+#include "../GameModes/AutoScan.h"
+#include "../Commands/ChangeMode.h"
+#include "../Commands/Quit.h"
 
 Manager::Manager(int argc, char *argv[])
 {
@@ -16,12 +20,12 @@ Manager::Manager(int argc, char *argv[])
 
     ManualMode *manual = new ManualMode();
     AutoScan *autoScan = new AutoScan();
-    AutoGrab *autoGran = new AutoGrab();
+    AutoGrab *autoGrab = new AutoGrab();
     InactiveMode *inactive = new InactiveMode();
 
     modesRange["MANUAL"] = manual;
     modesRange["AUTOSCAN"] = autoScan;
-    modesRange["AUTOGRAB"] = autoScan;
+    modesRange["AUTOGRAB"] = autoGrab;
     modesRange["INACTIVE"] = inactive;
 
     //modesRange = {{"MANUAL", mm}, {"SCAN", sm}, {"AUTO", am}, {"INACTIVE", im}};
@@ -34,7 +38,7 @@ Manager::~Manager()
     delete commandParser;
     delete server;
 
-    for (size_t i = 0; i < modesRange.size(); ++i)
+    for (int i = 0; i < modesRange.size(); ++i)
     {
         modesRange.erase(modesRange.begin());
     }
@@ -44,7 +48,7 @@ Manager::~Manager()
         activeRobots.erase(activeRobots.begin());
     }
 
-    /* for (size_t i = 0; i < activeRobots.size(); ++i)
+    /* for (int i = 0; i < activeRobots.size(); ++i)
     {
         activeRobots.erase(activeRobots.begin());
     }*/

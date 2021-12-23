@@ -1,5 +1,7 @@
 #include "ManualMode.h"
 
+//class ManualCommands;
+
 bool ManualMode::ExecuteManual(Robot *robot)
 {
     bool result = true;

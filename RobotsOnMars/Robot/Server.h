@@ -1,14 +1,20 @@
+#pragma once
 //#include <vector>
 
-#include "../World/World.h"
-
-//#include "Map.h"
+//#include "../World/World.h"
+#include "../World/Cell.h"
+#include "../World/Coordinates.h"
+#include "../World/GameArea.h"
+#include "Robot.h"
+#include <vector>
+#include <unordered_map>
 
 using namespace std;
 
-class Robot;
-class Collector;
-class Sapper;
+//class Robot;
+
+/* class Collector;
+class Sapper; */
 
 class Server
 {
@@ -19,7 +25,7 @@ public:
 
     bool IsCellAvaliable(const Coordinates &coordinates) const;
 
-    size_t GetCollectedDiamondsNum() { return collectedDiamonds; };
+    int GetCollectedDiamondsNum() { return collectedDiamonds; };
 
     auto GetDiamondsAvaliable() { return &diamondsAvaliable; };
     auto GetBombsAvaliable() { return &bombsAvaliable; };
@@ -42,7 +48,7 @@ private:
     vector<pair<Coordinates, Robot *>> robotsCoordinates;
     unordered_map<Robot *, vector<pair<Coordinates, CellType>>> robotsCache; //vector of robots changes
 
-    size_t collectedDiamonds;
+    int collectedDiamonds;
     vector<Coordinates> diamondsAvaliable;
     vector<Coordinates> bombsAvaliable;
 };

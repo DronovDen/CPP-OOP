@@ -1,5 +1,5 @@
 #include "Move.h"
-#include "Robot/Collector.h"
+#include "../Robot/Collector.h"
 
 Move::Move(Direction direction)
     : direction(direction)

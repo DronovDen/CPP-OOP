@@ -1,12 +1,13 @@
 #pragma once
 
+
 class Coordinates
 {
 public:
-    size_t x;
-    size_t y;
+    int x;
+    int y;
 
-    Coordinates(size_t x, size_t y) : x{x}, y{y} {};
+    Coordinates(int x, int y) : x{x}, y{y} {};
     Coordinates() = default;
     void setXY(int x, int y)
     {

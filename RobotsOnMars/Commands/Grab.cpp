@@ -1,5 +1,5 @@
 #include "Grab.h"
-#include "Robot/Collector.h"
+#include "../Robot/Collector.h"
 
 bool Grab::Execute(Robot *robot)
 {

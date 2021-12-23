@@ -1,6 +1,16 @@
 #pragma once
 
+//#include "GameArea.h"
+
+#include "Cell.h"
+#include "Coordinates.h"
 #include "GameArea.h"
+
+#include "cstdlib"
+#include "vector"
+
+class Manager;
+class GameArea;
 
 class World
 {

@@ -1,4 +1,7 @@
 #include "AutoGrab.h"
+#include "../Robot/Sapper.h"
+
+//class Collector;
 
 bool AutoGrab::Execute(Robot *robot)
 {
@@ -9,6 +12,7 @@ bool AutoGrab::Execute(Robot *robot)
     {
         robot->updateMap();
     }
+    return true;
 }
 
 bool AutoGrab::Step(Robot *robot)
@@ -17,7 +21,7 @@ bool AutoGrab::Step(Robot *robot)
     {
         Collect(robot);
     }
-    else if (dynamic_cast<Sapper*>(robot))
+    else if (dynamic_cast<Sapper *>(robot))
     {
         Defuse(robot);
     }
@@ -32,7 +36,7 @@ void AutoGrab::Collect(Robot *robot)
     if (path.empty())
         return;
     ImplementPath(robot, path);
-    auto collector = dynamic_cast<Collector*>(robot);
+    auto collector = dynamic_cast<Collector *>(robot);
     collector->Collect();
 }
 
@@ -46,7 +50,7 @@ void AutoGrab::Defuse(Robot *robot)
     if (path.empty())
         return;
     ImplementPath(robot, path);
-    auto sapper = dynamic_cast<Sapper*>(robot);
+    auto sapper = dynamic_cast<Sapper *>(robot);
     sapper->Defuse();
 }
 

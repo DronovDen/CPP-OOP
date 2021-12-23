@@ -1,9 +1,10 @@
+#pragma once
 #include <iostream>
 #include <cstdlib>
 #include "../World/GameArea.h"
 #include "../Robot/Robot.h"
 
-class GameMaster;
+//class GameMaster;
 
 class View
 {
@@ -13,6 +14,6 @@ public:
     void Render(Robot *robot, GameArea &map);
 
 private:
-    size_t offsetX;
-    size_t offsetY;
+    int offsetX;
+    int offsetY;
 };

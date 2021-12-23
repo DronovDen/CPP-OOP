@@ -1,6 +1,7 @@
 #pragma once
 #include "../World/Cell.h"
 #include "../World/GameArea.h"
+#include <fstream>
 
 //class GameArea;
 

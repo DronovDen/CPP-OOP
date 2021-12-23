@@ -1,4 +1,5 @@
 #include "Collector.h"
+#include "Server.h"
 //#include "World/IWorld.h"
 //#include "GameArea/Cell.h"
 //#include "GameArea/GameArea.h"
@@ -77,7 +78,7 @@ void Collector::Scan()
     ScanCell(position.x, position.y - 1);
 }
 
-void Collector::ScanCell(size_t x, size_t y) const
+void Collector::ScanCell(int x, int y) const
 {
     Coordinates point{x, y};
     if (!exploredGameArea->IsCellOnMap(point) ||
@@ -96,12 +97,12 @@ void Collector::ScanCell(size_t x, size_t y) const
 } */
 
 //for collector it's BAD to go on bomb
-/* bool Collector::AvailableForConcrete(size_t x, size_t y) const
+/* bool Collector::AvailableForConcrete(int x, int y) const
 {
     return (exploredGameArea.GetCell(x, y).GetType() != CellType::BOMB);
 } */
 
-/* void Collector::ScanCell(size_t x, size_t y) const
+/* void Collector::ScanCell(int x, int y) const
 {
     if (x >= world.GetWidth() || y >= world.GetHeight())
         return;

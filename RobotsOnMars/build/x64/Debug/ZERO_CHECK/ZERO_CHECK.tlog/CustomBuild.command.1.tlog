@@ -1,0 +1,10 @@
+^C:\MY DOCUMENTS\GITHUB\OOP_3SEM\ROBOTSONMARS\BUILD\CMAKEFILES\0001742CBD67F956F42CBBCC3C270447\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/My Documents/GitHub/OOP_3sem/RobotsOnMars" "-BC:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build/MarsExploration.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

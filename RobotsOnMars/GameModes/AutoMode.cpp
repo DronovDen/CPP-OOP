@@ -1,4 +1,6 @@
 #include "AutoMode.h"
+#include "../Application/Manager.h"
+#include <algorithm>
 
 AutoMode::AutoMode()
 {
@@ -36,20 +38,20 @@ bool AutoMode::ExploreArea(std::vector<Coordinates> &points, CellType targetCell
 {
     const auto &cur = points.back(); //last cell in current path
     //start exploring area from it
-    GameArea &gameArea = manager->GetCurrentMap();
+    GameArea gameArea = manager->GetCurrentMap();
     //const auto &gameArea = simulation.Player->GetExploredGameArea();
     //4 - number of directions
-    for (size_t i = 0; i < 4; ++i)
+    for (int i = 0; i < 4; ++i)
     {
         auto point = directions[Direction(i)](cur);
 
         //checking if point is on gameArea or is in path already
         if (!gameArea.IsCellOnMap(point) || std::find(std::cbegin(points), std::cend(points), point) != std::cend(points))
             continue;
-        auto &cell = gameArea.GetCell(point.x, point.y);
-        if (cell.GetRobot() != nullptr)
+        auto cell = gameArea.GetCell(point.x, point.y);
+        if (cell.GetType() == CellType::SAPPER || cell.GetType() == CellType::COLLECTOR)
             continue;
-        if (cell.GetType() == targetCell)//if cell isn't researched already - good!
+        if (cell.GetType() == targetCell) //if cell isn't researched already - good!
         {
             points.push_back(point);
             return true; //path was found
@@ -79,7 +81,7 @@ std::deque<Direction> AutoMode::Convert(const std::vector<Coordinates> &points)
 
 Direction AutoMode::FindDirection(const Coordinates &from, const Coordinates &to)
 {
-    for (size_t i = 0; i < 4; ++i)
+    for (int i = 0; i < 4; ++i)
     {
         if (directions[Direction(i)](from) == to)
             return Direction(i);
@@ -89,9 +91,9 @@ Direction AutoMode::FindDirection(const Coordinates &from, const Coordinates &to
 
 std::deque<Direction> AutoMode::FindPath(Robot *robot, CellType targetCell, std::vector<CellType> &restrictedCells)
 {
-    std::vector<Coordinates> points; //vector of path points
+    std::vector<Coordinates> points;  //vector of path points
     std::deque<Direction> directions; //deque of instructions for robot to be executed
-    Coordinates coord = robot->GetPosition();
+    Coordinates coord = robot->GetCoordinates();
     points.push_back(coord); //<-- Robot position
     if (ExploreArea(points, targetCell, restrictedCells))
     {

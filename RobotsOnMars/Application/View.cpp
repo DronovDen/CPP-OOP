@@ -1,5 +1,5 @@
 #include "View.h"
-
+#include <iostream>
 
 void View::Render(Robot *robot, GameArea &map)
 {
@@ -37,33 +37,33 @@ void View::Render(Robot *robot, GameArea &map)
             Coordinates point(i, j);
             if (map.GetCell(point).GetType() == CellType::EMPTY)
             {
-                cout << " ";
+                std::cout << " ";
             }
             else if (map.GetCell(point).GetType() == CellType::ROCK)
             {
-                cout << "^";
+                std::cout << "^";
             }
             else if (map.GetCell(point).GetType() == CellType::DIAMOND)
             {
-                cout << "D";
+                std::cout << "D";
             }
             else if (map.GetCell(point).GetType() == CellType::BOMB)
             {
-                cout << "*";
+                std::cout << "*";
             }
             else if (map.GetCell(point).GetType() == CellType::COLLECTOR)
             {
-                cout << "C";
+                std::cout << "C";
             }
             else if (map.GetCell(point).GetType() == CellType::SAPPER)
             {
-                cout << "S";
+                std::cout << "S";
             }
             else if (map.GetCell(point).GetType() == CellType::UNKNOWN)
             {
-                cout << "?";
+                std::cout << "?";
             }
         }
-        cout << std::endl;
+        std::cout << std::endl;
     }
 }

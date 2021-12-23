@@ -1,61 +1,66 @@
 #pragma once
 
-#include "Cell.h"
-//#include "MapLoader.h"
 #include "Coordinates.h"
+#include "Cell.h"
+#include "cstdio"
+#include "cstdlib"
+#include "iostream"
+#include "vector"
+#include "ctime"
+//#include "MapLoader.h"
 
 class GameArea
 {
 public:
     GameArea(std::vector<std::vector<Cell>> &map);
-    GameArea(const size_t &x_size, const size_t &y_size);
+    GameArea(const int &x_size, const int &y_size);
     GameArea();
     ~GameArea();
 
     void CreateEmptyMap();
     void CreateRandomGlobalMap();
 
-    void SetDiamondsAmount(const size_t &diamondsAmount) { this->diamondsAmount = diamondsAmount; };
-    void SetBombsAmount(const size_t &bombAmount) { this->bombsAmount = bombAmount; };
+    void SetDiamondsAmount(const int &diamondsAmount) { this->diamondsAmount = diamondsAmount; };
+    void SetBombsAmount(const int &bombAmount) { this->bombsAmount = bombAmount; };
 
-    void SetVisibleGlobalMapWidth(const size_t &visibleGlobalMapX) { this->visibleGlobalMapWidth = visibleGlobalMapWidth; };
-    void SetVisibleGlobalMapHeight(const size_t &visibleGlobalMapHeight) { this->visibleGlobalMapHeight = visibleGlobalMapHeight; };
+    void SetVisibleGlobalMapWidth(const int &visibleGlobalMapX) { this->visibleGlobalMapWidth = visibleGlobalMapWidth; };
+    void SetVisibleGlobalMapHeight(const int &visibleGlobalMapHeight) { this->visibleGlobalMapHeight = visibleGlobalMapHeight; };
 
-    size_t GetDiamondsAmount() { return this->diamondsAmount; }
-    size_t GetBombsAmount() { return this->bombsAmount; }
+    int GetDiamondsAmount() { return this->diamondsAmount; }
+    int GetBombsAmount() { return this->bombsAmount; }
 
-    size_t GetVisibleGlobalMapWidth() { return visibleGlobalMapWidth; };
-    size_t GetVisibleGlobalMapHeight() { return visibleGlobalMapHeight; };
+    int GetVisibleGlobalMapWidth() { return visibleGlobalMapWidth; };
+    int GetVisibleGlobalMapHeight() { return visibleGlobalMapHeight; };
 
-    size_t getMapSizeX() { return mapWidth; };
-    size_t getMapSizeY() { return mapHeight; };
-    void SetMapWidth(const size_t &width) { this->mapWidth = mapHeight; };
-    void setMapHeight(const size_t &height) { this->mapHeight = height; };
+    int getMapSizeX() { return mapWidth; };
+    int getMapSizeY() { return mapHeight; };
+    void SetMapWidth(const int &width) { this->mapWidth = mapHeight; };
+    void setMapHeight(const int &height) { this->mapHeight = height; };
 
-    void Resize(size_t x, size_t y);
+    void Resize(int x, int y);
 
     bool IsCellOnMap(Coordinates point) const;
 
-    size_t GetWidth() const;
-    size_t GetHeight() const;
+    int GetWidth() const;
+    int GetHeight() const;
 
-    Cell GetCell(size_t x, size_t y);
+    Cell GetCell(int x, int y);
     Cell GetCell(const Coordinates &point);
-    const Cell &GetCell(size_t x, size_t y) const;
+    const Cell &GetCell(int x, int y) const;
     void SetCell(const Coordinates &coordinates, const CellType &cell);
 
     const std::vector<std::vector<Cell>> &GetMap() const;
 
 private:
-    size_t mapWidth;
-    size_t mapHeight;
+    int mapWidth;
+    int mapHeight;
 
-    size_t visibleGlobalMapHeight;
-    size_t visibleGlobalMapWidth;
+    int visibleGlobalMapHeight;
+    int visibleGlobalMapWidth;
 
-    size_t diamondsAmount;
-    size_t bombsAmount;
-    size_t rockAmount;
+    int diamondsAmount;
+    int bombsAmount;
+    int rockAmount;
 
     std::vector<std::vector<Cell>> map;
 };

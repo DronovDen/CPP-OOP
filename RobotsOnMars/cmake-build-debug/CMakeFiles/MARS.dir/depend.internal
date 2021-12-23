@@ -33,7 +33,7 @@ CMakeFiles/MARS.dir/Application/View.cpp.obj
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/View.cpp
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/View.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Server.h
+ C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Sapper.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Cell.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Coordinates.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.h
@@ -297,33 +297,9 @@ CMakeFiles/MARS.dir/GameModes/AutoScan.cpp.obj
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/World.h
 CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/Manager.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/View.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ChangeMode.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Grab.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ICommand.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ManualCommands.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Move.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Quit.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/SapperManagement.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Scan.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Console/MapLoader.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Console/Parser.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoGrab.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoMode.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoScan.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/InactiveMode.cpp
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/InactiveMode.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ManualMode.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ModeBasement.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Collector.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Sapper.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Server.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Cell.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Coordinates.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/World.h
 CMakeFiles/MARS.dir/GameModes/ManualMode.cpp.obj
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/Manager.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/View.h
@@ -353,38 +329,13 @@ CMakeFiles/MARS.dir/GameModes/ManualMode.cpp.obj
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/World.h
 CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/Manager.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/View.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ChangeMode.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Grab.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ICommand.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ManualCommands.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Move.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Quit.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/SapperManagement.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Scan.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Console/MapLoader.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Console/Parser.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoGrab.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoMode.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoScan.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/InactiveMode.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ManualMode.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ModeBasement.cpp
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ModeBasement.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Collector.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Sapper.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Server.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Cell.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Coordinates.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/World.h
 CMakeFiles/MARS.dir/Robot/Collector.cpp.obj
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Collector.cpp
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Collector.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Server.h
+ C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Sapper.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Cell.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Coordinates.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.h
@@ -392,7 +343,7 @@ CMakeFiles/MARS.dir/Robot/Collector.cpp.obj
 CMakeFiles/MARS.dir/Robot/Robot.cpp.obj
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.cpp
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Server.h
+ C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Sapper.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Cell.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Coordinates.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.h
@@ -401,7 +352,6 @@ CMakeFiles/MARS.dir/Robot/Sapper.cpp.obj
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Sapper.cpp
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Sapper.h
- C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Server.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Cell.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Coordinates.h
  C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.h

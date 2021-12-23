@@ -27,7 +27,7 @@ void Server::NotifyRobotCreated(Robot *robot, const Coordinates &coordinates)
 
 void Server::NotifyRobotDeleted(Robot *robot, const Coordinates &coordinates)
 {
-    for (size_t i = 0; i < robotsCoordinates.size(); ++i)
+    for (int i = 0; i < robotsCoordinates.size(); ++i)
     {
         if (robotsCoordinates.at(i).first == coordinates)
         {
@@ -51,7 +51,7 @@ void Server::NotifyCellScanned(Robot *robot, const pair<Coordinates, CellType> s
 void Server::NotifyDiamondCollected(Robot *robot, const Coordinates &coordinates)
 {
     robotsCache.find(robot)->second.push_back(make_pair(coordinates, CellType::EMPTY));
-    for (size_t i = 0; i < diamondsAvaliable.size(); ++i)
+    for (int i = 0; i < diamondsAvaliable.size(); ++i)
     {
         if (diamondsAvaliable.at(i) == coordinates)
         {
@@ -64,7 +64,7 @@ void Server::NotifyDiamondCollected(Robot *robot, const Coordinates &coordinates
 void Server::NotifyBombDefused(Robot *robot, const Coordinates &coordinates)
 {
     robotsCache.find(robot)->second.push_back(make_pair(coordinates, CellType::EMPTY));
-    for (size_t i = 0; i < bombsAvaliable.size(); ++i)
+    for (int i = 0; i < bombsAvaliable.size(); ++i)
     {
         if (bombsAvaliable.at(i) == coordinates)
         {
@@ -75,7 +75,7 @@ void Server::NotifyBombDefused(Robot *robot, const Coordinates &coordinates)
 
 void Server::NotifyRobotMoved(const Robot *robot, const Coordinates &prevCoordinates, const Coordinates &newCoordinates)
 {
-    for (size_t i = 0; i < robotsCoordinates.size(); ++i)
+    for (int i = 0; i < robotsCoordinates.size(); ++i)
     {
         if (robotsCoordinates.at(i).first == prevCoordinates)
         {

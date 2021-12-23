@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\World\GameArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\World\World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Robot\Robot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Robot\Collector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Robot\Sapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Robot\Server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\GameModes\AutoGrab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\GameModes\AutoMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\GameModes\AutoScan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\GameModes\InactiveMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\GameModes\ManualMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\GameModes\ModeBasement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Console\Parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Console\MapLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Commands\ChangeMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Commands\Grab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Commands\Move.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Commands\SapperManagement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Commands\Scan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Application\View.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\Application\Manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\My Documents\GitHub\OOP_3sem\RobotsOnMars\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{E0B0A06F-E70B-33B6-A197-8664F04BA465}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,7 +1,7 @@
 #include "Scan.h"
 //#include "Command/CommandType.h"
 //#include "App/GameInterface.h"
-#include "Robot/Collector.h"
+#include "../Robot/Collector.h"
 //#include "Player/Player.h"
 
 bool Scan::Execute(Robot *robot)

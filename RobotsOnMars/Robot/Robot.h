@@ -3,21 +3,18 @@
 //#include "GameArea/Cell.h"
 //#include "GameArea/GameArea.h"
 
-#include "Server.h"
+//#include "Server.h"
+#include "../World/World.h"
+#include "../World/Coordinates.h"
+#include "../World/GameArea.h"
+#include "../Robot/Direction.h"
 //#include <utility>
 //#include "Sapper.h"
 
+class Server;
 //class Cell;
 //class World;
 //class GameArea;
-
-enum class Direction : unsigned char
-{
-    LEFT,
-    RIGHT,
-    UP,
-    DOWN,
-};
 
 class Robot
 {
@@ -29,7 +26,7 @@ public:
     Server *GetServer() { return this->server; };
 
     World *GetWorld() { return this->world; }
-    void *SetWorld(World *environment) { this->world = world; }
+    void SetWorld(World *environment) { this->world = world; }
 
     GameArea *GetExploredArea() { return this->exploredGameArea; };
     void SetExploredArea(GameArea *map) { this->exploredGameArea = map; };
@@ -37,7 +34,7 @@ public:
     //Coordinates Robot::GetPosition() const { return position; };
 
     //virtual void Move(Direction direction) = 0;
-    //virtual void Move(size_t x, size_t y) = 0;
+    //virtual void Move(int x, int y) = 0;
 
     bool IsAvailableToMove(const Coordinates &coordinates, Robot *robot) const;
     Coordinates CalculateTargetPos(const Direction &direction);

@@ -1,7 +1,7 @@
 #include "AutoScan.h"
-#include "Robot/Robot.h"
-#include "Robot/Collector.h"
-#include "World/GameArea.h"
+#include "../Robot/Robot.h"
+#include "../Robot/Collector.h"
+#include "../World/GameArea.h"
 
 /* bool AutoScan::Execute(Robot *robot)
 {
@@ -15,9 +15,9 @@
     }
 } */
 
-bool AutoScan::Execute(Robot* robot)
+bool AutoScan::Execute(Robot *robot)
 {
-    for (size_t i = 0; i < stepsNum; ++i)
+    for (int i = 0; i < stepsNum; ++i)
     {
         if (Step(robot))
         {
@@ -32,9 +32,9 @@ bool AutoScan::Execute(Robot* robot)
     return true;
 }
 
-bool AutoScan::Step(Robot* robot)
-{    
-    auto collector = dynamic_cast<Collector*>(robot);
+bool AutoScan::Step(Robot *robot)
+{
+    auto collector = dynamic_cast<Collector *>(robot);
     auto path = FindPath(collector, CellType::UNKNOWN, restrictedCells);
     if (path.empty())
         return false;

@@ -1,8 +1,10 @@
 #pragma once
 
 #include "ICommand.h"
-#include "../Robot/Robot.h"
-//#include "GameModes/ModeBasement.h"
+
+//#include "../Robot/Robot.h"
+
+class Robot;
 
 class ManualCommands : public ICommand
 {

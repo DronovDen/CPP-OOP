@@ -1,5 +1,5 @@
 #pragma once
-#include <vector>
+/* #include <vector>
 #include <string>
 #include <fstream>
 #include <stdexcept>
@@ -8,7 +8,7 @@
 #include <deque>
 #include <functional>
 #include <map>
-#include <algorithm>
+#include <algorithm> */
 
 
 enum class CellType : unsigned char

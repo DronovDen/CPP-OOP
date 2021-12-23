@@ -1,4 +1,5 @@
 #include "Sapper.h"
+#include "Server.h"
 //#include "GameArea/World.h"
 
 Sapper::Sapper(GameArea *globalGameArea, Server *server)
@@ -84,8 +85,8 @@ void Sapper::Defuse()
 {
     while (true)
     {
-        size_t x = rand() % exploredGameArea.GetWidth();
-        size_t y = rand() % exploredGameArea.GetHeight();
+        int x = rand() % exploredGameArea.GetWidth();
+        int y = rand() % exploredGameArea.GetHeight();
         Cell &cell = exploredGameArea.GetCell(x, y);
         if (CanBeSetOnCell(cell))
         {
@@ -95,10 +96,7 @@ void Sapper::Defuse()
     }
 } */
 
-void Sapper::Defuse()
-{
-    ClearCell(CellType::BOMB);
-}
+
 
 /* bool Sapper::CanBeSetOnCell(const Cell &cell) const
 {

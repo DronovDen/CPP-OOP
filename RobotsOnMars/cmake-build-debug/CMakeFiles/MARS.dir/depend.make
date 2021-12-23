@@ -32,7 +32,7 @@ CMakeFiles/MARS.dir/Application/Manager.cpp.obj: ../World/World.h
 CMakeFiles/MARS.dir/Application/View.cpp.obj: ../Application/View.cpp
 CMakeFiles/MARS.dir/Application/View.cpp.obj: ../Application/View.h
 CMakeFiles/MARS.dir/Application/View.cpp.obj: ../Robot/Robot.h
-CMakeFiles/MARS.dir/Application/View.cpp.obj: ../Robot/Server.h
+CMakeFiles/MARS.dir/Application/View.cpp.obj: ../Robot/Sapper.h
 CMakeFiles/MARS.dir/Application/View.cpp.obj: ../World/Cell.h
 CMakeFiles/MARS.dir/Application/View.cpp.obj: ../World/Coordinates.h
 CMakeFiles/MARS.dir/Application/View.cpp.obj: ../World/GameArea.h
@@ -296,33 +296,9 @@ CMakeFiles/MARS.dir/GameModes/AutoScan.cpp.obj: ../World/Coordinates.h
 CMakeFiles/MARS.dir/GameModes/AutoScan.cpp.obj: ../World/GameArea.h
 CMakeFiles/MARS.dir/GameModes/AutoScan.cpp.obj: ../World/World.h
 
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Application/Manager.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Application/View.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Commands/ChangeMode.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Commands/Grab.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Commands/ICommand.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Commands/ManualCommands.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Commands/Move.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Commands/Quit.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Commands/SapperManagement.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Commands/Scan.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Console/MapLoader.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Console/Parser.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../GameModes/AutoGrab.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../GameModes/AutoMode.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../GameModes/AutoScan.h
 CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../GameModes/InactiveMode.cpp
 CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../GameModes/InactiveMode.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../GameModes/ManualMode.h
 CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../GameModes/ModeBasement.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Robot/Collector.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Robot/Robot.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Robot/Sapper.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../Robot/Server.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../World/Cell.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../World/Coordinates.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../World/GameArea.h
-CMakeFiles/MARS.dir/GameModes/InactiveMode.cpp.obj: ../World/World.h
 
 CMakeFiles/MARS.dir/GameModes/ManualMode.cpp.obj: ../Application/Manager.h
 CMakeFiles/MARS.dir/GameModes/ManualMode.cpp.obj: ../Application/View.h
@@ -352,38 +328,13 @@ CMakeFiles/MARS.dir/GameModes/ManualMode.cpp.obj: ../World/Coordinates.h
 CMakeFiles/MARS.dir/GameModes/ManualMode.cpp.obj: ../World/GameArea.h
 CMakeFiles/MARS.dir/GameModes/ManualMode.cpp.obj: ../World/World.h
 
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Application/Manager.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Application/View.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Commands/ChangeMode.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Commands/Grab.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Commands/ICommand.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Commands/ManualCommands.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Commands/Move.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Commands/Quit.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Commands/SapperManagement.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Commands/Scan.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Console/MapLoader.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Console/Parser.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../GameModes/AutoGrab.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../GameModes/AutoMode.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../GameModes/AutoScan.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../GameModes/InactiveMode.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../GameModes/ManualMode.h
 CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../GameModes/ModeBasement.cpp
 CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../GameModes/ModeBasement.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Robot/Collector.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Robot/Robot.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Robot/Sapper.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../Robot/Server.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../World/Cell.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../World/Coordinates.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../World/GameArea.h
-CMakeFiles/MARS.dir/GameModes/ModeBasement.cpp.obj: ../World/World.h
 
 CMakeFiles/MARS.dir/Robot/Collector.cpp.obj: ../Robot/Collector.cpp
 CMakeFiles/MARS.dir/Robot/Collector.cpp.obj: ../Robot/Collector.h
 CMakeFiles/MARS.dir/Robot/Collector.cpp.obj: ../Robot/Robot.h
-CMakeFiles/MARS.dir/Robot/Collector.cpp.obj: ../Robot/Server.h
+CMakeFiles/MARS.dir/Robot/Collector.cpp.obj: ../Robot/Sapper.h
 CMakeFiles/MARS.dir/Robot/Collector.cpp.obj: ../World/Cell.h
 CMakeFiles/MARS.dir/Robot/Collector.cpp.obj: ../World/Coordinates.h
 CMakeFiles/MARS.dir/Robot/Collector.cpp.obj: ../World/GameArea.h
@@ -391,7 +342,7 @@ CMakeFiles/MARS.dir/Robot/Collector.cpp.obj: ../World/World.h
 
 CMakeFiles/MARS.dir/Robot/Robot.cpp.obj: ../Robot/Robot.cpp
 CMakeFiles/MARS.dir/Robot/Robot.cpp.obj: ../Robot/Robot.h
-CMakeFiles/MARS.dir/Robot/Robot.cpp.obj: ../Robot/Server.h
+CMakeFiles/MARS.dir/Robot/Robot.cpp.obj: ../Robot/Sapper.h
 CMakeFiles/MARS.dir/Robot/Robot.cpp.obj: ../World/Cell.h
 CMakeFiles/MARS.dir/Robot/Robot.cpp.obj: ../World/Coordinates.h
 CMakeFiles/MARS.dir/Robot/Robot.cpp.obj: ../World/GameArea.h
@@ -400,7 +351,6 @@ CMakeFiles/MARS.dir/Robot/Robot.cpp.obj: ../World/World.h
 CMakeFiles/MARS.dir/Robot/Sapper.cpp.obj: ../Robot/Robot.h
 CMakeFiles/MARS.dir/Robot/Sapper.cpp.obj: ../Robot/Sapper.cpp
 CMakeFiles/MARS.dir/Robot/Sapper.cpp.obj: ../Robot/Sapper.h
-CMakeFiles/MARS.dir/Robot/Sapper.cpp.obj: ../Robot/Server.h
 CMakeFiles/MARS.dir/Robot/Sapper.cpp.obj: ../World/Cell.h
 CMakeFiles/MARS.dir/Robot/Sapper.cpp.obj: ../World/Coordinates.h
 CMakeFiles/MARS.dir/Robot/Sapper.cpp.obj: ../World/GameArea.h

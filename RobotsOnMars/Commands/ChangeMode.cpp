@@ -1,9 +1,11 @@
 #include "ChangeMode.h"
-#include "Robot/Collector.h"
-#include "Robot/Sapper.h"
+#include "../Robot/Collector.h"
+#include "../Robot/Sapper.h"
+#include "../GameModes/AutoScan.h"
+#include "../Application/Manager.h"
 //#include "GameModes/AutoScan.h"
 
-ChangeMode::ChangeMode(std::string modeName, Manager *manager, size_t stepsNum)
+ChangeMode::ChangeMode(std::string modeName, Manager *manager, int stepsNum)
     : modeName{modeName}, manager{manager}, stepsNum{stepsNum}
 {
 }
@@ -19,7 +21,7 @@ bool ChangeMode::Execute()
     //Mode* currentMode = nullptr;
     ModeBasement *currentMode = (modes->find(this->modeName))->second;
     auto assemblies = manager->GetActiveRobots();
-    for (size_t i = 0; i < assemblies->size(); i++)
+    for (int i = 0; i < assemblies->size(); i++)
     {
         if (dynamic_cast<Collector *>(assemblies->at(i).second))
         {

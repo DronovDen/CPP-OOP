@@ -12,7 +12,7 @@ public:
     AutoScan();
     ~AutoScan() = default;
 
-    void SetStepsNum(size_t steps) { this->stepsNum = steps; };
+    void SetStepsNum(int steps) { this->stepsNum = steps; };
     bool Execute(Robot *robot) override;
     bool Step(Robot *robot);
 
@@ -22,7 +22,7 @@ public:
     //virtual void RenderPath() override;
 
 private:
-    size_t stepsNum;
+    int stepsNum;
     //std::vector<Coordinates> scanData;
 
     //cells restricted for collector

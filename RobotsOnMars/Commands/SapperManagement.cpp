@@ -1,5 +1,6 @@
 #include "SapperManagement.h"
-#include "Robot/Sapper.h"
+#include "../Robot/Sapper.h"
+#include "../Application/Manager.h"
 
 SapperManagement::SapperManagement(std::string switcher, Manager *manager)
     : state(switcher), manager(manager)
@@ -17,7 +18,7 @@ bool SapperManagement::Execute()
     }
     else if (state == "OFF")
     {
-        for (size_t i = 0; i < assemblies->size(); i++)
+        for (int i = 0; i < assemblies->size(); i++)
         {
             if (dynamic_cast<Sapper *>(assemblies->at(i).second))
             {
