@@ -1,3 +1,0 @@
-C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build/CMakeFiles/edit_cache.dir
-C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build/CMakeFiles/MARS.dir
-C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build/CMakeFiles/rebuild_cache.dir
