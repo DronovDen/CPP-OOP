@@ -1,4 +1,5 @@
 #pragma once
+
 #include "GameArea.h"
 
 class World
@@ -18,7 +19,7 @@ public:
 
     std::pair<Coordinates, CellType> Scan(const Coordinates &coordinates);
 
-    Cell &GetCell(const Coordinates &coordinates) const;
+    Cell GetCell(const Coordinates &coordinates) const;
     CellType GetCellInRobotWorld(const Coordinates &coordinates) const;
 
     bool CellIsEmpty(const Coordinates &coordinates) const;

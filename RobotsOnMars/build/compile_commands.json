@@ -1,0 +1,112 @@
+[
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\main.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\main.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/main.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\World\\GameArea.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\World\\GameArea.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\World\\World.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\World\\World.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/World.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Robot\\Robot.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Robot\\Robot.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Robot\\Collector.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Robot\\Collector.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Collector.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Robot\\Sapper.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Robot\\Sapper.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Sapper.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Robot\\Server.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Robot\\Server.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Server.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\GameModes\\AutoGrab.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\GameModes\\AutoGrab.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoGrab.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\GameModes\\AutoMode.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\GameModes\\AutoMode.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoMode.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\GameModes\\AutoScan.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\GameModes\\AutoScan.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoScan.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\GameModes\\InactiveMode.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\GameModes\\InactiveMode.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/InactiveMode.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\GameModes\\ManualMode.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\GameModes\\ManualMode.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ManualMode.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\GameModes\\ModeBasement.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\GameModes\\ModeBasement.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ModeBasement.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Console\\Parser.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Console\\Parser.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Console/Parser.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Console\\MapLoader.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Console\\MapLoader.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Console/MapLoader.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Commands\\ChangeMode.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Commands\\ChangeMode.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ChangeMode.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Commands\\Grab.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Commands\\Grab.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Grab.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Commands\\Move.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Commands\\Move.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Move.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Commands\\SapperManagement.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Commands\\SapperManagement.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/SapperManagement.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Commands\\Scan.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Commands\\Scan.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Scan.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Application\\View.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Application\\View.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/View.cpp"
+},
+{
+  "directory": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\I686-W~2.EXE   -g -o CMakeFiles\\MARS.dir\\Application\\Manager.cpp.obj -c \"C:\\My Documents\\GitHub\\OOP_3sem\\RobotsOnMars\\Application\\Manager.cpp\"",
+  "file": "C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/Manager.cpp"
+}
+]

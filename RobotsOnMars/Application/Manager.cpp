@@ -53,7 +53,7 @@ Manager::~Manager()
 void Manager::ExecuteGame()
 {
     server->applyOthersRobotsChanges();
-    gameView.drawMapForCertainRobot(activeRobots.at(0).second, *(server->GetActualGameArea()));
+    gameView.Render(activeRobots.at(0).second, *(server->GetActualGameArea()));
     cout << endl
          << "Diamonds collected: " << server->GetCollectedDiamondsNum() << endl;
     cout << "Enter command: ";
@@ -99,7 +99,7 @@ bool Manager::DoStep()
         cout << ex.what() << endl;
     }
 
-    gameView.drawMapForCertainRobot(activeRobots.at(0).second, *(server->GetActualGameArea()));
+    gameView.Render(activeRobots.at(0).second, *(server->GetActualGameArea()));
     cout << endl
          << "Diamonds collected: " << server->GetCollectedDiamondsNum() << endl;
     cout << "Enter command: ";

@@ -5,17 +5,20 @@
 //#include "Console/ConsoleArgs.h"
 //#include "Console/CommandParser.h"
 //#include <map>
-#include "World/World.h"
-#include "Console/Parser.h"
-#include "Robot/Server.h"
-#include "Robot/Collector.h"
-#include "GameModes/InactiveMode.h"
-#include "GameModes/AutoGrab.h"
+//#include "World/World.h"
+
+#include "../Console/Parser.h"
+#include "../Console/MapLoader.h"
+#include "../Robot/Server.h"
+#include "../Robot/Collector.h"
+#include "../GameModes/InactiveMode.h"
+#include "../GameModes/AutoGrab.h"
+#include "View.h"
 
 class World;
 class Player;
 class ModeBasement;
-class IView;
+class View;
 class Parser;
 class ICommand;
 class Server;
@@ -52,5 +55,5 @@ private:
     MapLoader *loader;
     ICommand *currCommand;
     Server *server;
-    IView gameView;
+    View gameView;
 }; //TEST

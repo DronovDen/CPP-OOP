@@ -1,5 +1,5 @@
 #pragma once
-#include "Commands/ManualCommands.h"
+#include "../Commands/ManualCommands.h"
 
 class Move : public ManualCommands
 {

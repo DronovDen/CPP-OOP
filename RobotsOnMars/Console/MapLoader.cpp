@@ -44,7 +44,7 @@ CellType MapLoader::ConvertCellTypes(char symb)
         return CellType::EMPTY;
     if (symb == '^')
         return CellType::ROCK;
-    if (symb == '$')
+    if (symb == 'D')
         return CellType::DIAMOND;
     if (symb == '*')
         return CellType::BOMB;

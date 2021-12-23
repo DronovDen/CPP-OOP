@@ -2,7 +2,7 @@
 #include "ModeBasement.h"
 //#include "Commands/ICommand.h"
 //#include "Application/Simulation.h"
-#include "Commands/ManualCommands.h"
+#include "../Commands/ManualCommands.h"
 //#include "Robot/Robot.h"
 
 class ManualMode : public ModeBasement

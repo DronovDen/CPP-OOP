@@ -13,7 +13,7 @@ Coordinates World::GetGlobalRobotCoodinates(const Coordinates &coordinates) cons
 	return {robotsMapCoord.x + coordinates.x, robotsMapCoord.y + coordinates.y};
 }
 
-Cell &World::GetCell(const Coordinates &coordinates) const
+Cell World::GetCell(const Coordinates &coordinates) const
 {
 	return globalGameArea->GetCell(coordinates);
 }

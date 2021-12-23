@@ -34,7 +34,7 @@ public:
     GameArea *GetExploredArea() { return this->exploredGameArea; };
     void SetExploredArea(GameArea *map) { this->exploredGameArea = map; };
 
-    Coordinates Robot::GetPosition() const { return position; };
+    //Coordinates Robot::GetPosition() const { return position; };
 
     //virtual void Move(Direction direction) = 0;
     //virtual void Move(size_t x, size_t y) = 0;
@@ -43,8 +43,8 @@ public:
     Coordinates CalculateTargetPos(const Direction &direction);
     Coordinates GetSpawnCoordinates();
 
-    void SetCoordinates(const Coordinates &coordinates) { this->position = coordinates; }
-    const Coordinates &GetCoordinates() { return this->position; }
+    void SetCoordinates(const Coordinates &coordinates) { position = coordinates; }
+    const Coordinates &GetCoordinates() { return position; }
 
     virtual void Move(const Direction &direction) = 0;
     void updateMap();

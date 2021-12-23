@@ -1,6 +1,8 @@
 #pragma once
-#include "Cell.h"
-#include "World/GameArea.h"
+#include "../World/Cell.h"
+#include "../World/GameArea.h"
+
+//class GameArea;
 
 class MapLoader
 {

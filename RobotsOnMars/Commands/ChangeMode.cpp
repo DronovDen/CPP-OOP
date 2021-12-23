@@ -15,7 +15,7 @@ ChangeMode::ChangeMode(std::string modeName, Manager *manager)
 
 bool ChangeMode::Execute()
 {
-    auto modes = manager->GetPossibleModes();
+    auto modes = manager->GetModesRange();
     //Mode* currentMode = nullptr;
     ModeBasement *currentMode = (modes->find(this->modeName))->second;
     auto assemblies = manager->GetActiveRobots();

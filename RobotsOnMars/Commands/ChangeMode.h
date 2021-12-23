@@ -2,12 +2,12 @@
 
 #include "ICommand.h"
 //#include "GameModes/ModeBasement.h"
-#include "GameModes/AutoScan.h"
-//#include "Application/Manager.h"
-#include "Robot/Robot.h"
-#include "string.h"
+#include "../GameModes/AutoScan.h"
+#include "../Application/Manager.h"
+//#include "Robot/Robot.h"
+#include <string.h>
 
-class Manger;
+//class Manger;
 
 class ChangeMode : public ICommand
 {
@@ -19,6 +19,6 @@ public:
 
 private:
     std::string modeName;
-	Manager* manager;
-	size_t stepsNum = 0;
+    Manager *manager;
+    size_t stepsNum = 0;
 };

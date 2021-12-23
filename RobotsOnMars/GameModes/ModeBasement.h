@@ -1,6 +1,6 @@
 #pragma once
-#include "Commands/ICommand.h"
-#include "Robot/Robot.h"
+#include "../Commands/ICommand.h"
+#include "../Robot/Robot.h"
 //#include "Application/Manager.h"
 
 class Manager;

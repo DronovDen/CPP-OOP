@@ -1,7 +1,5 @@
 #pragma once
-#include "Commands/ICommand.h"
-#include "Application/Manager.h"
-
+#include "../Commands/ICommand.h"
 
 class SapperManagement : public ICommand
 {

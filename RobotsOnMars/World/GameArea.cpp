@@ -14,7 +14,7 @@ GameArea::GameArea(const size_t &x_size, const size_t &y_size)
     visibleGlobalMapWidth = (x_size >= 15) ? 15 : x_size % 15;
     visibleGlobalMapHeight = (y_size >= 15) ? 15 : y_size % 15;
 
-    CreateEmptyMap ();
+    CreateEmptyMap();
 }
 
 GameArea::GameArea()
@@ -110,7 +110,7 @@ bool GameArea::IsCellOnMap(Coordinates point) const
     return (point.x < map.size() && point.y < map[0].size());
 }
 
-Cell GameArea::GetCell(Coordinates point)
+Cell GameArea::GetCell(const Coordinates &point)
 {
     if (point.x >= map.size() || point.y >= map[point.x].size())
         throw std::runtime_error("Invalid cell coordinates");

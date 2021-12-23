@@ -1,0 +1,264 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/Manager.cpp
+Manager.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/Manager.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/Manager.h
+../Console/Parser.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Console/Parser.h
+../Console/MapLoader.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Console/MapLoader.h
+../Robot/Server.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Server.h
+../Robot/Collector.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Collector.h
+../GameModes/InactiveMode.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/InactiveMode.h
+../GameModes/AutoGrab.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoGrab.h
+View.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/View.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/View.h
+iostream
+-
+cstdlib
+-
+../World/GameArea.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.h
+../Robot/Robot.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ChangeMode.cpp
+ChangeMode.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ChangeMode.h
+Robot/Collector.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Robot/Collector.h
+Robot/Sapper.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Robot/Sapper.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ChangeMode.h
+ICommand.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ICommand.h
+../GameModes/AutoScan.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoScan.h
+string.h
+-
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Grab.cpp
+Grab.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Grab.h
+Robot/Collector.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Robot/Collector.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Grab.h
+../Commands/ManualCommands.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ManualCommands.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ICommand.h
+../Application/Manager.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/Manager.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ManualCommands.h
+ICommand.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ICommand.h
+../Robot/Robot.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Move.cpp
+Move.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Move.h
+Robot/Collector.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Robot/Collector.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Move.h
+../Commands/ManualCommands.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ManualCommands.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Quit.h
+ICommand.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ICommand.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/SapperManagement.cpp
+SapperManagement.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/SapperManagement.h
+Robot/Sapper.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Robot/Sapper.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/SapperManagement.h
+../Commands/ICommand.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ICommand.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Scan.cpp
+Scan.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Scan.h
+Robot/Collector.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Robot/Collector.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Scan.h
+../Commands/ManualCommands.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ManualCommands.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Console/MapLoader.h
+../World/Cell.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Cell.h
+../World/GameArea.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Console/Parser.cpp
+Parser.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Console/Parser.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Console/Parser.h
+../GameModes/ManualMode.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ManualMode.h
+../Commands/Scan.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Scan.h
+../Commands/ChangeMode.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ChangeMode.h
+../Commands/Grab.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Grab.h
+../Commands/Move.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Move.h
+../Commands/Quit.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/Quit.h
+../Commands/SapperManagement.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/SapperManagement.h
+unordered_map
+-
+map
+-
+sstream
+-
+functional
+-
+iostream
+-
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoGrab.cpp
+AutoGrab.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoGrab.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoGrab.h
+AutoMode.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoMode.h
+../Robot/Collector.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Collector.h
+../Robot/Sapper.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Sapper.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoMode.cpp
+AutoMode.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoMode.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoMode.h
+ModeBasement.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ModeBasement.h
+../Robot/Robot.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoScan.cpp
+AutoScan.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoScan.h
+Robot/Robot.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/Robot/Robot.h
+Robot/Collector.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/Robot/Collector.h
+World/GameArea.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/World/GameArea.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoScan.h
+AutoMode.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/AutoMode.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/InactiveMode.cpp
+InactiveMode.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/InactiveMode.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/InactiveMode.h
+ModeBasement.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ModeBasement.h
+iostream
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/iostream
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ManualMode.cpp
+ManualMode.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ManualMode.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ManualMode.h
+ModeBasement.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ModeBasement.h
+../Commands/ManualCommands.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ManualCommands.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ModeBasement.cpp
+ModeBasement.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ModeBasement.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/GameModes/ModeBasement.h
+../Commands/ICommand.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Commands/ICommand.h
+../Robot/Robot.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Collector.h
+Robot.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
+Server.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Server.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Sapper.h
+Robot.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Robot.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Robot/Server.h
+../World/World.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/World.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Cell.h
+vector
+-
+string
+-
+fstream
+-
+stdexcept
+-
+memory
+-
+ctime
+-
+deque
+-
+functional
+-
+map
+-
+algorithm
+-
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Coordinates.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.h
+Cell.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Cell.h
+Coordinates.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/Coordinates.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/World.h
+GameArea.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/World/GameArea.h
+
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/main.cpp
+Application/Manager.h
+C:/My Documents/GitHub/OOP_3sem/RobotsOnMars/Application/Manager.h
+

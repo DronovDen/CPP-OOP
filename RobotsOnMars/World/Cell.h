@@ -31,11 +31,11 @@ public:
     CellType GetType() const { return type; };
     void SetType(CellType type) { type = type; };
 
-    Robot *GetRobot() const { return robotOnCell; };
+    //Robot *GetRobot() const { return robotOnCell; };
 
     //void SetRobot(Robot *entity) { robotOnCell = entity; };
 
 private:
-    Robot *robotOnCell{nullptr};
+    //Robot *robotOnCell{nullptr};
     CellType type{CellType::UNKNOWN};
 };

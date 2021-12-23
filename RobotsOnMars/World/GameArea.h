@@ -1,5 +1,7 @@
 #pragma once
-#include "MapLoader.h"
+
+#include "Cell.h"
+//#include "MapLoader.h"
 #include "Coordinates.h"
 
 class GameArea
@@ -38,7 +40,7 @@ public:
     size_t GetHeight() const;
 
     Cell GetCell(size_t x, size_t y);
-    Cell GetCell(Coordinates point);
+    Cell GetCell(const Coordinates &point);
     const Cell &GetCell(size_t x, size_t y) const;
     void SetCell(const Coordinates &coordinates, const CellType &cell);
 

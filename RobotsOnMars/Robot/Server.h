@@ -1,6 +1,7 @@
 //#include <vector>
 
-#include "World/World.h"
+#include "../World/World.h"
+
 //#include "Map.h"
 
 using namespace std;

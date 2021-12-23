@@ -1,7 +1,7 @@
 #pragma once
 #include "AutoMode.h"
-#include "Robot/Collector.h"
-#include "Robot/Sapper.h"
+#include "../Robot/Collector.h"
+#include "../Robot/Sapper.h"
 
 class AutoGrab : public AutoMode
 {

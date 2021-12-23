@@ -1,7 +1,7 @@
 #include "Server.h"
 //#include "Robot.h"
-#include "Robot/Sapper.h"
-#include "Robot/Collector.h"
+#include "../Robot/Sapper.h"
+#include "../Robot/Collector.h"
 
 class Collector;
 class Sapper;

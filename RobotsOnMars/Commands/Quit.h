@@ -1,5 +1,6 @@
 #include "ICommand.h"
-#include "Application/Manager.h"
+//#include "Application/Manager.h"
+
 
 class Quit : public ICommand
 {
