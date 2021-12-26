@@ -5,7 +5,7 @@ GameArea::GameArea(std::vector<std::vector<Cell>> &map)
 {
 }
 
-GameArea::GameArea(const int &x_size, const int &y_size)
+GameArea::GameArea(const size_t &x_size, const size_t &y_size)
 {
     mapWidth = x_size;
     mapHeight = y_size;
@@ -27,19 +27,28 @@ GameArea::GameArea()
     visibleGlobalMapWidth = 10;
 }
 
+GameArea::~GameArea()
+{
+    for (size_t i = 0; i < mapWidth; ++i)
+    {
+        map[i].clear();
+    }
+    map.clear();
+}
+
 void GameArea::CreateEmptyMap()
 {
-    std::vector<std::vector<Cell>> mapHolder;
+    //std::vector<std::vector<Cell>> mapHolder;
     Resize(mapWidth, mapHeight);
 
-    for (int i = 0; i < mapHeight; ++i)
+    for (size_t i = 0; i < mapHeight; ++i)
     {
-        for (int j = 0; j < mapWidth; ++j)
+        for (size_t j = 0; j < mapWidth; ++j)
         {
-            mapHolder[i][j] = Cell(CellType::UNKNOWN);
+            //mapHolder[i][j] = Cell(CellType::UNKNOWN);
+            map[i][j] = Cell(CellType::UNKNOWN);
         }
     }
-    map = mapHolder;
 }
 
 void GameArea::CreateRandomGlobalMap()
@@ -48,9 +57,9 @@ void GameArea::CreateRandomGlobalMap()
 
     CreateEmptyMap();
 
-    for (int i = 0; i < this->mapHeight; ++i)
+    for (size_t i = 0; i < this->mapHeight; ++i)
     {
-        for (int j = 0; j < this->mapWidth; ++j)
+        for (size_t j = 0; j < this->mapWidth; ++j)
         {
             map[i][j] = CellType::EMPTY;
         }
@@ -60,11 +69,11 @@ void GameArea::CreateRandomGlobalMap()
     this->bombsAmount = 10;
     this->rockAmount = 10;
 
-    int currentDiamondsAmount = 0;
-    int currentBombAmount = 0;
-    int currentRockAmount = 0;
+    size_t currentDiamondsAmount = 0;
+    size_t currentBombAmount = 0;
+    size_t currentRockAmount = 0;
 
-    for (int i = 0; i < 20; ++i)
+    for (size_t i = 0; i < 20; ++i)
     {
         if (currentRockAmount < this->rockAmount)
         {
@@ -84,18 +93,18 @@ void GameArea::CreateRandomGlobalMap()
     }
 }
 
-void GameArea::Resize(int x, int y)
+void GameArea::Resize(size_t x, size_t y)
 {
     //constructor of vector with size = y that stores vectors of Cells
     map = std::vector<std::vector<Cell>>(y, std::vector<Cell>(x));
 }
 
-int GameArea::GetWidth() const
+size_t GameArea::GetWidth() const
 {
     return map.size();
 }
 
-int GameArea::GetHeight() const
+size_t GameArea::GetHeight() const
 {
     if (!map.empty())
     {
@@ -105,26 +114,26 @@ int GameArea::GetHeight() const
         return 0;
 }
 
-bool GameArea::IsCellOnMap(Coordinates point) const
+bool GameArea::IsCellOnMap(Coordinates posize_t) const
 {
-    return (point.x < map.size() && point.y < map[0].size());
+    return (posize_t.x < map.size() && posize_t.y < map[0].size());
 }
 
-Cell GameArea::GetCell(const Coordinates &point)
+Cell GameArea::GetCell(const Coordinates &posize_t)
 {
-    if (point.x >= map.size() || point.y >= map[point.x].size())
+    if (posize_t.x >= map.size() || posize_t.y >= map[posize_t.x].size())
         throw std::runtime_error("Invalid cell coordinates");
-    return map[point.y][point.x];
+    return map[posize_t.y][posize_t.x];
 }
 
-Cell GameArea::GetCell(int x, int y)
+Cell GameArea::GetCell(size_t x, size_t y)
 {
     if (x >= map.size() || y >= map[x].size())
         throw std::runtime_error("Invalid cell coordinates");
     return map[y][x];
 }
 
-const Cell &GameArea::GetCell(int x, int y) const
+const Cell &GameArea::GetCell(size_t x, size_t y) const
 {
     if (x >= map.size() || y >= map[x].size())
         throw std::runtime_error("Invalid cell coordinates");

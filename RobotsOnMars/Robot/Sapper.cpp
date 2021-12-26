@@ -85,8 +85,8 @@ void Sapper::Defuse()
 {
     while (true)
     {
-        int x = rand() % exploredGameArea.GetWidth();
-        int y = rand() % exploredGameArea.GetHeight();
+        size_t x = rand() % exploredGameArea.GetWidth();
+        size_t y = rand() % exploredGameArea.GetHeight();
         Cell &cell = exploredGameArea.GetCell(x, y);
         if (CanBeSetOnCell(cell))
         {
@@ -95,8 +95,6 @@ void Sapper::Defuse()
         }
     }
 } */
-
-
 
 /* bool Sapper::CanBeSetOnCell(const Cell &cell) const
 {

@@ -5,11 +5,13 @@
 
 //#include "../Application/Manager.h"
 
+class Robot;
+
 class ICommand
 {
 public:
     virtual ~ICommand() = default;
-    virtual bool Execute() = 0;
+    virtual bool Execute(Robot *robot) = 0;
 
     //virtual CommandType GetCommandType() const = 0;
 };

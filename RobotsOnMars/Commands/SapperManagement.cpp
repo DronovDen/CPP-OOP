@@ -7,7 +7,7 @@ SapperManagement::SapperManagement(std::string switcher, Manager *manager)
 {
 }
 
-bool SapperManagement::Execute()
+bool SapperManagement::Execute(Robot *robot)
 {
     auto assemblies = manager->GetActiveRobots();
     if (state == "ON")
@@ -18,7 +18,7 @@ bool SapperManagement::Execute()
     }
     else if (state == "OFF")
     {
-        for (int i = 0; i < assemblies->size(); i++)
+        for (size_t i = 0; i < assemblies->size(); i++)
         {
             if (dynamic_cast<Sapper *>(assemblies->at(i).second))
             {
@@ -28,4 +28,5 @@ bool SapperManagement::Execute()
             }
         }
     }
+    return true;
 }

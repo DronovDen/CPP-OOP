@@ -6,4 +6,5 @@ enum class Direction : unsigned char
     RIGHT,
     UP,
     DOWN,
+    UNKNOWN
 };

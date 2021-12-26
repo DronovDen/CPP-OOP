@@ -7,7 +7,7 @@ void View::Render(Robot *robot, GameArea &map)
 
     if (robot->GetCoordinates().x >= map.GetVisibleGlobalMapWidth() - 1)
     {
-        long long diff = robot->GetCoordinates().x - map.GetVisibleGlobalMapWidth() + 2;
+        long diff = robot->GetCoordinates().x - map.GetVisibleGlobalMapWidth() + 2;
         if (diff + robot->GetCoordinates().x < map.getMapSizeX())
         {
             this->offsetX = diff;
@@ -28,38 +28,38 @@ void View::Render(Robot *robot, GameArea &map)
     }
     else if (robot->GetCoordinates().x < map.GetVisibleGlobalMapWidth())
     {
-        this->offsetX = 0;
+        this->offsetY = 0;
     }
-    for (int i = this->offsetY; i < map.GetVisibleGlobalMapWidth() + this->offsetY; ++i)
+    for (size_t i = this->offsetY; i < map.GetVisibleGlobalMapHeight() + this->offsetY; ++i)
     {
-        for (int j = this->offsetX; j < map.GetVisibleGlobalMapHeight() + this->offsetY; ++j)
+        for (size_t j = this->offsetX; j < map.GetVisibleGlobalMapWidth() + this->offsetX; ++j)
         {
-            Coordinates point(i, j);
-            if (map.GetCell(point).GetType() == CellType::EMPTY)
+            Coordinates posize_t(j, i);
+            if (map.GetCell(posize_t).GetType() == CellType::EMPTY)
             {
-                std::cout << " ";
+                std::cout << ".";
             }
-            else if (map.GetCell(point).GetType() == CellType::ROCK)
+            else if (map.GetCell(posize_t).GetType() == CellType::ROCK)
             {
                 std::cout << "^";
             }
-            else if (map.GetCell(point).GetType() == CellType::DIAMOND)
+            else if (map.GetCell(posize_t).GetType() == CellType::DIAMOND)
             {
                 std::cout << "D";
             }
-            else if (map.GetCell(point).GetType() == CellType::BOMB)
+            else if (map.GetCell(posize_t).GetType() == CellType::BOMB)
             {
                 std::cout << "*";
             }
-            else if (map.GetCell(point).GetType() == CellType::COLLECTOR)
+            else if (map.GetCell(posize_t).GetType() == CellType::COLLECTOR)
             {
                 std::cout << "C";
             }
-            else if (map.GetCell(point).GetType() == CellType::SAPPER)
+            else if (map.GetCell(posize_t).GetType() == CellType::SAPPER)
             {
                 std::cout << "S";
             }
-            else if (map.GetCell(point).GetType() == CellType::UNKNOWN)
+            else if (map.GetCell(posize_t).GetType() == CellType::UNKNOWN)
             {
                 std::cout << "?";
             }

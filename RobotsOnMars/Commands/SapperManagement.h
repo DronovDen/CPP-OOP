@@ -8,8 +8,8 @@ class SapperManagement : public ICommand
 {
 public:
     SapperManagement(std::string switcher, Manager *Manager);
-    virtual ~SapperManagement() = default;
-    virtual bool Execute() override;
+    //virtual ~SapperManagement() = default;
+    virtual bool Execute(Robot *robot) override;
     //virtual CommandType GetCommandType() { return CommandType::SAPPER; };
 
 private:

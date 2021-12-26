@@ -17,7 +17,7 @@
 
 bool AutoScan::Execute(Robot *robot)
 {
-    for (int i = 0; i < stepsNum; ++i)
+    for (size_t i = 0; i < stepsNum; ++i)
     {
         if (Step(robot))
         {

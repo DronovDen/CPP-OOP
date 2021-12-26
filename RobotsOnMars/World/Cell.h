@@ -26,10 +26,10 @@ class Cell
 {
 public:
     Cell() = default;
-    Cell(CellType type) : type{type} {}
+    Cell(CellType new_type) : type{new_type} {}
 
     CellType GetType() const { return type; };
-    void SetType(CellType type) { type = type; };
+    void SetType(CellType new_type) { type = new_type; };
 
     //Robot *GetRobot() const { return robotOnCell; };
 

@@ -11,8 +11,8 @@ GameArea MapLoader::Load() const
     if (!input.is_open())
         throw std::runtime_error("Can't open map file");
 
-    int width;
-    int height;
+    size_t width;
+    size_t height;
 
     input >> width;
     input >> height;
@@ -22,12 +22,12 @@ GameArea MapLoader::Load() const
 
     std::vector<std::vector<Cell>> map(height, std::vector<Cell>(width));
 
-    for (int i = 0; i < height; ++i)
+    for (size_t i = 0; i < height; ++i)
     {
-        for (int j = 0; j < width; ++j)
+        for (size_t j = 0; j < width; ++j)
         {
-            char symbol;
-            input >> symbol;
+            char symbol{};
+            input >> symbol; //NOT CORRECT!!!!
             map[i][j].SetType(ConvertCellTypes(symbol));
         }
     }
@@ -40,7 +40,7 @@ GameArea MapLoader::Load() const
 
 CellType MapLoader::ConvertCellTypes(char symb)
 {
-    if (symb == ' ')
+    if (symb == '.')
         return CellType::EMPTY;
     if (symb == '^')
         return CellType::ROCK;

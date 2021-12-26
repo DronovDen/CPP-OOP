@@ -25,7 +25,7 @@ public:
 
     bool IsCellAvaliable(const Coordinates &coordinates) const;
 
-    int GetCollectedDiamondsNum() { return collectedDiamonds; };
+    size_t GetCollectedDiamondsNum() { return collectedDiamonds; };
 
     auto GetDiamondsAvaliable() { return &diamondsAvaliable; };
     auto GetBombsAvaliable() { return &bombsAvaliable; };
@@ -48,7 +48,7 @@ private:
     vector<pair<Coordinates, Robot *>> robotsCoordinates;
     unordered_map<Robot *, vector<pair<Coordinates, CellType>>> robotsCache; //vector of robots changes
 
-    int collectedDiamonds;
+    size_t collectedDiamonds;
     vector<Coordinates> diamondsAvaliable;
     vector<Coordinates> bombsAvaliable;
 };

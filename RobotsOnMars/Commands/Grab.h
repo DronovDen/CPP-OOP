@@ -1,5 +1,5 @@
 #pragma once
-#include "../Commands/ManualCommands.h"
+#include "ManualCommands.h"
 
 class Robot;
 
@@ -7,7 +7,8 @@ class Grab : public ManualCommands
 {
 public:
     Grab() = default;
-    virtual ~Grab() = default;
+    //virtual ~Grab() = default;
     //virtual CommandType GetCommandType() { return CommandType::GRAB; };
-    virtual bool Execute(Robot *robot) override;
+    //bool Execute() { return true; };
+    bool Execute(Robot *robot) override;
 };

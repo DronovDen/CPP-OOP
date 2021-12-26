@@ -13,5 +13,5 @@ public:
 
     void Collect();
     void Scan();
-    void ScanCell(int x, int y) const;
+    void ScanCell(size_t x, size_t y) const;
 };

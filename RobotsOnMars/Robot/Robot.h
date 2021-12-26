@@ -34,7 +34,7 @@ public:
     //Coordinates Robot::GetPosition() const { return position; };
 
     //virtual void Move(Direction direction) = 0;
-    //virtual void Move(int x, int y) = 0;
+    //virtual void Move(size_t x, size_t y) = 0;
 
     bool IsAvailableToMove(const Coordinates &coordinates, Robot *robot) const;
     Coordinates CalculateTargetPos(const Direction &direction);

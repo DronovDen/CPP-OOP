@@ -8,17 +8,18 @@
 #include <string>
 
 class Manager;
+class Robot;
 
 class ChangeMode : public ICommand
 {
 public:
-    ChangeMode(std::string modeName, Manager *manager, int stepsNum);
+    ChangeMode(std::string modeName, Manager *manager, size_t stepsNum);
     ChangeMode(std::string modeName, Manager *manager);
     virtual ~ChangeMode() = default;
-    virtual bool Execute() override;
+    bool Execute(Robot *robot) override;
 
 private:
     std::string modeName;
     Manager *manager;
-    int stepsNum = 0;
+    size_t stepsNum = 0;
 };

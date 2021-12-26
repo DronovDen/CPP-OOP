@@ -1,15 +1,14 @@
 #pragma once
 
-
 class Coordinates
 {
 public:
-    int x;
-    int y;
+    size_t x;
+    size_t y;
 
-    Coordinates(int x, int y) : x{x}, y{y} {};
+    Coordinates(size_t x, size_t y) : x{x}, y{y} {};
     Coordinates() = default;
-    void setXY(int x, int y)
+    void setXY(size_t x, size_t y)
     {
         x = x;
         y = y;
@@ -23,9 +22,9 @@ public:
         temp.y = this->y - r.y;
         return temp;
     }
-    /*bool operator==(const Coordinates &point) const
+    /*bool operator==(const Coordinates &posize_t) const
     {
-        return (point.x == x && point.x == y);
+        return (posize_t.x == x && posize_t.x == y);
     }*/
     friend bool operator==(const Coordinates &r, const Coordinates &l)
     {

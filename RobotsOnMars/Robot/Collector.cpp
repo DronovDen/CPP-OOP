@@ -78,17 +78,17 @@ void Collector::Scan()
     ScanCell(position.x, position.y - 1);
 }
 
-void Collector::ScanCell(int x, int y) const
+void Collector::ScanCell(size_t x, size_t y) const
 {
-    Coordinates point{x, y};
-    if (!exploredGameArea->IsCellOnMap(point) ||
-        exploredGameArea->GetCell(point).GetType() != CellType::UNKNOWN)
+    Coordinates posize_t{x, y};
+    if (!exploredGameArea->IsCellOnMap(posize_t) ||
+        exploredGameArea->GetCell(posize_t).GetType() != CellType::UNKNOWN)
     {
         return;
     }
-    CellType globalCell = this->world->GetCellInRobotWorld(point);
-    exploredGameArea->SetCell(point, globalCell);
-    server->NotifyCellScanned(const_cast<Collector *>(this), std::make_pair(point, globalCell));
+    CellType globalCell = this->world->GetCellInRobotWorld(posize_t);
+    exploredGameArea->SetCell(posize_t, globalCell);
+    server->NotifyCellScanned(const_cast<Collector *>(this), std::make_pair(posize_t, globalCell));
 }
 
 /* bool Collector::CanBeSetOnCell(const Cell &cell) const
@@ -97,12 +97,12 @@ void Collector::ScanCell(int x, int y) const
 } */
 
 //for collector it's BAD to go on bomb
-/* bool Collector::AvailableForConcrete(int x, int y) const
+/* bool Collector::AvailableForConcrete(size_t x, size_t y) const
 {
     return (exploredGameArea.GetCell(x, y).GetType() != CellType::BOMB);
 } */
 
-/* void Collector::ScanCell(int x, int y) const
+/* void Collector::ScanCell(size_t x, size_t y) const
 {
     if (x >= world.GetWidth() || y >= world.GetHeight())
         return;

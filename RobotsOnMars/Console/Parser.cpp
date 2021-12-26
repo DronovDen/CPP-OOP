@@ -1,11 +1,15 @@
 #include "Parser.h"
-#include "../GameModes/ManualMode.h"
+#include "../Commands/ICommand.h"
 #include "../Commands/Scan.h"
 #include "../Commands/ChangeMode.h"
 #include "../Commands/Grab.h"
 #include "../Commands/Move.h"
 #include "../Commands/Quit.h"
+#include "../Commands/SapperManagement.h"
+#include "../GameModes/ManualMode.h"
 #include "../Application/Manager.h"
+
+//class Manager;
 
 Parser::Parser() : commandIdx{0}, mapWidth{15}, mapHeight{15} {}
 
@@ -19,11 +23,11 @@ ICommand *Parser::GetCurrentCommand(Manager *manager, bool necessary)
 ICommand *Parser::ParseCommand(Manager *manager, bool necessary)
 {
     ICommand *currentCommand = nullptr;
-    int activeRobotsNum = manager->GetActiveRobots()->size();
+    size_t activeRobotsNum = manager->GetActiveRobots()->size();
     Robot *robot = manager->GetActiveRobots()->at(0).second;
     ModeBasement *currentMode = manager->GetActiveRobots()->at(0).first;
     string word = "";
-    int stepsNum = 0;
+    size_t stepsNum = 0;
 
     if (necessary)
     {
@@ -62,8 +66,9 @@ ICommand *Parser::ParseCommand(Manager *manager, bool necessary)
                 word = GetNextWord();
                 if (word == "U" || word == "R" || word == "L" || word == "D")
                 {
-                    Direction dir = ParseDirection(word[0]);
-                    currentCommand = new Move(dir);
+                    //Direction dir = ParseDirection(word[0]);
+                    //currentCommand = new Move(dir);
+                    currentCommand = ParseMovement(word[0]);
                 }
             }
             else if (word == "SCAN")
@@ -88,19 +93,30 @@ string Parser::GetNextWord()
     return word;
 }
 
-Direction Parser::ParseDirection(char dir)
+ICommand *Parser::ParseMovement(char dir)
 {
-    switch (dir)
+    Direction where;
+    if (dir == 'U')
+        where = Direction::UP;
+    else if (dir == 'D')
+        where = Direction::DOWN;
+    else if (dir == 'R')
+        where = Direction::RIGHT;
+    else if (dir == 'L')
+        where = Direction::LEFT;
+    /*switch (dir)
     {
     case 'U':
-        return Direction::UP;
+        where = Direction::UP;
     case 'D':
-        return Direction::DOWN;
+        where = Direction::DOWN;
     case 'L':
-        return Direction::LEFT;
+        where = Direction::LEFT;
     case 'R':
-        return Direction::RIGHT;
-    }
+        where = Direction::RIGHT;
+    }*/
+
+    return new Move(where);
 }
 
 /* void Parser::split(const std::string &s, char delimiter)

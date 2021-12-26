@@ -1,10 +1,18 @@
 #include "Manager.h"
+#include "../Console/MapLoader.h"
+#include "../GameModes/InactiveMode.h"
+#include "../GameModes/AutoGrab.h"
 #include "../GameModes/ManualMode.h"
 #include "../GameModes/AutoScan.h"
 #include "../Commands/ChangeMode.h"
 #include "../Commands/Quit.h"
+#include "../Commands/SapperManagement.h"
+#include "../Commands/ManualCommands.h"
+#include "../Console/Parser.h"
 
-Manager::Manager(int argc, char *argv[])
+//class Parser;
+
+Manager::Manager(size_t argc, char *argv[])
 {
     currCommand = nullptr;
     commandParser = new Parser();
@@ -38,7 +46,7 @@ Manager::~Manager()
     delete commandParser;
     delete server;
 
-    for (int i = 0; i < modesRange.size(); ++i)
+    for (size_t i = 0; i < modesRange.size(); ++i)
     {
         modesRange.erase(modesRange.begin());
     }
@@ -48,7 +56,7 @@ Manager::~Manager()
         activeRobots.erase(activeRobots.begin());
     }
 
-    /* for (int i = 0; i < activeRobots.size(); ++i)
+    /* for (size_t i = 0; i < activeRobots.size(); ++i)
     {
         activeRobots.erase(activeRobots.begin());
     }*/
@@ -83,7 +91,7 @@ bool Manager::DoStep()
                  dynamic_cast<SapperManagement *>(currCommand) ||
                  dynamic_cast<Quit *>(currCommand))
         {
-            stepResult = currCommand->Execute();
+            stepResult = currCommand->Execute(nullptr);
         }
 
         delete currCommand;

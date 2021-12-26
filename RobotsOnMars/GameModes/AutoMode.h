@@ -24,7 +24,7 @@ public:
 
     //or protected?
     std::deque<Direction> FindPath(Robot *robot, CellType targetCell, std::vector<CellType> &restrictedCells);
-    bool ExploreArea(std::vector<Coordinates> &points, CellType targetCell, std::vector<CellType> &restrictedCells);
+    bool ExploreArea(std::vector<Coordinates> &posize_ts, CellType targetCell, std::vector<CellType> &restrictedCells);
 
 private:
     static Coordinates Up(const Coordinates &p);
@@ -34,9 +34,9 @@ private:
 
     using TDir = std::map<Direction, std::function<Coordinates(const Coordinates &p)>>;
 
-    //bool ExploreArea(std::vector<Coordinates> &points, CellType desiredCell, std::vector<CellType> &forbiddenCells);
+    //bool ExploreArea(std::vector<Coordinates> &posize_ts, CellType desiredCell, std::vector<CellType> &forbiddenCells);
 
-    std::deque<Direction> Convert(const std::vector<Coordinates> &points);
+    std::deque<Direction> Convert(const std::vector<Coordinates> &posize_ts);
     Direction FindDirection(const Coordinates &from, const Coordinates &to);
 
     //might be mutable

@@ -7,18 +7,24 @@
 #include <map>
 //#include "World/World.h"
 
-#include "../World/GameArea.h"
+//#include "../World/GameArea.h"
 #include "../GameModes/ModeBasement.h"
 #include "../Robot/Robot.h"
 #include "../Robot/Server.h"
 #include "../Commands/ICommand.h"
-#include "../Console/Parser.h"
-#include "../Console/MapLoader.h"
-#include "../GameModes/InactiveMode.h"
-#include "../GameModes/AutoGrab.h"
+//#include "../Console/Parser.h"
+//#include "../Console/MapLoader.h"
+//#include "../GameModes/InactiveMode.h"
+//#include "../GameModes/AutoGrab.h"
+
+//#include "../GameModes/ManualMode.h"
 #include "View.h"
 
 class Parser;
+class MapLoader;
+class ManualMode;
+class GameArea;
+//class Parser;
 
 //#include "../Robot/Collector.h"
 
@@ -38,7 +44,7 @@ using namespace std;
 class Manager
 {
 public:
-    Manager(int argc, char **argv);
+    Manager(size_t argc, char **argv);
     ~Manager();
 
     void ExecuteGame();

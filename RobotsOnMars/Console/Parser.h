@@ -1,7 +1,8 @@
 #pragma once
-#include "../World/GameArea.h"
-#include "../Commands/SapperManagement.h"
-#include "../Robot/Direction.h"
+//#include "../World/GameArea.h"
+//#include "../Commands/SapperManagement.h"
+//#include "../Robot/Direction.h"
+//#include "../Commands/ICommand.h"
 //#include "../Commands/ICommand.h"
 //#include <unordered_map>
 //#include <map>
@@ -11,9 +12,9 @@
 //#include <functional>
 //#include <iostream>
 
+class ManualMode;
 class Manager;
 class ICommand;
-
 
 class Parser
 {
@@ -25,15 +26,15 @@ public:
     //ICommand *Parse(std::istream &stream);
 
     std::string GetNextWord();
-    //int GetNextNumber();
-    Direction ParseDirection(char dir);
+    //size_t GetNextNumber();
+    ICommand *ParseMovement(char dir);
     void ClearCommandsBuffer();
     //void split(const std::string &s, char delimiter);
     void GetConsoleArgs(std::istream &cin);
 
 private:
-    int commandIdx;
-    int mapWidth;
-    int mapHeight;
+    size_t commandIdx;
+    size_t mapWidth;
+    size_t mapHeight;
     std::vector<std::string> CommandsBuffer;
 };

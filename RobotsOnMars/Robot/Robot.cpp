@@ -17,7 +17,7 @@ bool Robot::IsAvailableToMove(const Coordinates &coordinates, Robot *robot) cons
     CellType cellType = world->GetCellInRobotWorld(coordinates);
 
     if ((cellType == CellType::EMPTY || cellType == CellType::DIAMOND || (dynamic_cast<Sapper *>(robot) && cellType == CellType::BOMB)) &&
-        !exploredGameArea->IsCellOnMap(coordinates))
+        exploredGameArea->IsCellOnMap(coordinates))
     {
         return true;
     }
@@ -38,7 +38,7 @@ Coordinates Robot::GetSpawnCoordinates()
     return spawn;
 }
 
-Direction Robot::GetDirection(const Coordinates &difference)
+/* Direction Robot::GetDirection(const Coordinates &difference)
 {
     if (difference.x == 0)
     {
@@ -54,7 +54,7 @@ Direction Robot::GetDirection(const Coordinates &difference)
         if (difference.x == -1)
             return Direction::LEFT;
     }
-}
+} */
 
 Coordinates Robot::CalculateNewCoordinates(const Direction &direction)
 {
@@ -70,11 +70,11 @@ Coordinates Robot::CalculateNewCoordinates(const Direction &direction)
     }
     else if (direction == Direction::LEFT)
     {
-        coord.y = (position.x - 1);
+        coord.x = (position.x - 1);
     }
-    else if (direction == Direction::LEFT)
+    else if (direction == Direction::RIGHT)
     {
-        coord.y = (position.x + 1);
+        coord.x = (position.x + 1);
     }
     return coord;
 }
@@ -138,15 +138,15 @@ void Robot::updateMap()
 } */
 
 //for basic robot and sapper it's normal to go on bomb
-/* bool Robot::AvailableForConcrete(int x, int y) const
+/* bool Robot::AvailableForConcrete(size_t x, size_t y) const
 {
     return true;
 } */
 
-/* std::pair<int, int> Robot::CalculateTargetPos(Direction dir) const
+/* std::pair<size_t, size_t> Robot::CalculateTargetPos(Direction dir) const
 {
-    int size_x = position.x;
-    int size_y = position.y;
+    size_t size_x = position.x;
+    size_t size_y = position.y;
     if (dir == Direction::LEFT)
     {
         if (size_x > 0)

@@ -8,4 +8,5 @@ bool Scan::Execute(Robot *robot)
 {
     dynamic_cast<Collector *>(robot)->Scan();
     //gameInterface.Player->GetCollector().Scan();
+    return true;
 }

@@ -9,5 +9,7 @@ Move::Move(Direction direction)
 bool Move::Execute(Robot *robot)
 {
     dynamic_cast<Collector *>(robot)->Move(direction);
+
     //simulation.Player->GetCollector().Move(direction);
+    return true;
 }
