@@ -27,7 +27,7 @@ GameArea MapLoader::Load() const
         for (size_t j = 0; j < width; ++j)
         {
             char symbol{};
-            input >> symbol; //NOT CORRECT!!!!
+            input >> symbol;
             map[i][j].SetType(ConvertCellTypes(symbol));
         }
     }

@@ -5,8 +5,6 @@
 
 class ICommand;
 
-//class ManualCommands;
-
 void ManualMode::SetCommand(ICommand *command)
 {
     if (dynamic_cast<Grab *>(command))
@@ -24,8 +22,7 @@ void ManualMode::SetCommand(ICommand *command)
 }
 
 bool ManualMode::ExecuteManual(Robot *robot)
- {
-    //bool result = true;
+{
     bool result = dynamic_cast<ICommand *>(command)->Execute(robot);
     return result;
 }

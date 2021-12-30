@@ -1,12 +1,8 @@
 #include "ChangeMode.h"
-//#include "../Robot/Collector.h"
-//#include "../Robot/Sapper.h"
-//#include "../GameModes/AutoScan.h"
 #include "../Application/Manager.h"
 #include "../GameModes/AutoScan.h"
 #include "../Robot/Sapper.h"
 #include "../Robot/Collector.h"
-//#include "GameModes/AutoScan.h"
 
 ChangeMode::ChangeMode(std::string newModeName, Manager *newManager, size_t newStepsNum)
     : modeName{newModeName}, manager{newManager}, stepsNum{newStepsNum}

@@ -44,9 +44,6 @@ bool AutoMode::ExploreArea(std::deque<Coordinates> &points, CellType targetCell,
     //start exploring area from it
     GameArea *gameArea = server->GetActualGameArea();
 
-    //GameArea gameArea = manager->GetCurrentMap();
-
-    //const auto &gameArea = simulation.Player->GetExploredGameArea();
     //4 - number of directions
     for (size_t i = 0; i < 4; ++i)
     {
@@ -100,7 +97,7 @@ Direction AutoMode::FindDirection(const Coordinates &from, const Coordinates &to
 
 std::deque<Direction> AutoMode::FindPath(Robot *robot, CellType targetCell, std::vector<CellType> &restrictedCells)
 {
-    std::deque<Coordinates> points;  //vector of path points
+    std::deque<Coordinates> points;   //vector of path points
     std::deque<Direction> directions; //deque of instructions for robot to be executed
     const Coordinates coord = robot->GetCoordinates();
     SetServer(robot->GetServer());

@@ -3,8 +3,6 @@
 #include "../World/GameArea.h"
 #include <fstream>
 
-//class GameArea;
-
 class MapLoader
 {
 public:

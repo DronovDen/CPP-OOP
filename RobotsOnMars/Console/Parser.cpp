@@ -9,8 +9,6 @@
 #include "../GameModes/ManualMode.h"
 #include "../Application/Manager.h"
 
-//class Manager;
-
 Parser::Parser() : commandIdx{0}, mapWidth{15}, mapHeight{15} {}
 
 ICommand *Parser::GetCurrentCommand(Manager *manager, bool necessary)
@@ -45,7 +43,6 @@ ICommand *Parser::ParseCommand(Manager *manager, bool necessary)
             }
             else if (word == "AUTOSCAN")
             {
-                //stepsNum = getNextNumber();
                 stepsNum = stoull(CommandsBuffer.at(commandIdx));
                 currentCommand = new ChangeMode(word, manager, stepsNum);
             }
@@ -70,8 +67,6 @@ ICommand *Parser::ParseCommand(Manager *manager, bool necessary)
                 word = GetNextWord();
                 if (word == "U" || word == "R" || word == "L" || word == "D")
                 {
-                    //Direction dir = ParseDirection(word[0]);
-                    //currentCommand = new Move(dir);
                     currentCommand = ParseMovement(word[0]);
                 }
             }
@@ -80,7 +75,7 @@ ICommand *Parser::ParseCommand(Manager *manager, bool necessary)
                 currentCommand = new Scan();
             }
         }
-        }
+    }
 
     ClearCommandsBuffer();
     return currentCommand;
@@ -104,38 +99,14 @@ ICommand *Parser::ParseMovement(char dir)
         where = Direction::RIGHT;
     else if (dir == 'L')
         where = Direction::LEFT;
-    /*switch (dir)
-    {
-    case 'U':
-        where = Direction::UP;
-    case 'D':
-        where = Direction::DOWN;
-    case 'L':
-        where = Direction::LEFT;
-    case 'R':
-        where = Direction::RIGHT;
-    }*/
 
     return new Move(where);
 }
-
-/* void Parser::split(const std::string &s, char delimiter)
-{
-    vector<string> ToParse;
-    string token;
-    istringstream tokenStream(s);
-    while (std::getline(tokenStream, token, delimiter))
-    {
-        ToParse.push_back(token);
-    }
-    CommandsBuffer = ToParse;
-} */
 
 void Parser::GetConsoleArgs(std::istream &cin)
 {
     string cache = "";
     getline(cin, cache);
-    //split(cache, ' ');
     vector<string> ToParse;
     string token;
     std::istringstream tokenStream(cache);

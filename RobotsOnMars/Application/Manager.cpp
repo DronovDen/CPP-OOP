@@ -10,8 +10,6 @@
 #include "../Commands/ManualCommands.h"
 #include "../Console/Parser.h"
 
-//class Parser;
-
 Manager::Manager()
 {
     currCommand = nullptr;
@@ -20,9 +18,6 @@ Manager::Manager()
     MapLoader loader("map.txt");
     globalMap = loader.Load();
     //globalMap.createRandomGlobalMap();
-
-    //this->parser->setFileNameOfMap(argc, argv);
-    //this->parser->getMapFromFile(this->globalMap);
 
     server = new Server();
 
@@ -36,9 +31,7 @@ Manager::Manager()
     modesRange["AUTOGRAB"] = autoGrab;
     modesRange["INACTIVE"] = inactive;
 
-    //modesRange = {{"MANUAL", mm}, {"SCAN", sm}, {"AUTO", am}, {"INACTIVE", im}};
     Collector *collector = new Collector(&globalMap, server);
-    //server->NotifyRobotCreated(collector);
     activeRobots.push_back(std::make_pair(manual, collector));
 }
 
@@ -56,11 +49,6 @@ Manager::~Manager()
     {
         activeRobots.erase(activeRobots.begin());
     }
-
-    /* for (size_t i = 0; i < activeRobots.size(); ++i)
-    {
-        activeRobots.erase(activeRobots.begin());
-    }*/
 }
 
 void Manager::ExecuteGame()
@@ -104,11 +92,9 @@ bool Manager::DoStep()
             //if not manual - perform preloaded behaviour
             if (!dynamic_cast<ManualMode *>(i.first))
             {
-                //i.second->updateMap();
                 stepResult = i.first->Execute(i.second);
             }
         }
-        //activeRobots.at(0).second->updateMap();
     }
     catch (exception &ex)
     {

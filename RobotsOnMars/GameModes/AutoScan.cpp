@@ -3,18 +3,6 @@
 #include "../Robot/Collector.h"
 #include "../World/GameArea.h"
 
-/* bool AutoScan::Execute(Robot *robot)
-{
-    //dynamic_cast<Collector *>(robot)->Scan();
-    //robot->updateMap();
-    while (this->stepsNum != 0)
-    {
-        auto path = FindPath(robot, CellType::UNKNOWN, restrictedCells);
-        if (path.empty())
-            return false;
-    }
-} */
-
 bool AutoScan::Execute(Robot *robot)
 {
     for (size_t i = 0; i < stepsNum; ++i)
@@ -45,7 +33,6 @@ bool AutoScan::Step(Robot *robot)
     for (auto &direction : path)
     {
         collector->Move(direction);
-
     }
     collector->Scan();
     return true;

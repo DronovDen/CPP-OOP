@@ -31,7 +31,6 @@ void View::Render(Robot *robot, GameArea &map)
         this->offsetY = 0;
     }
 
-    //maybe this->offset % map.GetVisibleGlobalMapHeight() ????
     size_t maxY;
     size_t maxX;
     if (offsetY + map.GetVisibleGlobalMapHeight() <= map.getMapSizeY())
@@ -43,7 +42,7 @@ void View::Render(Robot *robot, GameArea &map)
     }
     if (offsetX + map.GetVisibleGlobalMapWidth() <= map.getMapSizeX())
         maxX = map.GetVisibleGlobalMapWidth() + offsetX;
-    else 
+    else
     {
         //maxX = map.getMapSizeX();
         maxX = map.getMapSizeX() - map.GetVisibleGlobalMapWidth();

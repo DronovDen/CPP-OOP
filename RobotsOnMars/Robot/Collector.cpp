@@ -1,8 +1,5 @@
 #include "Collector.h"
 #include "Server.h"
-//#include "World/IWorld.h"
-//#include "GameArea/Cell.h"
-//#include "GameArea/GameArea.h"
 
 Collector::Collector(GameArea *globalGameArea, Server *server)
 {
@@ -35,7 +32,7 @@ void Collector::Move(const Direction &direction)
         exploredGameArea->SetCell(newCoord, CellType::COLLECTOR);
         server->NotifyRobotMoved(this, position, newCoord);
         position = newCoord;
-        updateMap(); //we are updating map because collector can be blown up by mine
+        updateMap();
     }
     else
     {
@@ -94,21 +91,3 @@ void Collector::ScanCell(size_t x, size_t y) const
     exploredGameArea->SetCell(point, globalCell);
     server->NotifyCellScanned(const_cast<Collector *>(this), std::make_pair(point, globalCell));
 }
-
-/* bool Collector::CanBeSetOnCell(const Cell &cell) const
-{
-    return (cell.GetType() != CellType::ROCK && cell.GetType() != CellType::BOMB && cell.GetRobot() == nullptr);
-} */
-
-//for collector it's BAD to go on bomb
-/* bool Collector::AvailableForConcrete(size_t x, size_t y) const
-{
-    return (exploredGameArea.GetCell(x, y).GetType() != CellType::BOMB);
-} */
-
-/* void Collector::ScanCell(size_t x, size_t y) const
-{
-    if (x >= world.GetWidth() || y >= world.GetHeight())
-        return;
-    exploredGameArea.GetCell(x, y).SetType(world.GetCell(x, y).GetType());
-} */

@@ -1,10 +1,5 @@
 #pragma once
-
 #include "ICommand.h"
-//#include "GameModes/ModeBasement.h"
-
-//#include "../Application/Manager.h"
-//#include "Robot/Robot.h"
 #include <string>
 
 class Manager;

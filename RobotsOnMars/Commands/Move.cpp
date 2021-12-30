@@ -17,6 +17,5 @@ bool Move::Execute(Robot *robot)
     {
         throw;
     }
-    //dynamic_cast<Collector *>(robot)->Move(direction);
     return true;
 }
