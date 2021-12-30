@@ -26,7 +26,7 @@ void Collector::Move(const Direction &direction)
     Coordinates newCoord = CalculateNewCoordinates(direction);
     if (newCoord.x < 0 || newCoord.y < 0)
     {
-        throw runtime_error("Invalid coordinates ");
+        throw invalid_argument("Invalid coordinates ");
     }
     CellType newPos = exploredGameArea->GetCell(newCoord).GetType();
     if (IsAvailableToMove(newCoord, this) && exploredGameArea->GetCell(newCoord).GetType() != CellType::UNKNOWN)
@@ -36,6 +36,10 @@ void Collector::Move(const Direction &direction)
         server->NotifyRobotMoved(this, position, newCoord);
         position = newCoord;
         updateMap(); //we are updating map because collector can be blown up by mine
+    }
+    else
+    {
+        throw runtime_error("Can't move");
     }
 }
 
@@ -63,7 +67,7 @@ void Collector::Collect()
 {
     if (this->world->GetDiamondHolder())
     {
-        exploredGameArea->SetDiamondsAmount(exploredGameArea->GetDiamondsAmount() + 1);
+        exploredGameArea->SetDiamondsAmount(exploredGameArea->GetDiamondsAmount() - 1);
         this->world->SetDiamondHolder(false);
         this->server->NotifyDiamondCollected(this, this->position);
     }
@@ -80,15 +84,15 @@ void Collector::Scan()
 
 void Collector::ScanCell(size_t x, size_t y) const
 {
-    Coordinates posize_t{x, y};
-    if (!exploredGameArea->IsCellOnMap(posize_t) ||
-        exploredGameArea->GetCell(posize_t).GetType() != CellType::UNKNOWN)
+    Coordinates point{x, y};
+    if (!exploredGameArea->IsCellOnMap(point) ||
+        exploredGameArea->GetCell(point).GetType() != CellType::UNKNOWN)
     {
         return;
     }
-    CellType globalCell = this->world->GetCellInRobotWorld(posize_t);
-    exploredGameArea->SetCell(posize_t, globalCell);
-    server->NotifyCellScanned(const_cast<Collector *>(this), std::make_pair(posize_t, globalCell));
+    CellType globalCell = this->world->GetCellInRobotWorld(point);
+    exploredGameArea->SetCell(point, globalCell);
+    server->NotifyCellScanned(const_cast<Collector *>(this), std::make_pair(point, globalCell));
 }
 
 /* bool Collector::CanBeSetOnCell(const Cell &cell) const

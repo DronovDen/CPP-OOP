@@ -38,49 +38,52 @@ Coordinates AutoMode::Left(const Coordinates &p)
     return Coordinates(p.x - 1, p.y);
 }
 
-bool AutoMode::ExploreArea(std::vector<Coordinates> &posize_ts, CellType targetCell, std::vector<CellType> &restrictedCells)
+bool AutoMode::ExploreArea(std::deque<Coordinates> &points, CellType targetCell, std::vector<CellType> &restrictedCells)
 {
-    const auto &cur = posize_ts.back(); //last cell in current path
+    const auto &cur = points.back(); //last cell in current path
     //start exploring area from it
-    GameArea gameArea = manager->GetCurrentMap();
+    GameArea *gameArea = server->GetActualGameArea();
+
     //GameArea gameArea = manager->GetCurrentMap();
 
     //const auto &gameArea = simulation.Player->GetExploredGameArea();
     //4 - number of directions
     for (size_t i = 0; i < 4; ++i)
     {
-        auto posize_t = directions[Direction(i)](cur);
+        auto point = directions[Direction(i)](cur);
 
-        //checking if posize_t is on gameArea or is in path already
-        if (!gameArea.IsCellOnMap(posize_t) || std::find(std::cbegin(posize_ts), std::cend(posize_ts), posize_t) != std::cend(posize_ts))
+        //checking if point is on gameArea or is in path already
+        if (!gameArea->IsCellOnMap(point) || std::find(std::cbegin(points), std::cend(points), point) != std::cend(points))
             continue;
-        auto cell = gameArea.GetCell(posize_t.x, posize_t.y);
+        auto cell = gameArea->GetCell(point.x, point.y);
         if (cell.GetType() == CellType::SAPPER || cell.GetType() == CellType::COLLECTOR)
             continue;
-        if (cell.GetType() == targetCell) //if cell isn't researched already - good!
+        if (cell.GetType() == targetCell) //if cell isn't researched already or it is diamond/bomb - good!
         {
-            posize_ts.push_back(posize_t);
+            point.previous = &cur;
+            points.emplace_back(point);
             return true; //path was found
         }
         //checking if cell isn't restricted for robot
         if (std::find(std::cbegin(restrictedCells), std::cend(restrictedCells), cell.GetType()) == std::cend(restrictedCells))
         {
-            posize_ts.push_back(posize_t);
-            if (ExploreArea(posize_ts, targetCell, restrictedCells))
+            point.previous = &cur;
+            points.push_back(point);
+            if (ExploreArea(points, targetCell, restrictedCells))
                 return true;
         }
     }
     return false;
 }
 
-std::deque<Direction> AutoMode::Convert(const std::vector<Coordinates> &posize_ts)
+std::deque<Direction> AutoMode::Convert(const std::deque<Coordinates> &points)
 {
     std::deque<Direction> result;
-    auto *posize_t = &posize_ts.back();
-    while (posize_t->previous != nullptr)
+    auto *point = &points.back();
+    while (point->previous != nullptr)
     {
-        result.push_front(FindDirection(*posize_t->previous, *posize_t));
-        posize_t = posize_t->previous;
+        result.push_front(FindDirection(*point->previous, *point));
+        point = point->previous;
     }
     return result;
 }
@@ -97,13 +100,14 @@ Direction AutoMode::FindDirection(const Coordinates &from, const Coordinates &to
 
 std::deque<Direction> AutoMode::FindPath(Robot *robot, CellType targetCell, std::vector<CellType> &restrictedCells)
 {
-    std::vector<Coordinates> posize_ts; //vector of path posize_ts
-    std::deque<Direction> directions;   //deque of instructions for robot to be executed
-    Coordinates coord = robot->GetCoordinates();
-    posize_ts.push_back(coord); //<-- Robot position
-    if (ExploreArea(posize_ts, targetCell, restrictedCells))
+    std::deque<Coordinates> points;  //vector of path points
+    std::deque<Direction> directions; //deque of instructions for robot to be executed
+    const Coordinates coord = robot->GetCoordinates();
+    SetServer(robot->GetServer());
+    points.emplace_back(coord); //<-- Robot position
+    if (ExploreArea(points, targetCell, restrictedCells))
     {
-        directions = Convert(posize_ts);
+        directions = Convert(points);
     }
     return directions;
 }

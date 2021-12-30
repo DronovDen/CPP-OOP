@@ -4,6 +4,7 @@
 //#include "World/IWorld.h"
 #include "Server.h"
 #include "Sapper.h"
+#include "Collector.h"
 
 Robot::Robot() : world(new World()), server(nullptr), position({0, 0}), exploredGameArea(nullptr) {}
 
@@ -14,10 +15,18 @@ Robot::~Robot()
 
 bool Robot::IsAvailableToMove(const Coordinates &coordinates, Robot *robot) const
 {
-    CellType cellType = world->GetCellInRobotWorld(coordinates);
+    CellType cellType;
+    if (dynamic_cast<Collector *>(robot))
+    {
+        cellType = world->GetCellInRobotWorld(coordinates);
+    }
+    else if (dynamic_cast<Sapper *>(robot))
+    {
+        cellType = server->GetActualGameArea()->GetCell(coordinates).GetType();
+    }
 
     if ((cellType == CellType::EMPTY || cellType == CellType::DIAMOND || (dynamic_cast<Sapper *>(robot) && cellType == CellType::BOMB)) &&
-        exploredGameArea->IsCellOnMap(coordinates))
+        exploredGameArea->IsCellOnMap(coordinates) && cellType != CellType::UNKNOWN)
     {
         return true;
     }
@@ -37,6 +46,7 @@ Coordinates Robot::GetSpawnCoordinates()
     }
     return spawn;
 }
+
 
 /* Direction Robot::GetDirection(const Coordinates &difference)
 {

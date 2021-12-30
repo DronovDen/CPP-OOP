@@ -5,9 +5,9 @@ void ModeBasement::SetCommand(ICommand *command)
     this->command = command;
 }
 
-void ModeBasement::SetManager(Manager *manager)
+void ModeBasement::SetServer(Server* newServer)
 {
-    this->manager = manager;
+    this->server = newServer;
 }
 
 bool ModeBasement::Execute(Robot *robot)

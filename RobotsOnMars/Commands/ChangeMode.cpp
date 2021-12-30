@@ -8,33 +8,33 @@
 #include "../Robot/Collector.h"
 //#include "GameModes/AutoScan.h"
 
-ChangeMode::ChangeMode(std::string modeName, Manager *manager, size_t stepsNum)
-    : modeName{modeName}, manager{manager}, stepsNum{stepsNum}
+ChangeMode::ChangeMode(std::string newModeName, Manager *newManager, size_t newStepsNum)
+    : modeName{newModeName}, manager{newManager}, stepsNum{newStepsNum}
 {
 }
 
-ChangeMode::ChangeMode(std::string modeName, Manager *manager)
-    : modeName{modeName}, manager{manager}
+ChangeMode::ChangeMode(std::string newModeName, Manager *newManager)
+    : modeName{newModeName}, manager{newManager}
 {
 }
 
 bool ChangeMode::Execute(Robot *robot)
 {
     auto modes = manager->GetModesRange();
-    //Mode* currentMode = nullptr;
-    ModeBasement *currentMode = (modes->find(this->modeName))->second;
+    ModeBasement *currentMode = nullptr;
+    currentMode = (modes->find(this->modeName))->second;
     auto assemblies = manager->GetActiveRobots();
     for (size_t i = 0; i < assemblies->size(); i++)
     {
         if (dynamic_cast<Collector *>(assemblies->at(i).second))
         {
             assemblies->at(i).first = currentMode;
-            if (this->modeName == "SCAN")
+            if (this->modeName == "AUTOSCAN")
             {
                 dynamic_cast<AutoScan *>(currentMode)->SetStepsNum(this->stepsNum);
             }
         }
-        else if (dynamic_cast<Sapper *>(assemblies->at(i).second) && this->modeName == "AUTO")
+        else if (dynamic_cast<Sapper *>(assemblies->at(i).second) && this->modeName == "AUTOGRAB")
         {
             assemblies->at(i).first = currentMode;
         }

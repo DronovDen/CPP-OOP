@@ -11,9 +11,9 @@ Sapper::Sapper(GameArea *globalGameArea, Server *server)
     exploredGameArea->SetCell(this->position, CellType::SAPPER);
     //exploredGameArea.GetCell(this->position)->SetType(CellType::SAPPER);
     server->NotifyRobotCreated(this, this->position);
+    server->applyOthersRobotsChanges();
     SetExploredArea(server->GetActualGameArea());
-
-    updateMap();
+    //updateMap();
 }
 
 Sapper::~Sapper()
@@ -26,7 +26,7 @@ void Sapper::Move(const Direction &direction)
     Coordinates newCoord = CalculateNewCoordinates(direction);
     if (newCoord.x < 0 || newCoord.y < 0)
     {
-        throw runtime_error("Invalid coordinates");
+        throw invalid_argument("Invalid coordinates");
     }
     CellType newPos = exploredGameArea->GetCell(newCoord).GetType();
     if (IsAvailableToMove(newCoord, this) && exploredGameArea->GetCell(newCoord).GetType() != CellType::UNKNOWN)
@@ -38,7 +38,7 @@ void Sapper::Move(const Direction &direction)
     }
     else
     {
-        throw("Can't move");
+        throw runtime_error("Can't move");
     }
 }
 

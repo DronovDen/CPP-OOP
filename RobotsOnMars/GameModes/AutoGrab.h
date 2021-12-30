@@ -15,7 +15,7 @@ public:
     bool Execute(Robot *robot);
     bool Step(Robot *robot);
     void ImplementPath(Robot *robot, const std::deque<Direction> &path);
-    void Defuse(Robot *robot);  //sapper picks up bombs
-    void Collect(Robot *robot); //collector picks up diamonds
+    bool Defuse(Robot *robot);  //sapper picks up bombs
+    bool Collect(Robot *robot); //collector picks up diamonds
     //virtual void RenderPath() override;
 };

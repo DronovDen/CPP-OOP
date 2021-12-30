@@ -44,7 +44,7 @@ using namespace std;
 class Manager
 {
 public:
-    Manager(size_t argc, char **argv);
+    Manager();
     ~Manager();
 
     void ExecuteGame();

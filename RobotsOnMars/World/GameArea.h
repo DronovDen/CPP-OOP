@@ -39,13 +39,13 @@ public:
 
     void Resize(size_t x, size_t y);
 
-    bool IsCellOnMap(Coordinates posize_t) const;
+    bool IsCellOnMap(Coordinates point) const;
 
     size_t GetWidth() const;
     size_t GetHeight() const;
 
     Cell GetCell(size_t x, size_t y);
-    Cell GetCell(const Coordinates &posize_t);
+    Cell GetCell(const Coordinates &point);
     const Cell &GetCell(size_t x, size_t y) const;
     void SetCell(const Coordinates &coordinates, const CellType &cell);
 

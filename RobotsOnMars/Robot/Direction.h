@@ -2,9 +2,9 @@
 
 enum class Direction : unsigned char
 {
-    LEFT,
-    RIGHT,
     UP,
     DOWN,
+    LEFT,
+    RIGHT,
     UNKNOWN
 };

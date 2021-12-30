@@ -6,8 +6,8 @@ public:
     size_t x;
     size_t y;
 
-    Coordinates(size_t x, size_t y) : x{x}, y{y} {};
-    Coordinates() = default;
+    Coordinates(size_t new_x, size_t new_y) : x{new_x}, y{new_y} {};
+    Coordinates() : x{ 0 }, y{ 0 }{};
     void setXY(size_t x, size_t y)
     {
         x = x;
@@ -22,9 +22,9 @@ public:
         temp.y = this->y - r.y;
         return temp;
     }
-    /*bool operator==(const Coordinates &posize_t) const
+    /*bool operator==(const Coordinates &point) const
     {
-        return (posize_t.x == x && posize_t.x == y);
+        return (point.x == x && point.x == y);
     }*/
     friend bool operator==(const Coordinates &r, const Coordinates &l)
     {

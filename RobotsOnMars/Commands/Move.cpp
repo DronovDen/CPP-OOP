@@ -1,5 +1,6 @@
 #include "Move.h"
 #include "../Robot/Collector.h"
+#include <exception>
 
 Move::Move(Direction direction)
     : direction(direction)
@@ -8,8 +9,14 @@ Move::Move(Direction direction)
 
 bool Move::Execute(Robot *robot)
 {
-    dynamic_cast<Collector *>(robot)->Move(direction);
-
-    //simulation.Player->GetCollector().Move(direction);
+    try
+    {
+        robot->Move(direction);
+    }
+    catch (std::exception &ex)
+    {
+        throw;
+    }
+    //dynamic_cast<Collector *>(robot)->Move(direction);
     return true;
 }

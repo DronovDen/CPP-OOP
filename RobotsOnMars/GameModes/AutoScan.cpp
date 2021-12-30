@@ -45,6 +45,7 @@ bool AutoScan::Step(Robot *robot)
     for (auto &direction : path)
     {
         collector->Move(direction);
+
     }
     collector->Scan();
     return true;

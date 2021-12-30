@@ -9,7 +9,7 @@ class Robot;
 class ManualCommands : public ICommand
 {
 public:
-    //ManualCommands() = default;
+    ManualCommands() = default;
     //virtual ~ManualCommands() = default;
 
     virtual bool Execute(Robot *robot) = 0;

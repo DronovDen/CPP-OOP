@@ -32,14 +32,18 @@ ICommand *Parser::ParseCommand(Manager *manager, bool necessary)
     if (necessary)
     {
         word = GetNextWord();
-        if (word == "SET_MODE")
+        if (word == "QUIT")
+        {
+            currentCommand = new Quit(manager);
+        }
+        else if (word == "SET_MODE")
         { //Mode parsing
             word = GetNextWord();
-            if (word == "MANUAL" || word == "AUTO")
+            if (word == "MANUAL" || word == "AUTOGRAB")
             {
                 currentCommand = new ChangeMode(word, manager);
             }
-            else if (word == "SCAN")
+            else if (word == "AUTOSCAN")
             {
                 //stepsNum = getNextNumber();
                 stepsNum = stoull(CommandsBuffer.at(commandIdx));
@@ -76,11 +80,7 @@ ICommand *Parser::ParseCommand(Manager *manager, bool necessary)
                 currentCommand = new Scan();
             }
         }
-        else if (word == "QUIT")
-        {
-            currentCommand = new Quit(manager);
         }
-    }
 
     ClearCommandsBuffer();
     return currentCommand;

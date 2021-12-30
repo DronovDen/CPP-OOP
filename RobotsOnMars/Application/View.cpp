@@ -7,11 +7,11 @@ void View::Render(Robot *robot, GameArea &map)
 
     if (robot->GetCoordinates().x >= map.GetVisibleGlobalMapWidth() - 1)
     {
-        long diff = robot->GetCoordinates().x - map.GetVisibleGlobalMapWidth() + 2;
-        if (diff + robot->GetCoordinates().x < map.getMapSizeX())
+        this->offsetX = robot->GetCoordinates().x - map.GetVisibleGlobalMapWidth() + 5;
+        /*if (diff + robot->GetCoordinates().x < map.getMapSizeX())
         {
             this->offsetX = diff;
-        }
+        }*/
     }
     else if (robot->GetCoordinates().x < map.GetVisibleGlobalMapWidth() - 1)
     {
@@ -20,46 +20,65 @@ void View::Render(Robot *robot, GameArea &map)
 
     if (robot->GetCoordinates().y >= map.GetVisibleGlobalMapHeight() - 1)
     {
-        long long diff = robot->GetCoordinates().y - map.GetVisibleGlobalMapHeight() + 2;
-        if (diff + robot->GetCoordinates().y < map.getMapSizeY())
+        this->offsetY = robot->GetCoordinates().y - map.GetVisibleGlobalMapHeight() + 5;
+        /*if (diff + robot->GetCoordinates().y < map.getMapSizeY())
         {
             this->offsetY = diff;
-        }
+        }*/
     }
     else if (robot->GetCoordinates().x < map.GetVisibleGlobalMapWidth())
     {
         this->offsetY = 0;
     }
-    for (size_t i = this->offsetY; i < map.GetVisibleGlobalMapHeight() + this->offsetY; ++i)
+
+    //maybe this->offset % map.GetVisibleGlobalMapHeight() ????
+    size_t maxY;
+    size_t maxX;
+    if (offsetY + map.GetVisibleGlobalMapHeight() <= map.getMapSizeY())
+        maxY = map.GetVisibleGlobalMapHeight() + offsetY;
+    else
     {
-        for (size_t j = this->offsetX; j < map.GetVisibleGlobalMapWidth() + this->offsetX; ++j)
+        //maxY = map.getMapSizeY();
+        maxY = map.getMapSizeY() - map.GetVisibleGlobalMapHeight();
+    }
+    if (offsetX + map.GetVisibleGlobalMapWidth() <= map.getMapSizeX())
+        maxX = map.GetVisibleGlobalMapWidth() + offsetX;
+    else 
+    {
+        //maxX = map.getMapSizeX();
+        maxX = map.getMapSizeX() - map.GetVisibleGlobalMapWidth();
+    }
+
+    for (size_t i = this->offsetY; i < maxY; ++i)
+    {
+        for (size_t j = this->offsetX; j < maxX; ++j)
         {
-            Coordinates posize_t(j, i);
-            if (map.GetCell(posize_t).GetType() == CellType::EMPTY)
+            Coordinates point(j, i);
+            if (map.GetCell(point).GetType() == CellType::EMPTY)
             {
                 std::cout << ".";
             }
-            else if (map.GetCell(posize_t).GetType() == CellType::ROCK)
+            else if (map.GetCell(point).GetType() == CellType::ROCK)
             {
                 std::cout << "^";
             }
-            else if (map.GetCell(posize_t).GetType() == CellType::DIAMOND)
+            else if (map.GetCell(point).GetType() == CellType::DIAMOND)
             {
                 std::cout << "D";
             }
-            else if (map.GetCell(posize_t).GetType() == CellType::BOMB)
+            else if (map.GetCell(point).GetType() == CellType::BOMB)
             {
                 std::cout << "*";
             }
-            else if (map.GetCell(posize_t).GetType() == CellType::COLLECTOR)
+            else if (map.GetCell(point).GetType() == CellType::COLLECTOR)
             {
                 std::cout << "C";
             }
-            else if (map.GetCell(posize_t).GetType() == CellType::SAPPER)
+            else if (map.GetCell(point).GetType() == CellType::SAPPER)
             {
                 std::cout << "S";
             }
-            else if (map.GetCell(posize_t).GetType() == CellType::UNKNOWN)
+            else if (map.GetCell(point).GetType() == CellType::UNKNOWN)
             {
                 std::cout << "?";
             }

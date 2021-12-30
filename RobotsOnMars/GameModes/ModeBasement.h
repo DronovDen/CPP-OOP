@@ -7,6 +7,7 @@ class ICommand;
 class ManualCommands;
 class Robot;
 class Manager;
+class Server;
 
 enum class Mode
 {
@@ -25,13 +26,13 @@ public:
     //virtual Mode GetMode() const { return mode; };
 
     virtual void SetCommand(ICommand *command);
-    virtual void SetManager(Manager *manager);
+    virtual void SetServer(Server* newServer);
+    // virtual void SetManager(Manager* manager);
     virtual bool Execute(Robot *robot);
 
     //virtual void RenderPath() = 0;
     //void Render() const;
 
-    //Simulation &simulation;
     ICommand *command;
-    Manager *manager;
+    Server *server;
 };

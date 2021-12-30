@@ -12,11 +12,11 @@
 
 //class Parser;
 
-Manager::Manager(size_t argc, char *argv[])
+Manager::Manager()
 {
     currCommand = nullptr;
     commandParser = new Parser();
-
+    //MapLoader loader("labyrinth.txt");
     MapLoader loader("map.txt");
     globalMap = loader.Load();
     //globalMap.createRandomGlobalMap();
@@ -38,6 +38,7 @@ Manager::Manager(size_t argc, char *argv[])
 
     //modesRange = {{"MANUAL", mm}, {"SCAN", sm}, {"AUTO", am}, {"INACTIVE", im}};
     Collector *collector = new Collector(&globalMap, server);
+    //server->NotifyRobotCreated(collector);
     activeRobots.push_back(std::make_pair(manual, collector));
 }
 
@@ -70,8 +71,10 @@ void Manager::ExecuteGame()
          << "Diamonds collected: " << server->GetCollectedDiamondsNum() << endl;
     cout << "Enter command: ";
 
-    while (DoStep())
+    while (true)
     {
+        if (!DoStep())
+            break;
     }
 }
 
@@ -81,7 +84,7 @@ bool Manager::DoStep()
 
     try
     {
-        this->currCommand = commandParser->GetCurrentCommand(this, stepResult);
+        currCommand = commandParser->GetCurrentCommand(this, stepResult);
         if (dynamic_cast<ManualCommands *>(currCommand))
         {
             dynamic_cast<ManualMode *>(activeRobots.at(0).first)->SetCommand(currCommand);
@@ -101,6 +104,7 @@ bool Manager::DoStep()
             //if not manual - perform preloaded behaviour
             if (!dynamic_cast<ManualMode *>(i.first))
             {
+                //i.second->updateMap();
                 stepResult = i.first->Execute(i.second);
             }
         }

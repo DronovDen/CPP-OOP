@@ -7,7 +7,7 @@ class Quit : public ICommand
 {
 public:
     Quit(Manager *manager) : manager{manager} {};
-    virtual bool Execute(Robot *robot) override { return true; };
+    virtual bool Execute(Robot *robot) override { return false; };
 
 private:
     Manager *manager;

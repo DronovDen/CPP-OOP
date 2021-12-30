@@ -3,9 +3,9 @@
 #include "World/GameArea.h"
 #include "Console/Parser.h"
 
-size_t main(size_t argc, char *argv[])
+int main()
 {
-    Manager *manager = new Manager(argc, argv);
+    Manager *manager = new Manager();
     manager->ExecuteGame();
 
     return 0;

@@ -24,7 +24,7 @@ void ManualMode::SetCommand(ICommand *command)
 }
 
 bool ManualMode::ExecuteManual(Robot *robot)
-{
+ {
     //bool result = true;
     bool result = dynamic_cast<ICommand *>(command)->Execute(robot);
     return result;

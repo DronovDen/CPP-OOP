@@ -88,26 +88,26 @@ void Server::applyOthersRobotsChanges()
 {
     for (auto i : robotsCoordinates)
     {
-        GameArea *size_ternalMap = i.second->GetExploredArea();
+        GameArea *internalMap = i.second->GetExploredArea();
         for (auto j : robotsCache)
         {
             if (i.second != j.first) //i.second = Robot*
             //j.first = Robot* in robotChanges map
-            //if there is only one robot - ignore
+            //if they match - don't update map
             {
                 for (auto k : j.second) //j.second = vector<std::pair<Coordinates, CellType>>>
                 {
-                    if (k.second == CellType::EMPTY && size_ternalMap->GetCell(k.first).GetType() != CellType::DIAMOND)
+                    if (k.second == CellType::EMPTY && internalMap->GetCell(k.first).GetType() != CellType::DIAMOND)
                     {
-                        size_ternalMap->GetCell(k.first).SetType(CellType::EMPTY);
+                        internalMap->GetCell(k.first).SetType(CellType::EMPTY);
                     }
-                    if (k.second == CellType::EMPTY && size_ternalMap->GetCell(k.first).GetType() != CellType::BOMB)
+                    if (k.second == CellType::EMPTY && internalMap->GetCell(k.first).GetType() != CellType::BOMB)
                     {
-                        size_ternalMap->GetCell(k.first).SetType(CellType::EMPTY);
+                        internalMap->GetCell(k.first).SetType(CellType::EMPTY);
                     }
                     else
                     {
-                        size_ternalMap->GetCell(k.first).SetType(k.second);
+                        internalMap->GetCell(k.first).SetType(k.second);
                     }
                 }
             }
@@ -117,13 +117,13 @@ void Server::applyOthersRobotsChanges()
         {
             if (i.second != t.second)
             {
-                if (dynamic_cast<Collector *>(t.second) && size_ternalMap->GetCell(t.first.x, t.first.y).GetType() != CellType::COLLECTOR)
+                if (dynamic_cast<Collector *>(t.second) && internalMap->GetCell(t.first.x, t.first.y).GetType() != CellType::COLLECTOR)
                 {
-                    size_ternalMap->GetCell(t.first).SetType(CellType::COLLECTOR);
+                    internalMap->GetCell(t.first).SetType(CellType::COLLECTOR);
                 }
-                if (dynamic_cast<Sapper *>(t.second) && size_ternalMap->GetCell(t.first.x, t.first.y).GetType() != CellType::SAPPER)
+                if (dynamic_cast<Sapper *>(t.second) && internalMap->GetCell(t.first.x, t.first.y).GetType() != CellType::SAPPER)
                 {
-                    size_ternalMap->GetCell(t.first).SetType(CellType::SAPPER);
+                    internalMap->GetCell(t.first).SetType(CellType::SAPPER);
                 }
             }
         }

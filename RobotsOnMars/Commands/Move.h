@@ -1,6 +1,7 @@
 #pragma once
 #include "../Commands/ManualCommands.h"
 #include "../Robot/Direction.h"
+#include <exception>
 //#include "../Robot/Server.h"
 
 class Move : public ManualCommands

@@ -19,8 +19,8 @@ GameArea::GameArea(const size_t &x_size, const size_t &y_size)
 
 GameArea::GameArea()
 {
-    mapWidth = 20;
-    mapHeight = 20;
+    mapWidth = 15;
+    mapHeight = 15;
     diamondsAmount = 0;
     bombsAmount = 0;
     visibleGlobalMapHeight = 10;
@@ -114,16 +114,16 @@ size_t GameArea::GetHeight() const
         return 0;
 }
 
-bool GameArea::IsCellOnMap(Coordinates posize_t) const
+bool GameArea::IsCellOnMap(Coordinates point) const
 {
-    return (posize_t.x < map.size() && posize_t.y < map[0].size());
+    return (point.x < map.size() && point.y < map[0].size());
 }
 
-Cell GameArea::GetCell(const Coordinates &posize_t)
+Cell GameArea::GetCell(const Coordinates &point)
 {
-    if (posize_t.x >= map.size() || posize_t.y >= map[posize_t.x].size())
+    if (point.x >= map.size() || point.y >= map[point.x].size())
         throw std::runtime_error("Invalid cell coordinates");
-    return map[posize_t.y][posize_t.x];
+    return map[point.y][point.x];
 }
 
 Cell GameArea::GetCell(size_t x, size_t y)
