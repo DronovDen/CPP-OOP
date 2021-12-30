@@ -1,5 +1,4 @@
 #include "Server.h"
-//#include "Robot.h"
 #include "../Robot/Sapper.h"
 #include "../Robot/Collector.h"
 
@@ -40,7 +39,6 @@ void Server::NotifyRobotDeleted(Robot *robot, const Coordinates &coordinates)
 
 void Server::NotifyCellScanned(Robot *robot, const pair<Coordinates, CellType> scannedCell)
 {
-    //const_cast<Robot*>(robot);
     robotsCache.find(robot)->second.push_back(scannedCell);
     if (scannedCell.second == CellType::DIAMOND)
         diamondsAvaliable.push_back(scannedCell.first);

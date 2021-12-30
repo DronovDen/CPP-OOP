@@ -14,8 +14,8 @@ Manager::Manager()
 {
     currCommand = nullptr;
     commandParser = new Parser();
-    //MapLoader loader("labyrinth.txt");
-    MapLoader loader("map.txt");
+    MapLoader loader("labyrinth.txt");
+    //MapLoader loader("map.txt");
     globalMap = loader.Load();
     //globalMap.createRandomGlobalMap();
 

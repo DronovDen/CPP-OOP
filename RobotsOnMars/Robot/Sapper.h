@@ -1,11 +1,7 @@
 #pragma once
-
-//class Robot;
 #include "Robot.h"
 #include "Direction.h"
 #include "../World/Cell.h"
-//#include "World/World.h"
-//class Robot;
 
 class GameArea;
 class Server;

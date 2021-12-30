@@ -7,6 +7,5 @@ int main()
 {
     Manager *manager = new Manager();
     manager->ExecuteGame();
-
     return 0;
 }

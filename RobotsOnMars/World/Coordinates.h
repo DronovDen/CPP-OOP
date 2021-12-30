@@ -22,10 +22,6 @@ public:
         temp.y = this->y - r.y;
         return temp;
     }
-    /*bool operator==(const Coordinates &point) const
-    {
-        return (point.x == x && point.x == y);
-    }*/
     friend bool operator==(const Coordinates &r, const Coordinates &l)
     {
         return ((r.x == l.x) && (r.y == l.y));

@@ -1,7 +1,4 @@
 #pragma once
-//#include <vector>
-
-//#include "../World/World.h"
 #include "../World/Cell.h"
 #include "../World/Coordinates.h"
 #include "../World/GameArea.h"
@@ -10,11 +7,6 @@
 #include <unordered_map>
 
 using namespace std;
-
-//class Robot;
-
-/* class Collector;
-class Sapper; */
 
 class Server
 {

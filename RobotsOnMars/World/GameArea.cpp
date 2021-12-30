@@ -38,14 +38,12 @@ GameArea::~GameArea()
 
 void GameArea::CreateEmptyMap()
 {
-    //std::vector<std::vector<Cell>> mapHolder;
     Resize(mapWidth, mapHeight);
 
     for (size_t i = 0; i < mapHeight; ++i)
     {
         for (size_t j = 0; j < mapWidth; ++j)
         {
-            //mapHolder[i][j] = Cell(CellType::UNKNOWN);
             map[i][j] = Cell(CellType::UNKNOWN);
         }
     }

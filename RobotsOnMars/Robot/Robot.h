@@ -1,20 +1,10 @@
 #pragma once
-//#include "World/IEntity.h"
-//#include "GameArea/Cell.h"
-//#include "GameArea/GameArea.h"
-
-//#include "Server.h"
 #include "../World/World.h"
 #include "../World/Coordinates.h"
 #include "../World/GameArea.h"
 #include "../Robot/Direction.h"
-//#include <utility>
-//#include "Sapper.h"
 
 class Server;
-//class Cell;
-//class World;
-//class GameArea;
 
 class Robot
 {
@@ -30,11 +20,6 @@ public:
 
     GameArea *GetExploredArea() { return this->exploredGameArea; };
     void SetExploredArea(GameArea *map) { this->exploredGameArea = map; };
-
-    //Coordinates Robot::GetPosition() const { return position; };
-
-    //virtual void Move(Direction direction) = 0;
-    //virtual void Move(size_t x, size_t y) = 0;
 
     bool IsAvailableToMove(const Coordinates &coordinates, Robot *robot) const;
     Coordinates CalculateTargetPos(const Direction &direction);
@@ -55,7 +40,7 @@ public:
 
 protected:
     Server *server;
-    GameArea *exploredGameArea; //unique for each robot
+    GameArea *exploredGameArea;
     Coordinates position;
     World *world;
 };

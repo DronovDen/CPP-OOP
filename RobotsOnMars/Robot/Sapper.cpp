@@ -1,6 +1,5 @@
 #include "Sapper.h"
 #include "Server.h"
-//#include "GameArea/World.h"
 
 Sapper::Sapper(GameArea *globalGameArea, Server *server)
 {
@@ -9,11 +8,9 @@ Sapper::Sapper(GameArea *globalGameArea, Server *server)
     exploredGameArea = new GameArea(globalGameArea->getMapSizeX(), globalGameArea->getMapSizeY());
     position = GetSpawnCoordinates();
     exploredGameArea->SetCell(this->position, CellType::SAPPER);
-    //exploredGameArea.GetCell(this->position)->SetType(CellType::SAPPER);
     server->NotifyRobotCreated(this, this->position);
     server->applyOthersRobotsChanges();
     SetExploredArea(server->GetActualGameArea());
-    //updateMap();
 }
 
 Sapper::~Sapper()
@@ -80,23 +77,3 @@ void Sapper::Defuse()
         this->server->NotifyBombDefused(this, this->position);
     }
 }
-
-/* void Sapper::SetPosition()
-{
-    while (true)
-    {
-        size_t x = rand() % exploredGameArea.GetWidth();
-        size_t y = rand() % exploredGameArea.GetHeight();
-        Cell &cell = exploredGameArea.GetCell(x, y);
-        if (CanBeSetOnCell(cell))
-        {
-            Move(x, y);
-            break;
-        }
-    }
-} */
-
-/* bool Sapper::CanBeSetOnCell(const Cell &cell) const
-{
-    return (cell.GetType() != CellType::UNKNOWN && cell.GetType() != CellType::ROCK && cell.GetRobot() == nullptr);
-} */

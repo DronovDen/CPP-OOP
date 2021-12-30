@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Coordinates.h"
 #include "Cell.h"
 #include "cstdio"
@@ -7,7 +6,6 @@
 #include "iostream"
 #include "vector"
 #include "ctime"
-//#include "MapLoader.h"
 
 class GameArea
 {
