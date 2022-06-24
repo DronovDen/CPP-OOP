@@ -1,0 +1,6 @@
+desc
+0 = readfile Rita_Hayworth_and_Shawshank_Redemption.txt
+1 = sort
+2 = writefile out.txt
+csed
+0 -> 1 -> 1 -> 1 -> 1 -> 2
